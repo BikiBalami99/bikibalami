@@ -3,10 +3,11 @@ import MyStory from "./components/MyStory/MyStory";
 import Navbar from "./components/Navbar/Navbar";
 import Projects from "./components/Projects/Projects";
 import Skills from "./components/Skills/Skills";
+import "./global.css";
 
 function App() {
   return (
-    <div>
+    <div className="ultimate-wrapper">
       <header>
         <Navbar />
       </header>
