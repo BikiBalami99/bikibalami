@@ -1,4 +1,5 @@
 import Footer from "./components/Footer/Footer";
+import Hero from "./components/Hero/Hero";
 import MyStory from "./components/MyStory/MyStory";
 import Navbar from "./components/Navbar/Navbar";
 import Projects from "./components/Projects/Projects";
@@ -13,6 +14,7 @@ function App() {
       </header>
 
       <main>
+        <Hero />
         <Projects />
         <Skills />
         <MyStory />
