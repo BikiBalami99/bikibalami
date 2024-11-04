@@ -1,13 +1,14 @@
 import React from "react";
+import styles from "./Hero.module.css";
 
 const Hero = () => {
   return (
-    <div>
-      <section>
+    <div className={styles.hero}>
+      <section className={styles.left}>
         <h3>Biki Balami</h3>
         <h2>GRAPHIC DESIGNER</h2>
         <h2>WEB DEVELOPER</h2>
-        <div>
+        <div className={styles.heroDescription}>
           <span>Front-end | </span>
           <span>UI/UX | </span>
           <span>Computer Science</span>
@@ -15,25 +16,25 @@ const Hero = () => {
         <p>{"(Scroll Down)"}</p>
       </section>
 
-      <section>
-        <section>
+      <section className={styles.right}>
+        <section className={styles.rightTop}>
           <div>
-            <span>Email</span>
-            <span>bikibalami1999@gmail.com</span>
+            <span className={styles.emailTitle}>Email: </span>
+            <span className={styles.email}>bikibalami1999@gmail.com</span>
           </div>
           <div>
-            <span>Resume</span>
+            <span className={styles.resumeTitle}>Resume: </span>
             <span>
-              <button>Download</button>
+              <button className={styles.resumeDownloadButton}>Download</button>
             </span>
           </div>
-          <div>
-            <button>Linkedin</button>
-            <button>Github</button>
+          <div className={styles.socials}>
+            <div className={styles.linkedIn}></div>
+            <div className={styles.github}></div>
           </div>
         </section>
 
-        <article>
+        <article className={styles.rightBottom}>
           <ul>
             <li>
               <strong>Origin:</strong> Kathmandu, Nepal
