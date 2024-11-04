@@ -24,8 +24,8 @@ ol {
 .ultimate-wrapper {
   display: flex;
   padding: 32px;
-  padding-top: 128px;
   flex-direction: column;
   gap: 34px;
-  border: 1px solid black;
+  height: 500vh;
+  align-content: center;
 }

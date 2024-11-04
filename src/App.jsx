@@ -9,9 +9,7 @@ import "./global.css";
 function App() {
   return (
     <div className="ultimate-wrapper">
-      <header>
-        <Navbar />
-      </header>
+      <Navbar />
 
       <main>
         <Hero />
