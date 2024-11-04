@@ -28,4 +28,5 @@ ol {
   gap: 34px;
   height: 500vh;
   align-content: center;
+  overflow: hidden;
 }
