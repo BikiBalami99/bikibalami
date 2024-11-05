@@ -6,7 +6,7 @@ const ProjectCard = () => {
     <div className={styles.card}>
       <h4>Title</h4>
       <p>Description</p>
-      <img src={"src/assets/svgs/thumbnail.svg"} alt="icon" />
+      <div className={styles.thumbnail}></div>
     </div>
   );
 };

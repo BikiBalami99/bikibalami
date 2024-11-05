@@ -30,3 +30,22 @@ ol {
   align-content: center;
   overflow: hidden;
 }
+
+.sectionTitle {
+  display: flex;
+  padding: 0px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 128px;
+  align-self: stretch;
+}
+
+.sectionTitle h2 {
+  color: rgb(42, 42, 42);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 128px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
