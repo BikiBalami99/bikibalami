@@ -26,9 +26,10 @@ ol {
   padding: 32px;
   flex-direction: column;
   gap: 34px;
-  height: 500vh;
+
   align-content: center;
   overflow: hidden;
+  background: #f1f1f1;
 }
 
 .sectionTitle {

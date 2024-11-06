@@ -1,4 +1,7 @@
 import React from "react";
+import styles from "./Skills.module.css";
+import skillsData from "../../data/skillsData";
+import SectionRow from "./SectionRow";
 
 const Skills = () => {
   return (
@@ -9,7 +12,12 @@ const Skills = () => {
         <h2>Skills</h2>
         <h2>Skills</h2>
       </div>
-      My Skills
+
+      <div className={styles.allSkills}>
+        {skillsData.map((skillType) => {
+          return <SectionRow key={skillType.id} skillType={skillType} />;
+        })}
+      </div>
     </section>
   );
 };
