@@ -3,7 +3,7 @@ const skillsData = [
     id: 1,
     title: "Frontend Development",
     description:
-      "My understanding of technologies used in Frontend comes from many online courses. Although I have been coding since I was small, I upgraded my coding knowledge from a beginner to Intermediate through these courses. Currently, I am able to make a fully functioning FrontEnd using these technologies. My understanding of these technologies are getting deeper everyday as I am also slowly seeing the top of the mountain I need to reach. I am not a professional yet, but that is my goal.",
+      "My understanding of technologies used in Frontend comes from many online courses. Although I have been coding since I was small, I upgraded my coding knowledge from a beginner to Intermediate through these course. Currently, I am able to make a fully functioning FrontEnd using these technologies. My understanding of these technologies are getting deeper everyday as I am also slowly seeing the top of the mountain I need to reach. I am not a professional yet, but that is my goal.",
     certificates: [
       {
         title: "codecademy",

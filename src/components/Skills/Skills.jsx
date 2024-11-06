@@ -13,6 +13,7 @@ const Skills = () => {
         <h2>Skills</h2>
       </div>
 
+      {/* Each Row is rendered below */}
       <div className={styles.allSkills}>
         {skillsData.map((skillType) => {
           return <SectionRow key={skillType.id} skillType={skillType} />;
