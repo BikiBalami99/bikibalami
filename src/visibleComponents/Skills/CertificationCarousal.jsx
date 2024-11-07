@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Skills.module.css";
 import Carousel from "../../helperComponents/Carousel/Carousel";
-import expandIcon from "../../assets/icons/expandIcon.svg";
+import expandIcon from "/assets/icons/expandIcon.svg";
 
 const CertificationCarousal = ({ skillType: { certificates } }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);

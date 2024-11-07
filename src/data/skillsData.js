@@ -7,37 +7,37 @@ const skillsData = [
     certificates: [
       {
         title: "codecademy",
-        image: "src/assets/certificates/codecademy/Front_End_Engineer_Path.png",
+        image: "/assets/certificates/codecademy/Front_End_Engineer_Path.png",
       },
       {
         title: "TypeScript",
-        image: "src/assets/certificates/udemy/Mastering TypeScript.jpg",
+        image: "/assets/certificates/udemy/Mastering TypeScript.jpg",
       },
     ],
     techIcons: [
-      { title: "CSS", icon: "src/assets/icons/FrontEndDevelopment/CSS.jpg" },
-      { title: "git", icon: "src/assets/icons/FrontEndDevelopment/git.jpg" },
-      { title: "HTML", icon: "src/assets/icons/FrontEndDevelopment/HTML.jpg" },
+      { title: "CSS", icon: "/assets/icons/FrontEndDevelopment/CSS.jpg" },
+      { title: "git", icon: "/assets/icons/FrontEndDevelopment/git.jpg" },
+      { title: "HTML", icon: "/assets/icons/FrontEndDevelopment/HTML.jpg" },
       {
         title: "JavaScript",
-        icon: "src/assets/icons/FrontEndDevelopment/JavaScript.jpg",
+        icon: "/assets/icons/FrontEndDevelopment/JavaScript.jpg",
       },
-      { title: "Jest", icon: "src/assets/icons/FrontEndDevelopment/Jest.jpg" },
+      { title: "Jest", icon: "/assets/icons/FrontEndDevelopment/Jest.jpg" },
       {
         title: "Next.JS",
-        icon: "src/assets/icons/FrontEndDevelopment/NextJs.jpg",
+        icon: "/assets/icons/FrontEndDevelopment/NextJs.jpg",
       },
       {
         title: "React",
-        icon: "src/assets/icons/FrontEndDevelopment/React.jpg",
+        icon: "/assets/icons/FrontEndDevelopment/React.jpg",
       },
       {
         title: "Redux",
-        icon: "src/assets/icons/FrontEndDevelopment/redux.jpg",
+        icon: "/assets/icons/FrontEndDevelopment/redux.jpg",
       },
       {
         title: "TypeScript",
-        icon: "src/assets/icons/FrontEndDevelopment/TypeScript.jpg",
+        icon: "/assets/icons/FrontEndDevelopment/TypeScript.jpg",
       },
     ],
   },
@@ -49,17 +49,17 @@ const skillsData = [
     certificates: [
       {
         title: "Undergrad",
-        image: "src/assets/certificates/TUJ/Undergrad.jpg",
+        image: "/assets/certificates/TUJ/Undergrad.jpg",
       },
     ],
     techIcons: [
-      { title: "C", icon: "src/assets/icons/ComputerScience/C.jpg" },
+      { title: "C", icon: "/assets/icons/ComputerScience/C.jpg" },
       {
         title: "Data Str",
-        icon: "src/assets/icons/ComputerScience/Data-structures.jpg",
+        icon: "/assets/icons/ComputerScience/Data-structures.jpg",
       },
-      { title: "Java", icon: "src/assets/icons/ComputerScience/java.jpg" },
-      { title: "Python", icon: "src/assets/icons/ComputerScience/Python.jpg" },
+      { title: "Java", icon: "/assets/icons/ComputerScience/java.jpg" },
+      { title: "Python", icon: "/assets/icons/ComputerScience/Python.jpg" },
     ],
   },
   {
@@ -70,31 +70,31 @@ const skillsData = [
     certificates: [
       {
         title: "Figma",
-        image: "src/assets/certificates/udemy/Figma Advanced from BYOL.jpg",
+        image: "/assets/certificates/udemy/Figma Advanced from BYOL.jpg",
       },
       {
         title: "Undergrad",
-        image: "src/assets/certificates/TUJ/Undergrad.jpg",
+        image: "/assets/certificates/TUJ/Undergrad.jpg",
       },
     ],
     techIcons: [
-      { title: "Figma", icon: "src/assets/icons/GraphicDesign/Figma.jpeg" },
+      { title: "Figma", icon: "/assets/icons/GraphicDesign/Figma.jpeg" },
       {
         title: "Photoshop",
-        icon: "src/assets/icons/GraphicDesign/photoshop.jpeg",
+        icon: "/assets/icons/GraphicDesign/photoshop.jpeg",
       },
       {
         title: "Procreate",
-        icon: "src/assets/icons/GraphicDesign/Procreate.jpeg",
+        icon: "/assets/icons/GraphicDesign/Procreate.jpeg",
       },
       {
         title: "InDesign",
-        icon: "src/assets/icons/GraphicDesign/indesign.jpeg",
+        icon: "/assets/icons/GraphicDesign/indesign.jpeg",
       },
-      { title: "Blender", icon: "src/assets/icons/GraphicDesign/Blender.jpeg" },
+      { title: "Blender", icon: "/assets/icons/GraphicDesign/Blender.jpeg" },
       {
         title: "Illustrator",
-        icon: "src/assets/icons/GraphicDesign/illustrator.jpeg",
+        icon: "/assets/icons/GraphicDesign/illustrator.jpeg",
       },
     ],
   },
