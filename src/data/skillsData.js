@@ -7,12 +7,11 @@ const skillsData = [
     certificates: [
       {
         title: "codecademy",
-        certificate:
-          "src/assets/certificates/codecademy/Front_End_Engineer_Path.png",
+        image: "src/assets/certificates/codecademy/Front_End_Engineer_Path.png",
       },
       {
         title: "TypeScript",
-        certificate: "src/assets/certificates/udemy/Mastering TypeScript.jpg",
+        image: "src/assets/certificates/udemy/Mastering TypeScript.jpg",
       },
     ],
     techIcons: [
@@ -50,7 +49,7 @@ const skillsData = [
     certificates: [
       {
         title: "Undergrad",
-        certificate: "src/assets/certificates/TUJ/Undergrad.jpg",
+        image: "src/assets/certificates/TUJ/Undergrad.jpg",
       },
     ],
     techIcons: [
@@ -71,12 +70,11 @@ const skillsData = [
     certificates: [
       {
         title: "Figma",
-        certificate:
-          "src/assets/certificates/udemy/Figma Advanced from BYOL.jpg",
+        image: "src/assets/certificates/udemy/Figma Advanced from BYOL.jpg",
       },
       {
         title: "Undergrad",
-        certificate: "src/assets/certificates/TUJ/Undergrad.jpg",
+        image: "src/assets/certificates/TUJ/Undergrad.jpg",
       },
     ],
     techIcons: [

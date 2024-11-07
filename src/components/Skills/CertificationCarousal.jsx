@@ -1,120 +1,85 @@
 import React, { useState } from "react";
 import styles from "./Skills.module.css";
+import Carousel from "../Utilities/Carousel";
 
-const CertificationCarousal = ({ skillType: { certificates } }) => {
+const CertificationCarousalOld = ({ skillType: { certificates } }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalImgIndex, setModalImgIndex] = useState(0);
 
-  // Functions that change the current certificate thumbnail being shown
-  function increaseCurrentImgIndex() {
-    if (currentImgIndex !== certificates.length - 1) {
-      setCurrentImgIndex((prev) => prev + 1);
-    }
-  }
-
-  function decreaseCurrentImgIndex() {
+  // Functions that change the current certificate thumbnail being show.
+  function handlePreviousImage() {
     if (currentImgIndex !== 0) {
-      setCurrentImgIndex((prev) => prev - 1);
+      setCurrentImgIndex((prevIndex) => prevIndex - 1);
+    }
+  }
+  function handleNextImage() {
+    if (currentImgIndex !== certificates.length - 1) {
+      setCurrentImgIndex((prevIndex) => prevIndex + 1);
     }
   }
 
-  // Function to open the modal onClick
-  function openModal(index) {
-    setModalImgIndex(index);
-    setIsModalOpen(true);
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeModal() {
-    setIsModalOpen(false);
-    document.body.style.overflow = "auto";
-  }
-
-  // Modal navigation functions
-  function increaseModalImgIndex() {
-    if (modalImgIndex !== certificates.length - 1) {
-      setModalImgIndex((prev) => prev + 1);
-    }
-  }
-
-  function decreaseModalImgIndex() {
-    if (modalImgIndex !== 0) {
-      setModalImgIndex((prev) => prev - 1);
-    }
+  function openModal(certificates) {
+    document.getElementById("certificatePreviewModal").showModal();
   }
 
   return (
     <div className={styles.certificatesCarousal}>
       <div
         className={styles.certificateImages}
-        style={{ transform: `translateX(${currentImgIndex * -100}%)` }}
+        style={{ transform: `translateX(${-currentImgIndex * 100}%)` }}
       >
-        {certificates.map((certificate, index) => {
+        {certificates.map((certificate) => {
           return (
-            <img
-              key={certificate.title}
-              src={certificate.certificate}
-              className={styles.aCertificate}
-              onClick={() => openModal(index)}
-            />
+            <>
+              <img
+                key={certificate.title}
+                src={certificate.certificate}
+                className={styles.aCertificate}
+                onClick={openModal}
+              />
+            </>
           );
         })}
       </div>
 
       {certificates.length > 1 && (
         <>
-          <button
-            onClick={decreaseCurrentImgIndex}
-            className={styles.leftArrow}
-          >
+          <button onClick={handlePreviousImage} className={styles.leftArrow}>
             &larr;
           </button>
-          <button
-            onClick={increaseCurrentImgIndex}
-            className={styles.rightArrow}
-          >
+          <button onClick={handleNextImage} className={styles.rightArrow}>
             &rarr;
           </button>
         </>
       )}
 
-      {/* Modal preview */}
-      {isModalOpen && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
-            <img
-              src={certificates[modalImgIndex].certificate}
-              alt="Large Certificate"
-              className={styles.modalImage}
-            />
-
-            {/* Conditionally render the left and right arrows inside the modal */}
-            {certificates.length > 1 && (
-              <>
-                <button
-                  onClick={decreaseModalImgIndex}
-                  className={styles.leftArrow}
-                >
-                  &larr;
-                </button>
-                <button
-                  onClick={increaseModalImgIndex}
-                  className={styles.rightArrow}
-                >
-                  &rarr;
-                </button>
-              </>
-            )}
-
-            <div className={styles.closeButtonContainer}>
-              <button onClick={closeModal} className={styles.closeButton}>
-                &times;
-              </button>
+      <dialog id="certificatePreviewModal">
+        {certificates.map((certificate) => {
+          return (
+            <div>
+              <div>
+                <img src={certificate.certificate} alt={certificate.title} />
+              </div>
+              {certificates.length > 1 && (
+                <>
+                  <button className={styles.leftArrow}>&larr;</button>
+                  <button className={styles.rightArrow}>&rarr;</button>
+                </>
+              )}
             </div>
-          </div>
-        </div>
-      )}
+          );
+        })}
+        <form method="dialog">
+          <button>Close</button>
+        </form>
+      </dialog>
+    </div>
+  );
+};
+
+const CertificationCarousal = ({ skillType: { certificates } }) => {
+  return (
+    <div>
+      <Carousel arrayOfObjects={certificates} />
     </div>
   );
 };
