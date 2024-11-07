@@ -28,7 +28,7 @@
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 
   /* Animation */
-  transition: height 200ms ease-in-out;
+  transition: height 350ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 /* ------------------------ */
@@ -38,11 +38,12 @@
   /* Layout */
   display: flex;
   width: 100%;
+  padding-top: 14px;
 
   /* Functional */
   height: 100%;
   min-height: 100%;
-  align-items: center;
+  align-items: flex-start;
 
   /* Typography */
   text-align: center;
@@ -50,10 +51,22 @@
   font-weight: 200;
 
   /* transform: translateY(100px); */
-  transition: opacity 200ms ease-in-out, transform 400ms ease-in-out;
+  animation: pulse 20s linear infinite;
 }
 .wish p {
   width: 100%;
+}
+
+/* Wish animation */
+
+@keyframes pulse {
+  25% {
+    transform: translateX(10px);
+  }
+
+  75% {
+    transform: translateX(-10px);
+  }
 }
 
 /* ------------------------ */
@@ -132,6 +145,8 @@
     /* Layout Adjustments */
     flex-direction: column;
     align-items: flex-end;
+
+    transition: opacity 500ms ease-out;
   }
 
   .wish,
@@ -139,6 +154,14 @@
   .letsTalk {
     /* Typography Adjustments */
     font-size: 12px;
+  }
+
+  .letsTalk,
+  .letsTalk:hover,
+  .letsTalk:focus-visible {
+    background-color: transparent;
+    color: #f4a914;
+    padding: 0;
   }
 
   /* ------------------------ */
@@ -172,7 +195,10 @@
 
   .middle {
     width: 40%;
+    transform-origin: left;
   }
+
+  /* Animations */
 
   /* Hamburger Animation */
 
@@ -181,11 +207,16 @@
   }
 
   .middleAnimation {
-    transform-origin: right;
-    transform: scaleX(0);
+    transform: scaleX(0) translateX(-100px);
   }
 
   .bottomAnimation {
     transform: translateY(-10px) rotate(-45deg);
+  }
+
+  /* NavLinks Animation */
+
+  .navLinks {
+    opacity: 1;
   }
 }

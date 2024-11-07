@@ -46,8 +46,6 @@ const Navbar = () => {
           <li>Projects</li>
           <li>Skills</li>
           <li>My Story</li>
-        </ul>
-        <ul>
           <li>
             <button className={styles.letsTalk}>Lets Talk</button>
           </li>
