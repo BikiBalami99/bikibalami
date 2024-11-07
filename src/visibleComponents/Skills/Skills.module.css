@@ -1,0 +1,222 @@
+/* The div that shows holds all the rows of skills */
+.allSkills {
+  margin: 0 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 64px;
+  background: #fff;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+  gap: 64px;
+  padding: 64px 10%;
+}
+
+.skillRow {
+  display: flex;
+  gap: 34px;
+  justify-content: center;
+}
+
+/* The Carousal + the tech logos */
+.images {
+  width: 50%;
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  align-self: center;
+
+  border-radius: 36px;
+  background: linear-gradient(219deg, #f4a914 0.69%, #e56e13 99.31%);
+  box-shadow: 0px 0px 24px 0px rgba(142, 0, 0, 0.3) inset;
+}
+
+/* Show Modal section */
+.carouselContainer {
+  position: relative;
+  border-radius: 16px;
+  box-shadow: 0px 0px 34px 0px rgba(255, 229, 0, 0.7);
+  overflow: hidden;
+}
+
+.expandButton {
+  /* Positioning */
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  margin: 8px;
+  display: flex;
+
+  /* Styling */
+
+  padding: 12px;
+  border-radius: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  cursor: pointer;
+  overflow: hidden;
+
+  /* Animation */
+  transition: opacity 200ms ease-in-out, background-color 100ms ease-in-out;
+}
+
+.expandButton img {
+  width: 12px;
+}
+
+/* Shows the expand button on hover */
+.carouselContainer:hover .expandButton,
+.carouselContainer:focus-visible .expandButton {
+  opacity: 1;
+}
+
+/* Targetting only the left and right button because by default it will be opacity .5 and font size very large*/
+.carouselContainer button:not(.expandButton) {
+  opacity: 1;
+  font-size: 1rem;
+  border: 2px solid black;
+}
+
+/* Modal stylings */
+.modal {
+  width: 60vw;
+  border: none;
+  border-radius: 32px;
+  background-color: transparent;
+  position: fixed;
+  margin: auto;
+  overflow: visible;
+}
+
+/* Ensures the backdrop is full screen */
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.96); /* Dark background */
+}
+.modal[open] {
+  animation: grow-from-center 0.35s ease-out;
+}
+
+.modal form {
+  text-align: right;
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5%;
+  transform: translate(50%, -50%);
+  aspect-ratio: 1/1;
+
+  border: 3px solid black;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-size: 1.5vw;
+
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.modalCloseButton:hover {
+  cursor: pointer;
+  background-color: #f4a914;
+  color: black;
+}
+
+.modal img {
+  /* border: 10px solid blue; */
+  border-radius: 32px;
+}
+
+/* Animation for the modal to open */
+@keyframes grow-from-center {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* The Div that has all the certificate images */
+.certificateImages {
+  display: flex;
+  transform: translateX(0%);
+  height: 100%;
+  width: 100%;
+  transition: transform 400ms ease-out;
+}
+
+/* Individual Image */
+.aCertificate {
+  object-fit: cover;
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* TechIcons below */
+
+.techIcons {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.eachTech {
+  display: flex;
+  height: 74px;
+  width: 82px;
+  padding: 4px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.eachTech img {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+
+  border-radius: 8px;
+  background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+  box-shadow: -2px 2px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+.eachTech p {
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* Div holding the h2 and p for description */
+.description {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.description h2 {
+  color: #000;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.description p {
+  color: #000;
+  font-size: 18px;
+  font-weight: 300;
+}

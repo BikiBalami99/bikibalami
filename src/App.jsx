@@ -1,8 +1,8 @@
-import Footer from "./components/Footer/Footer";
-import Hero from "./components/Hero/Hero";
-import Navbar from "./components/Navbar/Navbar";
-import Projects from "./components/Projects/Projects";
-import Skills from "./components/Skills/Skills";
+import Footer from "./visibleComponents/Footer/Footer";
+import Hero from "./visibleComponents/Hero/Hero";
+import Navbar from "./visibleComponents/Navbar/Navbar";
+import Projects from "./visibleComponents/Projects/Projects";
+import Skills from "./visibleComponents/Skills/Skills";
 import "./global.css";
 
 function App() {

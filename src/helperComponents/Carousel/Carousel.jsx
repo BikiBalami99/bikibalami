@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Carousel.module.css";
 
-const Carousel = ({ arrayOfObjects }) => {
+const Carousel = ({ arrayOfObjects, sizeClass = "" }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   function handlePreviousImage() {
@@ -17,7 +17,7 @@ const Carousel = ({ arrayOfObjects }) => {
   }
 
   return (
-    <div className={styles.carousel}>
+    <div className={`${styles.carousel} ${sizeClass}`}>
       <div
         className={styles.images}
         style={{ transform: `translateX(${-currentImageIndex * 100}%)` }}
@@ -26,7 +26,7 @@ const Carousel = ({ arrayOfObjects }) => {
           <img
             key={eachObject.title}
             src={eachObject.image}
-            className={styles.image}
+            className={`${styles.image}`}
             alt={eachObject.title}
           />
         ))}
@@ -34,11 +34,24 @@ const Carousel = ({ arrayOfObjects }) => {
 
       {arrayOfObjects.length > 1 && (
         <>
-          <button onClick={handlePreviousImage} className={styles.leftArrow}>
-            &larr;
+          <button
+            onClick={handlePreviousImage}
+            className={styles.leftArrow}
+            style={currentImageIndex === 0 ? { opacity: "0%" } : null}
+          >
+            <div>&lt;</div>
           </button>
-          <button onClick={handleNextImage} className={styles.rightArrow}>
-            &rarr;
+
+          <button
+            onClick={handleNextImage}
+            className={styles.rightArrow}
+            style={
+              currentImageIndex === arrayOfObjects.length - 1
+                ? { opacity: "0%" }
+                : null
+            }
+          >
+            <div> &gt;</div>
           </button>
         </>
       )}

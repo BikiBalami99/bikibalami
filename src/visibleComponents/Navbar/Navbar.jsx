@@ -11,8 +11,10 @@ const Navbar = () => {
         <li>Skills</li>
         <li>My Story</li>
       </ul>
-      <ul className={styles.letsTalk}>
-        <li>Lets Talk</li>
+      <ul>
+        <li>
+          <button className={styles.letsTalk}>Lets Talk</button>
+        </li>
       </ul>
     </nav>
   );
