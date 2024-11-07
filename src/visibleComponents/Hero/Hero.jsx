@@ -18,17 +18,9 @@ const Hero = () => {
 
       <section className={styles.right}>
         <section className={styles.rightTop}>
-          <div>
-            <span className={styles.emailTitle}>Email: </span>
-            <span className={styles.email}>bikibalami1999@gmail.com</span>
-          </div>
-          <div>
-            <span className={styles.resumeTitle}>Resume: </span>
-            <span>
-              <button className={styles.resumeDownloadButton}>Download</button>
-            </span>
-          </div>
+          <span className={styles.email}>bikibalami1999@gmail.com</span>
           <div className={styles.socials}>
+            <button className={styles.resumeDownloadButton}>Resume</button>
             <div className={styles.linkedIn}></div>
             <div className={styles.github}></div>
           </div>
