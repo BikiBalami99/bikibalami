@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
+import { generateWish } from "../../utils/generateWish";
 
 const Navbar = () => {
   const [hideLinks, setHideLinks] = useState(true);
+  const [wishMessage, setWishMessage] = useState("");
 
   function togglehideLinks() {
     setHideLinks((prev) => !prev);
   }
 
+  useEffect(() => {
+    const timeRightNow = new Date().getHours();
+    setWishMessage(() => generateWish(timeRightNow));
+  }, []);
+
   return (
     <nav className={styles.navBar} style={hideLinks ? { height: "60px" } : {}}>
       <div className={styles.wish}>
-        <p>Good Evening!</p>
+        <p>{wishMessage}</p>
       </div>
       <div className={styles.navItems}>
         {/* Hamburger Icon */}
