@@ -41,7 +41,7 @@ ol {
   align-items: center;
   gap: 8rem;
   align-self: stretch;
-  animation: slowMoveToLeft 100s ease-in-out alternate infinite;
+  animation: slowMoveToLeft 200s linear alternate infinite;
 }
 
 .sectionTitle h2 {
@@ -75,18 +75,18 @@ button:hover {
 
 @keyframes slowMoveToLeft {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-200%);
   }
 
   100% {
-    transform: translateX(100%);
+    transform: translateX(200%);
   }
 }
 
 @media only screen and (max-width: 500px) {
   .sectionTitle {
     gap: 3rem;
-    animation: slowMoveToLeft 50s ease-in-out alternate infinite;
+    animation: slowMoveToLeft 100s linear alternate infinite;
   }
   .sectionTitle h2 {
     font-size: 3rem;

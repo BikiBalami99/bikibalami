@@ -89,6 +89,13 @@
   text-align: center;
   font-weight: 300;
 }
+/* Tablet Sceen Size */
+@media only screen and (max-width: 1024px) {
+  .navBar {
+    width: 80vw;
+    left: 10%;
+  }
+}
 
 /* Mobile Screen Adjustments*/
 @media only screen and (max-width: 500px) {

@@ -34,7 +34,6 @@ const Projects = () => {
           <ProjectCard />
           <ProjectCard />
           <ProjectCard />
-          <ProjectCard />
         </div>
         <div className={styles.buttons}>
           <button>&larr;</button>
