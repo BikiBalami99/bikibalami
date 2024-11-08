@@ -9,10 +9,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav
-      className={styles.navBar}
-      style={hideLinks ? { height: "70px" } : null}
-    >
+    <nav className={styles.navBar} style={hideLinks ? { height: "60px" } : {}}>
       <div className={styles.wish}>
         <p>Good Evening!</p>
       </div>

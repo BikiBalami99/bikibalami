@@ -6,14 +6,14 @@
   align-items: flex-start;
 
   border-radius: 32px;
-  background: url("/assets/images/portfolio-background.png") lightgray 50% /
+  background: url("/assets/images/portfolio-background.jpg") lightgray 50% /
     cover no-repeat;
   box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.1);
+  text-shadow: 0px 0px 3px black;
   color: white;
 }
 
 /* Left is the section on the left side of the hero */
-
 .left {
   display: flex;
   width: 65vw;
@@ -25,7 +25,7 @@
 }
 
 .left h3 {
-  font-size: 2.8vw;
+  font-size: 2.5vw;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
@@ -33,7 +33,7 @@
 
 .left h2 {
   text-shadow: 0px 0px 12px rgba(255, 255, 255, 0);
-  font-size: 4.8vw;
+  font-size: 3.8vw;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
@@ -42,7 +42,7 @@
 .heroDescription {
   color: #f4a914;
   text-shadow: 0px 0px 12px #000;
-  font-size: 2vw;
+  font-size: 1.2vw;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -51,14 +51,13 @@
 .left p {
   color: #8e8e8e;
   text-shadow: 0px 0px 12px #000;
-  font-size: 1.5vw;
+  font-size: 1vw;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
 /* Now the right side */
-
 .right {
   display: flex;
   flex-direction: column;
@@ -70,26 +69,27 @@
   padding: 10px;
 }
 
+/* Renamed classes to match the new order */
 .rightTop {
   display: flex;
-  gap: 0.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  font-size: 1vw;
+  font-weight: 200;
+}
+
+.rightBottom {
+  display: flex;
+  gap: 0.8rem;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   align-self: stretch;
 }
 
-.rightBottom {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
-  font-size: 3vw;
-  font-weight: 200;
-}
-
 .email {
-  font-size: 2.8vw;
+  font-size: 1vw;
   font-weight: 200;
 }
 
@@ -99,13 +99,13 @@
   gap: 10px;
 
   border-radius: 8px;
-  border: 1px solid #f4ce14;
+  border: 1px solid white;
   background: #080808;
 
-  color: #f4ce14;
+  color: white;
   text-align: center;
   font-family: Poppins;
-  font-size: 3vw;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -115,6 +115,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-top: 0.2rem;
 }
 
 .linkedIn,
@@ -134,17 +135,18 @@
   background: url("../../assets/images/githubLogo.png") center / cover no-repeat;
 }
 
-/* Ipad size  */
-@media only screen and (min-width: 500px) {
+/* iPad size */
+@media only screen and (max-width: 1024px) {
   .left h3 {
     font-size: 2.5vw;
   }
 
-  .rightBottom,
+  .rightTop,
   .emailTitle,
   .resumeTitle,
   .email {
     font-size: 1.5vw;
+    font-weight: 500;
   }
 
   .left h2 {
@@ -158,34 +160,71 @@
   .left p {
     font-size: 1.2vw;
   }
-}
-
-/* Laptop size */
-@media only screen and (min-width: 1024px) {
-  .left h3 {
-    font-size: 2.5vw;
-  }
-
-  .rightBottom,
-  .emailTitle,
-  .resumeTitle,
-  .email {
-    font-size: 1vw;
-  }
-
-  .left h2 {
-    font-size: 3.8vw;
-  }
-
-  .heroDescription {
-    font-size: 1.5vw;
-  }
-
-  .left p {
-    font-size: 1vw;
-  }
 
   .resumeDownloadButton {
     font-size: 1rem;
+  }
+
+  .linkedIn,
+  .github {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+/* iPhone size */
+@media only screen and (max-width: 500px) {
+  .hero {
+    margin-top: 65px;
+  }
+  .left {
+    width: 50%;
+  }
+
+  /* Biki Balami */
+  .left h3 {
+    font-size: 2.8vw;
+  }
+
+  /* Graphic ---- Developer */
+  .left h2 {
+    font-size: 4vw;
+  }
+
+  /* Scroll down */
+  .left p {
+    font-size: 1.5vw;
+  }
+
+  /* front-end UI UX Comp-Sci */
+  .heroDescription {
+    font-size: 2vw;
+  }
+
+  .right {
+    width: 50%;
+    padding: 0.4rem;
+    gap: 0.4rem;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .rightTop,
+  .rightBottom {
+    align-items: flex-end;
+  }
+
+  .rightTop {
+    text-align: right;
+    font-weight: 200;
+    font-size: 2vw;
+  }
+
+  .socials {
+    margin-top: 0rem;
+  }
+
+  .resumeDownloadButton {
+    font-size: 2.2vw;
   }
 }
