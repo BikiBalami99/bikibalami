@@ -11,6 +11,18 @@ const Skills = () => {
         <h2>Skills</h2>
         <h2>Skills</h2>
         <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
+        <h2>Skills</h2>
       </div>
 
       {/* Each Row is rendered below */}

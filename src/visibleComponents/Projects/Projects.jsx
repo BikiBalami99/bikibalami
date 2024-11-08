@@ -9,6 +9,21 @@ const Projects = () => {
         <h2>Projects</h2>
         <h2>Projects</h2>
         <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
+        <h2>Projects</h2>
       </div>
 
       <div className={styles.projects}>

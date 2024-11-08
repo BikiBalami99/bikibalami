@@ -39,15 +39,23 @@ ol {
   padding: 0px 32px;
   justify-content: center;
   align-items: center;
-  gap: 128px;
+  gap: 8rem;
   align-self: stretch;
+  animation: slowMoveToLeft 100s ease-in-out alternate infinite;
 }
 
 .sectionTitle h2 {
-  color: rgb(42, 42, 42);
+  white-space: nowrap;
+
+  /* Making the text gradient */
+  background: linear-gradient(0deg, #00000080, #141414 70%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
   text-align: center;
   font-family: Poppins;
-  font-size: 128px;
+  font-size: 8rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -61,4 +69,26 @@ button {
 button:hover {
   background-color: #ffcc00;
   cursor: pointer;
+}
+
+/* This animation below applies to all titles with the class .sectionTitle. DO NOT apply to the parent div. DO apply to the h2 inclosed in .sectionTitle. e.g. .sectionTitle h2 */
+
+@keyframes slowMoveToLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .sectionTitle {
+    gap: 3rem;
+    animation: slowMoveToLeft 50s ease-in-out alternate infinite;
+  }
+  .sectionTitle h2 {
+    font-size: 3rem;
+  }
 }
