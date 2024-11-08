@@ -1,230 +1,266 @@
+/* Hero Section */
 .hero {
-  display: flex;
+  /* Layout */
   height: 80svh;
-  align-self: stretch;
   padding: 10px;
-  align-items: flex-start;
 
+  /* Flexbox */
+  display: flex;
+  align-items: flex-end;
+
+  /* Styling */
   border-radius: 32px;
   background: url("/assets/images/portfolio-background.jpg") lightgray 50% /
     cover no-repeat;
   box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.1);
-  text-shadow: 0px 0px 3px black;
   color: white;
 }
 
-/* Left is the section on the left side of the hero */
+/* Left Section */
 .left {
-  display: flex;
+  /* Layout */
   width: 65vw;
   padding: 10px;
+
+  /* Flexbox */
+  display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  align-self: stretch;
 }
 
+/* Biki Balami */
 .left h3 {
-  font-size: 2.5vw;
-  font-style: normal;
+  /* Typography */
+  font-size: 2vw;
   font-weight: 300;
-  line-height: normal;
 }
 
+/* Graphic Designer Web Developer */
 .left h2 {
-  text-shadow: 0px 0px 12px rgba(255, 255, 255, 0);
+  /* Typography */
   font-size: 3.8vw;
-  font-style: normal;
   font-weight: 900;
-  line-height: normal;
+
+  /* Styling */
+  text-shadow: 0px 0px 12px rgba(255, 255, 255, 0);
 }
 
+/* Email Class */
+.email {
+  /* Typography */
+  font-size: 1vw;
+  font-weight: 300;
+}
+
+/* Front-end UI UX Computer Science */
 .heroDescription {
+  /* Typography */
+  font-size: 1.2vw;
+  font-weight: 400;
+
+  /* Styling */
   color: #f4a914;
   text-shadow: 0px 0px 12px #000;
-  font-size: 1.2vw;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
-.left p {
-  color: #8e8e8e;
+/* (Scroll Down) text */
+.scrollDown {
+  /* Typography */
+  font-size: 0.8vw;
+  font-weight: 200;
+  /* Styling */
+  color: white;
   text-shadow: 0px 0px 12px #000;
-  font-size: 1vw;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
-/* Now the right side */
+/* Right Section */
 .right {
+  /* Layout */
+  padding: 10px;
+
+  /* Flexbox */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
   gap: 64px;
-  flex: 1 0 0;
-  align-self: stretch;
-  padding: 10px;
 }
 
-/* Renamed classes to match the new order */
 .rightTop {
+  /* Flexbox */
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
+
+  /* Typography */
   font-size: 1vw;
   font-weight: 200;
+  text-shadow: 0px 0px 4px black;
 }
 
 .rightBottom {
+  /* Flexbox */
   display: flex;
   gap: 0.8rem;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  align-self: stretch;
 }
 
-.email {
-  font-size: 1vw;
-  font-weight: 200;
-}
-
+/* Resume Download Button */
 .resumeDownloadButton {
+  /* Layout */
   padding: 4px 16px;
-  align-items: center;
   gap: 10px;
+  position: relative;
+  overflow: hidden;
 
+  /* Styling */
   border-radius: 8px;
   border: 1px solid white;
   background: #080808;
-
   color: white;
+
+  /* Typography */
   text-align: center;
-  font-family: Poppins;
   font-size: 1rem;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
+  transition: border 200ms ease-in-out, color 200ms ease-in-out;
 }
 
-.socials {
+.resumeDownloadButton:hover {
+  background-color: black;
+  color: #f4a914;
+  border: 1px solid #f4a914;
+}
+
+.socialLinks {
+  /* Flexbox */
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 0.2rem;
+  gap: 0.6rem;
 }
 
-.linkedIn,
-.github {
-  width: 28px;
-  height: 28px;
+.socialsLinkIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  overflow: hidden;
   border-radius: 8px;
-  border: 1px solid #b9b9b9;
+  border: 1px solid white;
 }
 
+.socialsLinkIcon img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.socialsLinkIcon:hover {
+  border: 1px solid #f4a914;
+}
+
+/* LinkedIn and GitHub Icons */
 .linkedIn {
+  /* Styling */
   background: url("../../assets/images/linkedinLogo.png") center / cover
     no-repeat;
 }
 
 .github {
+  /* Styling */
   background: url("../../assets/images/githubLogo.png") center / cover no-repeat;
 }
 
+/* Media Queries */
+
 /* iPad size */
 @media only screen and (max-width: 1024px) {
+  /* Biki Balami */
   .left h3 {
     font-size: 2.5vw;
   }
 
-  .rightTop,
-  .emailTitle,
-  .resumeTitle,
-  .email {
-    font-size: 1.5vw;
-    font-weight: 500;
-  }
-
+  /* Graphic ---- Developer */
   .left h2 {
-    font-size: 3.8vw;
+    font-size: 5vw;
   }
 
+  .email {
+    font-size: 2vw;
+  }
+
+  /* Front-end UI UX Computer Science */
   .heroDescription {
+    font-size: 1.3vw;
+  }
+
+  .scrollDown {
+    font-size: 1vw;
+  }
+
+  .rightTop {
     font-size: 1.5vw;
-  }
-
-  .left p {
-    font-size: 1.2vw;
-  }
-
-  .resumeDownloadButton {
-    font-size: 1rem;
-  }
-
-  .linkedIn,
-  .github {
-    width: 2rem;
-    height: 2rem;
+    font-weight: 300;
   }
 }
 
 /* iPhone size */
 @media only screen and (max-width: 500px) {
   .hero {
+    /* Layout */
     margin-top: 65px;
-  }
-  .left {
-    width: 50%;
   }
 
   /* Biki Balami */
   .left h3 {
-    font-size: 2.8vw;
+    /* Typography */
+    font-size: 3vw;
   }
 
-  /* Graphic ---- Developer */
+  /* Graphic Designer Web Developer */
   .left h2 {
-    font-size: 4vw;
+    /* Typography */
+    font-size: 4.5vw;
   }
 
-  /* Scroll down */
-  .left p {
-    font-size: 1.5vw;
+  .email {
+    font-size: 3vw;
   }
 
-  /* front-end UI UX Comp-Sci */
+  /* Front-end UI UX Computer Science */
   .heroDescription {
+    /* Typography */
     font-size: 2vw;
   }
 
+  .scrollDown {
+    color: white;
+    font-size: 1.5vw;
+  }
+
   .right {
-    width: 50%;
+    /* Layout */
+    height: 100%;
     padding: 0.4rem;
     gap: 0.4rem;
+    white-space: nowrap;
+
+    /* Flexbox */
     align-items: flex-end;
     justify-content: space-between;
+
+    /* border: 1px solid white; */
   }
 
   .rightTop,
   .rightBottom {
+    /* Flexbox */
     align-items: flex-end;
   }
 
   .rightTop {
+    /* Typography */
     text-align: right;
     font-weight: 200;
     font-size: 2vw;
   }
 
-  .socials {
-    margin-top: 0rem;
-  }
-
   .resumeDownloadButton {
-    font-size: 2.2vw;
+    /* Typography */
+    font-size: 2.4vw;
+    padding: 0.5rem 1rem;
   }
 }

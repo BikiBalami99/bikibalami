@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./Hero.module.css";
+import linkedinLogo from "/assets/images/linkedinLogo.png";
+import githubLogo from "/assets/images/githubLogo.png";
 
 const Hero = () => {
   return (
@@ -14,23 +16,40 @@ const Hero = () => {
           <span>UI/UX | </span>
           <span>Computer Science</span>
         </div>
-        <p>{"(Scroll Down)"}</p>
+        <p className={styles.scrollDown}>{"(Scroll Down)"}</p>
       </section>
 
       <section className={styles.right}>
         {/* Swapped the class names to reflect the new order */}
         <article className={styles.rightTop}>
           <ul>
-            <li>Origin: Kathmandu, Nepal</li>
-            <li>Residing: Tokyo, Japan</li>
-            <li>Focus: React, JavaScript</li>
+            <li>
+              <strong>Origin:</strong> Kathmandu, Nepal
+            </li>
+            <li>
+              <strong>Residing:</strong> Tokyo, Japan
+            </li>
+            <li>
+              <strong>Focus:</strong> React, JavaScript
+            </li>
           </ul>
         </article>
 
         <section className={styles.rightBottom}>
-          <div className={styles.socials}>
-            <div className={styles.linkedIn}></div>
-            <div className={styles.github}></div>
+          <div className={styles.socialLinks}>
+            <div className={styles.socialsLinkIcon}>
+              <a
+                href="https://www.linkedin.com/in/biki-balami-1bb9281a3/"
+                target="_blank"
+              >
+                <img src={linkedinLogo} />
+              </a>
+            </div>
+            <div className={styles.socialsLinkIcon}>
+              <a href="https://github.com/BikiBalami99" target="_blank">
+                <img src={githubLogo} />
+              </a>
+            </div>
           </div>
           <button className={styles.resumeDownloadButton}>Download CV</button>
         </section>
