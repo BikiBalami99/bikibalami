@@ -1,0 +1,83 @@
+/* Main Navigation Bar */
+.navBar {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1;
+  padding: 1.5rem;
+
+  display: flex;
+  justify-content: space-between;
+
+  /* styling */
+  border-radius: 16px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  color: white;
+
+  overflow: hidden;
+}
+
+/* Good evening etc Section */
+.wish {
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2rem;
+  /* border: 1px solid blue; */
+}
+
+/* "Let's Talk" Button */
+.letsTalk {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/*hamburger */
+.hamburgerButton {
+  --button-color: white;
+  background: transparent;
+  border-radius: 0.2rem;
+  border: 1px solid var(--button-color);
+}
+
+.hamburgerButton .line {
+  transition: y 300ms ease-in 300ms, rotate 300ms ease-in, opacity 0ms 300ms;
+  transform-origin: center;
+}
+
+.hamburgerButton:hover .line {
+  transition: y 300ms ease-in, rotate 300ms ease-in 300ms, opacity 0ms 300ms;
+}
+
+.hamburgerButton:hover :is(.top, .bottom) {
+  y: 45;
+}
+
+.hamburgerButton:hover .top {
+  rotate: 45deg;
+}
+
+.hamburgerButton:hover .middle {
+  opacity: 0;
+}
+
+.hamburgerButton:hover .bottom {
+  rotate: -45deg;
+}
+
+.hamburgerButton[aria-expanded="true"] .top {
+}
+
+.hamburger {
+}
+
+/* button two */

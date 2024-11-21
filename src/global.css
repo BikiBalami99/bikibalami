@@ -5,12 +5,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 html,
 body {
-  height: 100%;
   font-family: "Poppins", sans-serif; /* Set a consistent font-family across the application */
   background: #f1f1f1;
 }
@@ -23,55 +21,19 @@ ol {
 /* Finish Reset */
 
 .ultimate-wrapper {
-  display: flex;
-  padding: 2vw;
-  flex-direction: column;
-  gap: 34px;
-
-  align-content: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #f1f1f1;
 }
 
 .sectionTitle {
-  display: flex;
-  padding: 0px 32px;
-  justify-content: center;
-  align-items: center;
-  gap: 8rem;
-  align-self: stretch;
-  animation: slowMoveToLeft 200s linear alternate infinite;
 }
 
 .sectionTitle h2 {
-  white-space: nowrap;
-
-  /* Making the text gradient */
-  background: linear-gradient(0deg, #00000080, #141414 70%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  text-align: center;
-  font-family: Poppins;
-  font-size: 8rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
 }
 
 button {
-  background-color: #f4a914;
-  border: none;
 }
 
 button:hover {
-  background-color: #ffcc00;
-  cursor: pointer;
 }
-
-/* This animation below applies to all titles with the class .sectionTitle. DO NOT apply to the parent div. DO apply to the h2 inclosed in .sectionTitle. e.g. .sectionTitle h2 */
 
 @keyframes slowMoveToLeft {
   0% {
@@ -80,15 +42,5 @@ button:hover {
 
   100% {
     transform: translateX(200%);
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .sectionTitle {
-    gap: 3rem;
-    animation: slowMoveToLeft 100s linear alternate infinite;
-  }
-  .sectionTitle h2 {
-    font-size: 3rem;
   }
 }

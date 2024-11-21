@@ -1,8 +1,5 @@
-import Footer from "./visibleComponents/Footer/Footer";
-import Hero from "./visibleComponents/Hero/Hero";
-import Navbar from "./visibleComponents/Navbar/Navbar";
-import Projects from "./visibleComponents/Projects/Projects";
-import Skills from "./visibleComponents/Skills/Skills";
+import Navbar from "./Components/Navbar/Navbar";
+
 import "./global.css";
 
 function App() {
@@ -10,13 +7,13 @@ function App() {
     <div className="ultimate-wrapper">
       <Navbar />
 
-      <main>
+      {/* <main>
         <Hero />
         <Projects />
         <Skills />
       </main>
 
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

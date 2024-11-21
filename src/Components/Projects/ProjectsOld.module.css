@@ -28,15 +28,12 @@
 }
 
 .projectsCards {
-  /* Layout */
-  display: flex;
-  width: calc(100% - 1rem);
-  min-height: 30svw;
-  max-height: 30svw;
-
   /* Matching padding of .projects (2rem) */
   padding: 2rem;
-  gap: 2rem;
+
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   /* Styling */
   border-radius: 2rem;
@@ -45,63 +42,59 @@
     rgba(255, 255, 255, 0.1) 0.16%,
     rgba(255, 255, 255, 0.05) 99.84%
   );
-  box-shadow: -0.25rem 0.25rem 0.5rem 0rem rgba(0, 0, 0, 0.25);
-
-  overflow-y: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .projectsCards::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
 
+.cardsSlider {
+  width: max-content;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  /* grid-template-columns: repeat(auto-fill); */
+  /* grid-auto-flow: column; */
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 2rem;
+
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  transition: transform 200ms ease-in-out;
+  will-change: transform;
+}
+
 .card {
-  /* Layout */
+  width: 15vw;
   display: flex;
   flex-direction: column;
-
-  min-width: 20%;
-  padding: 1rem;
-
-  /* Styling */
+  padding: 2rem;
   border-radius: 2rem;
   background: linear-gradient(197deg, #2067f6 1.25%, #1d3ba9 98.75%);
   box-shadow: -0.25rem 0.25rem 0.5rem 0rem rgba(0, 0, 0, 0.25);
 }
 
 .card h4 {
-  /* Typography */
   width: 100%;
-  color: #fff;
-  font-family: Poppins;
   font-size: 1.5rem;
-  font-style: normal;
   font-weight: 900;
-  line-height: normal;
-  text-align: left;
 }
 
 .card p {
-  /* Typography */
   width: 100%;
-  color: #fff;
-  font-family: Poppins;
   font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
 .thumbnail {
-  /* Styling */
-  background: url("/assets/images/thumbnail.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  flex-grow: 1;
+  width: 100%;
 }
 
+.thumbnail img {
+  width: 100%;
+}
 .buttons {
   /* Layout */
   width: 100%;
@@ -131,56 +124,7 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .projects {
-    gap: 1rem;
-    padding: 1rem;
-  }
-  .projects h3 {
-    font-size: 1.8rem;
-  }
-
-  .card h4 {
-    font-size: 0.8rem;
-  }
-
-  .card p {
-    font-size: 0.6rem;
-  }
-
-  .buttons {
-    gap: 1rem;
-  }
-
-  .buttons button {
-    width: 3rem;
-    height: 3rem;
-  }
 }
 
 @media only screen and (max-width: 500px) {
-  .projects {
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  .projectsCards {
-    min-height: 50svw;
-    border-radius: 0.5rem;
-  }
-
-  .card {
-    min-width: 40%;
-    border-radius: 0.5rem;
-  }
-  .card h4 {
-    font-size: 0.5rem;
-  }
-
-  .projects h3 {
-    font-size: 1rem;
-  }
-
-  .buttons {
-    padding-right: 1rem;
-  }
 }

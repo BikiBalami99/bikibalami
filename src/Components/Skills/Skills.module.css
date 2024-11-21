@@ -1,0 +1,75 @@
+.allSkills {
+}
+
+.skillRow {
+}
+
+.images {
+}
+
+.carouselContainer {
+}
+
+.expandButton {
+}
+
+.expandButton img {
+}
+
+.carouselContainer:hover .expandButton,
+.carouselContainer:focus-visible .expandButton {
+}
+
+.carouselContainer button:not(.expandButton) {
+}
+
+.modal {
+}
+
+.modal::backdrop {
+}
+
+.modal[open] {
+}
+
+.modal form {
+}
+
+.modalCloseButton {
+}
+
+.modalCloseButton:hover {
+}
+
+.modal img {
+}
+
+@keyframes grow-from-center {
+}
+
+.certificateImages {
+}
+
+.aCertificate {
+}
+
+.techIcons {
+}
+
+.eachTech {
+}
+
+.eachTech img {
+}
+
+.eachTech p {
+}
+
+.description {
+}
+
+.description h2 {
+}
+
+.description p {
+}
