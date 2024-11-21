@@ -7,6 +7,7 @@ const Hamburger = ({ toggleNavBarView }) => {
 
   function toggleHamburgerIcon() {
     setIsExpanded((prev) => !prev);
+    toggleNavBarView();
   }
 
   return (
@@ -21,12 +22,12 @@ const Hamburger = ({ toggleNavBarView }) => {
         stroke="var(--button-color)"
         className={styles.hamburger}
         viewBox="0 0 100 100"
-        width="40px"
+        width="30px"
       >
         <path
           d="m 30 40 h 40 a 1 1 0 0 1 0 20 h -40 a 1 1 0 0 1 0 -40 h 40 a 1 1 0 0 1 0 60 h -20 v -40"
           className={styles.line}
-          stroke-width="5"
+          strokeWidth="5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />

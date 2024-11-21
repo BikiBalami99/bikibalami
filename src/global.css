@@ -18,6 +18,23 @@ ol {
   list-style: none; /* Remove default list styling */
 }
 
+a {
+  color: white; /* Set link color to white */
+  text-decoration: none; /* Remove underline */
+}
+
+a:visited {
+  color: white; /* Ensure visited links are also white */
+}
+
+a:hover {
+  color: white; /* Ensure links stay white on hover */
+}
+
+a:active {
+  color: white; /* Ensure links stay white when active (clicked) */
+}
+
 /* Finish Reset */
 
 .ultimate-wrapper {

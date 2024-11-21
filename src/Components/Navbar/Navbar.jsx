@@ -1,30 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
-import { generateWish } from "../../utils/generateWish";
 import Hamburger from "../../helperComponents/Hamburger/Hamburger";
 
 const Navbar = () => {
-  const [wishMessage, setWishMessage] = useState("");
+  // This state handles show/hide navLinks on mobile
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  useEffect(() => {
-    const timeRightNow = new Date().getHours();
-    setWishMessage(() => generateWish(timeRightNow));
-  }, []);
+  function toggleNavBarView() {
+    setIsExpanded((prev) => !prev);
+  }
 
   return (
-    <nav className={styles.navBar}>
-      <div className={styles.wish}>
-        <p>{wishMessage}</p>
-      </div>
-      <ul className={styles.navLinks}>
-        <Hamburger />
-        <li>Home</li>
-        <li>Projects</li>
-        <li>Skills</li>
-        <li>My Story</li>
-        <li>
-          <button className={styles.letsTalk}>Lets Talk</button>
-        </li>
+    <nav className={styles.navBar} data-expanded={isExpanded}>
+      <a href="/" className={styles.logo}>
+        <h1>Biki Balami</h1>
+      </a>
+
+      <ul className={styles.navItems}>
+        <Hamburger toggleNavBarView={toggleNavBarView} />
+
+        <div className={styles.navLinks}>
+          <li>Home</li>
+          <li>Projects</li>
+          <li>Skills</li>
+          <li>My Story</li>
+          <li>
+            <button className={styles.letsTalk}>Lets Talk</button>
+          </li>
+        </div>
       </ul>
     </nav>
   );
