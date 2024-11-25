@@ -7,6 +7,8 @@
   display: flex;
   padding: 1rem;
   justify-content: space-between;
+  gap: 3rem;
+  max-width: 1500px;
 
   /* styling */
   border-radius: 16px;
@@ -19,7 +21,7 @@
   );
   color: white;
 
-  height: 4rem;
+  height: 3.8rem;
   transition: height 300ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
   overflow: hidden;
 }
@@ -34,7 +36,9 @@
 }
 
 .logo h1 {
-  line-height: 1.5;
+  line-height: 2;
+  font-size: 1rem;
+  white-space: nowrap;
 }
 
 /* navItems hold the hamburger + all links */
@@ -53,9 +57,30 @@
   gap: 2rem;
 }
 
-/* "Let's Talk" Button */
-.letsTalk {
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1;
+@media screen and (min-width: 1024px) {
+  .navBar {
+    height: 4rem;
+  }
+
+  .navBar[data-expanded="true"] {
+    /* Debugging and error where, resizing from data-expanded true and phone size to laptop size */
+    height: 4rem;
+  }
+  .navItems {
+    max-width: 40rem;
+  }
+  .navLinks {
+    flex-direction: row;
+    align-items: center;
+
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1535px) {
+  .navBar {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

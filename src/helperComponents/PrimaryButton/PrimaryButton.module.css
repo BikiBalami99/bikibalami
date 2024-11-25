@@ -1,0 +1,44 @@
+.primaryButton {
+  position: relative;
+  border: none;
+  padding: 0.5rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: 0.75rem;
+  background-color: #f4ce14;
+  transition: background-color 200ms ease-in-out, color 100ms ease-in-out;
+  overflow: hidden;
+}
+
+.primaryButton:hover,
+.primaryButton:active,
+.primaryButton:focus {
+  background-color: #f90;
+  cursor: pointer;
+}
+
+.hoverStyle {
+  position: absolute;
+  content: "";
+  background: radial-gradient(circle, white 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0.5;
+  z-index: 1; /* Ball is placed below the text */
+  /* background: radial-gradient(white); */
+  background: white;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50px;
+  pointer-events: none;
+  transform: scale(1);
+  transition: opacity 100ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.children {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  white-space: nowrap;
+}

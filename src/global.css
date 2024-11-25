@@ -35,29 +35,5 @@ a:active {
   color: white; /* Ensure links stay white when active (clicked) */
 }
 
-/* Finish Reset */
+/* Finish reset */
 
-.ultimate-wrapper {
-}
-
-.sectionTitle {
-}
-
-.sectionTitle h2 {
-}
-
-button {
-}
-
-button:hover {
-}
-
-@keyframes slowMoveToLeft {
-  0% {
-    transform: translateX(-200%);
-  }
-
-  100% {
-    transform: translateX(200%);
-  }
-}

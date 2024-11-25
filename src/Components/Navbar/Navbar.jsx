@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import Hamburger from "../../helperComponents/Hamburger/Hamburger";
+import PrimaryButton from "../../helperComponents/PrimaryButton/PrimaryButton";
 
 const Navbar = () => {
   // This state handles show/hide navLinks on mobile
@@ -12,7 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navBar} data-expanded={isExpanded}>
-      <a href="/" className={styles.logo}>
+      <a onClick={(e) => e.preventDefault()} href="/" className={styles.logo}>
         <h1>Biki Balami</h1>
       </a>
 
@@ -25,7 +26,7 @@ const Navbar = () => {
           <li>Skills</li>
           <li>My Story</li>
           <li>
-            <button className={styles.letsTalk}>Lets Talk</button>
+            <PrimaryButton className={styles.letsTalk}>Lets Talk</PrimaryButton>
           </li>
         </div>
       </ul>

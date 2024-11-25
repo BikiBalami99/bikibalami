@@ -25,3 +25,10 @@
   stroke-dashoffset: -71.5;
   transform: rotate(45deg) translateY(-10%);
 }
+
+@media screen and (min-width: 1024px) {
+  /* Match the min-width with media query of navBar */
+  .hambutton {
+    display: none;
+  }
+}
