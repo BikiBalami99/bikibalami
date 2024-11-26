@@ -3,12 +3,15 @@
   font-size: 1rem;
   font-weight: 300;
   line-height: 1;
-  margin: 1rem;
   display: flex;
   padding: 1rem;
   justify-content: space-between;
   gap: 3rem;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
   max-width: 1500px;
+  position: fixed;
 
   /* styling */
   border-radius: 16px;

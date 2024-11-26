@@ -1,58 +1,110 @@
 /* Hero Section */
 .hero {
+  display: flex;
+  /* padding: 25svh 1rem 1rem 1rem; */
+  padding: 1rem;
+  background: url("/assets/images/portfolio-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  margin-top: 5rem;
+  gap: 1rem;
+  border-radius: 1rem;
+
+  text-shadow: 0rem 0rem 0.4rem black;
+
+  width: 100%;
+  max-width: 1730px;
+  height: 70svh;
 }
 
 /* Left Section */
 .left {
+  width: 70svw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 /* Biki Balami */
 .left h3 {
+  font-size: 1rem;
 }
 
 /* Graphic Designer Web Developer */
 .left h2 {
+  font-size: 1rem;
+  color: var(--primary-orange);
 }
 
 /* Email Class */
 .email {
+  font-size: 0.8rem;
 }
 
 /* Front-end UI UX Computer Science */
-.heroDescription {
+.heroDescription span {
+  font-size: 0.8rem;
+  color: var(--primary-orange);
 }
 
 /* (Scroll Down) text */
 .scrollDown {
+  font-size: 0.6rem;
+  color: var(--dark-gray);
 }
 
 /* Right Section */
 .right {
+  /* border: 1px solid red; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  /* border: 1px solid white; */
 }
 
 .rightTop {
+  font-size: 0.57rem;
+  font-weight: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
 .rightBottom {
-}
-
-/* Resume Download Button */
-.resumeDownloadButton {
-}
-
-.resumeDownloadButton:hover {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .socialLinks {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .socialsLinkIcon {
+  width: 2rem;
+  height: 2rem;
+  overflow: hidden;
 }
 
 .socialsLinkIcon img {
+  object-position: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--primary-orange);
+  transition: border 200ms ease-in-out;
+  border-radius: 0.4rem;
 }
 
-.socialsLinkIcon:hover {
+.socialsLinkIcon img:hover {
+  border: 1px solid white;
+  cursor: pointer;
 }
 
 /* LinkedIn and GitHub Icons */
@@ -60,4 +112,74 @@
 }
 
 .github {
+}
+
+/* Ipad and tablet size */
+@media screen and (min-width: 750px) {
+  .hero {
+    height: 60svh;
+    aspect-ratio: 1/1;
+  }
+
+  .left h3 {
+    font-size: 2rem;
+  }
+
+  .left h2 {
+    font-size: 2.5rem;
+  }
+
+  .email {
+    font-size: 1.2rem;
+  }
+
+  .heroDescription span {
+    font-size: 1rem;
+  }
+
+  .scrollDown {
+    font-size: 0.8rem;
+  }
+
+  .right {
+    justify-content: flex-end;
+    gap: 20svh;
+  }
+
+  .rightTop {
+    font-size: 1rem;
+  }
+
+  .rightBottom,
+  .socialLinks {
+    gap: 1rem;
+  }
+
+  .socialsLinkIcon,
+  .socialsLinkIcon img {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .hero {
+    height: 80svh;
+    text-shadow: 0rem 0rem 1rem black;
+  }
+
+  .left h3 {
+    font-size: 2.5rem;
+  }
+
+  .left h2 {
+    font-size: 4.5rem;
+  }
+}
+
+@media screen and (min-width: 1750px) {
+  .hero {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

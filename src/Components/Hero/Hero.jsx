@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Hero.module.css";
 import linkedinLogo from "/assets/images/linkedinLogo.png";
 import githubLogo from "/assets/images/githubLogo.png";
+import PrimaryButton from "../../helperComponents/PrimaryButton/PrimaryButton";
 
 const Hero = () => {
   return (
@@ -14,7 +15,7 @@ const Hero = () => {
         <div className={styles.heroDescription}>
           <span>Front-end | </span>
           <span>UI/UX | </span>
-          <span>Computer Science</span>
+          <span>Computer Science </span>
         </div>
         <p className={styles.scrollDown}>{"(Scroll Down)"}</p>
       </section>
@@ -22,17 +23,15 @@ const Hero = () => {
       <section className={styles.right}>
         {/* Swapped the class names to reflect the new order */}
         <article className={styles.rightTop}>
-          <ul>
-            <li>
-              <strong>Origin:</strong> Kathmandu, Nepal
-            </li>
-            <li>
-              <strong>Residing:</strong> Tokyo, Japan
-            </li>
-            <li>
-              <strong>Focus:</strong> React, JavaScript
-            </li>
-          </ul>
+          <p>
+            <strong>Origin:</strong> Kathmandu, Nepal
+          </p>
+          <p>
+            <strong>Residing:</strong> Tokyo, Japan
+          </p>
+          <p>
+            <strong>Focus:</strong> React, JavaScript
+          </p>
         </article>
 
         <section className={styles.rightBottom}>
@@ -51,7 +50,7 @@ const Hero = () => {
               </a>
             </div>
           </div>
-          <button className={styles.resumeDownloadButton}>Download CV</button>
+          <PrimaryButton>Resume</PrimaryButton>
         </section>
       </section>
     </div>
