@@ -1,22 +1,22 @@
 /* Hero Section */
 .hero {
   display: flex;
-  /* padding: 25svh 1rem 1rem 1rem; */
   padding: 1rem;
+  margin: 1rem;
+  margin-top: 5.7rem;
+  gap: 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  max-width: 1730px;
+  padding-top: 40vh;
+  /* height: 70svh; */
+
   background: url("/assets/images/portfolio-background.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
-  margin-top: 5rem;
-  gap: 1rem;
-  border-radius: 1rem;
 
   text-shadow: 0rem 0rem 0.4rem black;
-
-  width: 100%;
-  max-width: 1730px;
-  height: 70svh;
 }
 
 /* Left Section */
@@ -107,20 +107,8 @@
   cursor: pointer;
 }
 
-/* LinkedIn and GitHub Icons */
-.linkedIn {
-}
-
-.github {
-}
-
 /* Ipad and tablet size */
 @media screen and (min-width: 750px) {
-  .hero {
-    height: 60svh;
-    aspect-ratio: 1/1;
-  }
-
   .left h3 {
     font-size: 2rem;
   }

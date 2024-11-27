@@ -1,5 +1,6 @@
 import Hero from "./Components/Hero/Hero";
 import Navbar from "./Components/Navbar/Navbar";
+import Projects from "./Components/Projects/Projects";
 
 import "./global.css";
 
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <Projects />
       </main>
 
       {/* <main>

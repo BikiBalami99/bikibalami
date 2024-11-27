@@ -1,35 +1,20 @@
 .projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: linear-gradient(237deg, #161616 10.74%, #000 89.26%);
+  margin: 1rem;
+  border-radius: 1rem;
+  padding: 3rem 1rem;
+
+  /* If you ever change the gap or padding make sure to update it in the react component, or else the left and right button wont translate the desired distance */
 }
 
 .projects h3 {
+  font-size: 3rem;
+  text-align: center;
 }
 
-.projectsCards {
-}
-
-.projectsCards::-webkit-scrollbar {
-}
-
-.cardsSlider {
-}
-
-.card {
-}
-
-.card h4 {
-}
-
-.card p {
-}
-
-.thumbnail {
-}
-
-.thumbnail img {
-}
-
-.buttons {
-}
-
-.buttons button {
+.projects > p {
+  text-align: center;
 }

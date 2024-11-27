@@ -46,9 +46,46 @@ a:active {
 
 /* Finish reset */
 
+/* Section Title  */
+
+.sectionTitle {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  /* transform: translateX(-70%); */
+  animation: sectionTitleAnimation 15s ease-in-out alternate infinite;
+}
+
+.sectionTitle p,
+.sectionTitle h2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  font-weight: 900;
+  font-size: 2.5rem;
+}
+
+@keyframes sectionTitleAnimation {
+  0% {
+    transform: translateX(-70%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/*  */
+
 .ultimateWrapper {
   display: flex;
   flex-direction: column;
   width: 100svw;
-  padding: 1rem;
+
+  overflow: hidden;
+  align-items: stretch;
+  justify-content: stretch;
+  align-content: stretch;
 }

@@ -1,54 +1,20 @@
 import React, { useState } from "react";
 import styles from "./Projects.module.css";
-import ProjectCard from "./ProjectCard";
-
-const tempArray = [];
-const numOfProjects = 10;
-
-// Populate the tempArray with placeholder data
-for (let i = 1; i < numOfProjects; i++) {
-  tempArray.push(i);
-}
-
-const oneCardWidthInCSS = 15; // Width of each card in vw
+import projects from "../../data/projects";
+import ProjectsCarousel from "../../helperComponents/Carousel/ProjectsCarousel";
+import SectionTitle from "../../helperComponents/SectionTitle/SectionTitle";
 
 const Projects = () => {
   return (
     <section>
-      <div className="sectionTitle">
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-        <h2>Projects</h2>
-      </div>
-
+      {/* Title that goes left and write */}
+      <SectionTitle title="PROJECTS" />
       <div className={styles.projects}>
         <h3>My Best Works Yet</h3>
-        <div className={styles.projectsCards}>
-          <div className={styles.cardsSlider}>
-            {tempArray.map((item, index) => (
-              <ProjectCard key={index} />
-            ))}
-          </div>
-        </div>
-        <div className={styles.buttons}>
-          <button>&larr;</button>
-          <button>&rarr;</button>
-        </div>
+        <p>
+          More coming very soon. Meanwhile, Enjoy this carousel that I made.
+        </p>
+        <ProjectsCarousel arrayOfProjects={projects} />
       </div>
     </section>
   );
