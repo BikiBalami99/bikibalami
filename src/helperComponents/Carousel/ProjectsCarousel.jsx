@@ -129,10 +129,10 @@ const ProjectsCarousel = ({ arrayOfProjects }) => {
 
       <div className={styles.leftRightButtons}>
         <button onClick={handleLeftClick} className={styles.left}>
-          &larr;
+          <p> &larr;</p>
         </button>
         <button onClick={handleRightClick} className={styles.right}>
-          &rarr;
+          <p> &rarr;</p>
         </button>
       </div>
     </div>

@@ -17,6 +17,7 @@
   border-radius: 16px;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0.8) 0%,
@@ -27,6 +28,7 @@
   height: 3.8rem;
   transition: height 300ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
   overflow: hidden;
+  z-index: 1000;
 }
 
 .navBar[data-expanded="true"] {
