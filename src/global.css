@@ -50,12 +50,12 @@ a:active {
 /* Section Title  */
 
 .sectionTitle {
-  width: 100%;
+  position: relative;
+  width: 300%;
   margin: 2rem 0;
   display: flex;
   gap: 2rem;
-  /* transform: translateX(-70%); */
-  animation: sectionTitleAnimation 15s ease-in-out alternate infinite;
+  animation: sectionTitleAnimation 40s ease-in-out alternate infinite;
 }
 
 .sectionTitle p,
@@ -82,7 +82,7 @@ a:active {
 
 @keyframes sectionTitleAnimation {
   0% {
-    transform: translateX(-70%);
+    transform: translateX(-60%);
   }
 
   100% {
@@ -129,6 +129,33 @@ a:active {
   .circleButton:active {
     background: #f4ce14;
   }
+}
+
+/* Socials Icon */
+
+.socialLinks {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.socialsLinkIcon {
+  width: 2rem;
+  height: 2rem;
+  overflow: hidden;
+}
+
+.socialsLinkIcon img {
+  object-position: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--primary-orange);
+  transition: border 200ms ease-in-out;
+  border-radius: 0.4rem;
+}
+
+.socialsLinkIcon img:hover {
+  border: 3px solid white;
+  cursor: pointer;
 }
 
 /* Ultimate Wrapper */

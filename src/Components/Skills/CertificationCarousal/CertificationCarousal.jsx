@@ -23,8 +23,6 @@ const CertificationCarousal = ({ skillType: { certificates } }) => {
     }
   }, [isDialogOpen]);
 
-  
-
   return (
     <div>
       <div className={styles.carouselContainer}>

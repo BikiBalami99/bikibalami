@@ -11,9 +11,11 @@ const Skills = () => {
       {/* Each Row is rendered below */}
       <div className={styles.allSkills}>
         <h3>My Arsenal</h3>
-        {skillsData.map((skillType) => {
-          return <SkillSectionRow key={skillType.id} skillType={skillType} />;
-        })}
+        <div className={styles.sectionRowsWrapper}>
+          {skillsData.map((skillType) => {
+            return <SkillSectionRow key={skillType.id} skillType={skillType} />;
+          })}
+        </div>
       </div>
     </section>
   );

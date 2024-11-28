@@ -24,6 +24,11 @@
 .description {
   min-width: 300px;
   max-width: 350px;
+
+  background: linear-gradient(0deg, #c8c8c8 27.08%, #fff 75%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .description h2 {
@@ -36,6 +41,7 @@
 .description p {
   font-size: 1rem;
   font-weight: 300;
+  line-height: 1.4;
 }
 
 @media screen and (min-width: 850px) {
@@ -52,5 +58,16 @@
   .description p {
     font-size: 1.2rem;
     font-weight: 200;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .skillRow {
+    flex-direction: column;
+  }
+
+  .images {
+    height: 586px;
+    justify-content: flex-start;
   }
 }

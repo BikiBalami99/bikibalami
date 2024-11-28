@@ -35,8 +35,8 @@ const Hero = () => {
         </article>
 
         <section className={styles.rightBottom}>
-          <div className={styles.socialLinks}>
-            <div className={styles.socialsLinkIcon}>
+          <div className="socialLinks">
+            <div className="socialsLinkIcon">
               <a
                 href="https://www.linkedin.com/in/biki-balami-1bb9281a3/"
                 target="_blank"
@@ -44,7 +44,7 @@ const Hero = () => {
                 <img src={linkedinLogo} />
               </a>
             </div>
-            <div className={styles.socialsLinkIcon}>
+            <div className="socialsLinkIcon">
               <a href="https://github.com/BikiBalami99" target="_blank">
                 <img src={githubLogo} />
               </a>

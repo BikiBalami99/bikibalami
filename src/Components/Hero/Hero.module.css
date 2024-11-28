@@ -167,6 +167,7 @@
 
 @media screen and (min-width: 1750px) {
   .hero {
+    width: 1730px;
     margin-left: auto;
     margin-right: auto;
   }
