@@ -6,7 +6,7 @@ import styles from "./Skills.module.css";
 
 const Skills = () => {
   return (
-    <section>
+    <section id="skills">
       <SectionTitle title="SKILLS" />
       {/* Each Row is rendered below */}
       <div className={styles.allSkills}>

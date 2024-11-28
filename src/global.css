@@ -21,6 +21,7 @@ body {
   font-family: "Poppins", sans-serif; /* Set a consistent font-family across the application */
   background: #f1f1f1;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 ul,
@@ -144,17 +145,25 @@ a:active {
   overflow: hidden;
 }
 
+.socialsLinkIcon a {
+  display: block; /* Ensure the <a> element fills the icon area */
+  width: 100%;
+  height: 100%;
+}
+
 .socialsLinkIcon img {
   object-position: center;
-  width: 2rem;
-  height: 2rem;
+  width: 100%;
+  height: 100%;
   border: 1px solid var(--primary-orange);
   transition: border 200ms ease-in-out;
   border-radius: 0.4rem;
 }
 
-.socialsLinkIcon img:hover {
-  border: 3px solid white;
+.socialsLinkIcon:hover img,
+.socialsLinkIcon:active img,
+.socialsLinkIcon a:focus-visible img {
+  border: 3px solid white; /* Correctly apply border on focus-visible */
   cursor: pointer;
 }
 

@@ -33,10 +33,15 @@ const Footer = () => {
           </div>
 
           <ul className={styles.navLinks}>
-            <li>Home</li>
-            <li>Projects</li>
-            <li>Skills</li>
-            <li>My Story</li>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#skills">Skills</a>
+            </li>
+            <li>
+              <a href="#projects">Projects</a>
+            </li>
           </ul>
 
           <div className={styles.copyright}>

@@ -6,7 +6,7 @@ import PrimaryButton from "../../helperComponents/PrimaryButton/PrimaryButton";
 
 const Hero = () => {
   return (
-    <div className={styles.hero}>
+    <section className={styles.hero}>
       <section className={styles.left}>
         <h3>Biki Balami</h3>
         <h2>GRAPHIC DESIGNER</h2>
@@ -53,7 +53,7 @@ const Hero = () => {
           <PrimaryButton>Resume</PrimaryButton>
         </section>
       </section>
-    </div>
+    </section>
   );
 };
 

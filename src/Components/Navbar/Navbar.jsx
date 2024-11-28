@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navBar} data-expanded={isExpanded}>
-      <a onClick={(e) => e.preventDefault()} href="/" className={styles.logo}>
+      <a href="#" className={styles.logo}>
         <h1>Biki Balami</h1>
       </a>
 
@@ -21,10 +21,16 @@ const Navbar = () => {
         <Hamburger toggleNavBarView={toggleNavBarView} />
 
         <div className={styles.navLinks}>
-          <li>Home</li>
-          <li>Projects</li>
-          <li>Skills</li>
-          <li>My Story</li>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#skills">Skills</a>
+          </li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+
           <li>
             <PrimaryButton className={styles.letsTalk}>Lets Talk</PrimaryButton>
           </li>

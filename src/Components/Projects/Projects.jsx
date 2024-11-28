@@ -6,7 +6,7 @@ import SectionTitle from "../../helperComponents/SectionTitle/SectionTitle";
 
 const Projects = () => {
   return (
-    <section>
+    <section id="projects">
       {/* Title that goes left and write */}
       <SectionTitle title="PROJECTS" />
       <div className={styles.projects}>

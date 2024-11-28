@@ -4,7 +4,7 @@
   border-radius: 1rem;
 }
 
-.carouselContainer .expandButton {
+.expandButton {
   position: absolute;
   top: 0;
   right: 0;
@@ -17,14 +17,16 @@
   border: none;
   border-radius: 0.4rem;
 
-  opacity: 1;
   transform-origin: top right;
-  transition: opacity 100ms ease-in-out, transform 100ms ease-in-out;
+  transition: transform 100ms ease-in-out;
 }
 
-.carouselContainer:hover .expandButton {
+.expandButton:hover,
+.expandButton:focus-visible,
+.expandButton:active {
+  background-color: #f4ce14;
+  transform: scale(1.1);
   cursor: pointer;
-  opacity: 1;
 }
 
 .expandButton img {
