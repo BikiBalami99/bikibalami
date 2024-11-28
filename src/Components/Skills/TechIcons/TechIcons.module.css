@@ -1,0 +1,38 @@
+.techIcons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.eachTech {
+  width: 70px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.techIconWrapper {
+  width: 80%;
+}
+
+.techIconWrapper img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.3rem;
+}
+
+.eachTech p {
+  height: 1.1rem;
+}
+
+@media screen and (min-width: 850px) {
+  .techIcons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,6 +1,8 @@
 import Hero from "./Components/Hero/Hero";
 import Navbar from "./Components/Navbar/Navbar";
 import Projects from "./Components/Projects/Projects";
+import Skills from "./Components/Skills/Skills";
+import Footer from "./Components/Footer/Footer";
 
 import "./global.css";
 
@@ -10,16 +12,10 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <Projects />
-      </main>
-
-      {/* <main>
-        <Hero />
-        <Projects />
         <Skills />
+        <Projects />
       </main>
-
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }

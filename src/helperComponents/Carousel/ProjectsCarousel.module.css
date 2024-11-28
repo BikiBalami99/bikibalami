@@ -50,50 +50,6 @@
   gap: 1rem;
 }
 
-.left,
-.right {
-  background-color: #f4a914;
-  border: none;
-  border-radius: 10rem;
-  width: 3rem;
-  aspect-ratio: 1/1;
-  font-size: 1.4rem;
-  line-height: 1;
-  transition: background-color 200ms ease-in-out, transform 100ms ease-in-out;
-}
-
-.left:hover,
-.right:hover,
-.left:focus-visible,
-.right:focus-visible,
-.left:active,
-.right:active {
-  background-color: white;
-  cursor: pointer;
-}
-
-.left:active,
-.right:active {
-  transform: scale(0.9);
-}
-
-.left p,
-.right p {
-  color: black;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 3px;
-}
-
-@media (hover: none) {
-  .left:hover,
-  .right:hover {
-    background: linear-gradient(84deg, #f4a914 0%, #f4ce14 84.5%);
-  }
-}
-
 /* Bounce animation when user tries to go after the edge on left and right */
 @keyframes bounceLeft {
   50% {

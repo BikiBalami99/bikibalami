@@ -13,6 +13,15 @@ const SectionTitle = ({ title }) => {
       <p>{title}</p>
       <p>{title}</p>
       <p>{title}</p>
+      <p>{title}</p>
+      <p>{title}</p>
+      <p>{title}</p>
+      <p>{title}</p>
+      <p>{title}</p>
+      <p>{title}</p>
+      <p>{title}</p>
+      <p>{title}</p>
+      <p>{title}</p>
     </div>
   );
 };

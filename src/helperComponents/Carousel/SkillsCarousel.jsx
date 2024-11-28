@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import styles from "./Carousel.module.css";
+import styles from "./SkillsCarousel.module.css";
 
-const Carousel = ({ arrayOfObjects, sizeClass = "" }) => {
+const SkillsCarousel = ({ arrayOfObjects, modifierClass = "" }) => {
+  // Give a modifier class if you wanna make change to the wrapper div
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   function handlePreviousImage() {
@@ -17,7 +18,7 @@ const Carousel = ({ arrayOfObjects, sizeClass = "" }) => {
   }
 
   return (
-    <div className={`${styles.carousel} ${sizeClass}`}>
+    <div className={`${modifierClass} ${styles.carousel}`}>
       <div
         className={styles.images}
         style={{ transform: `translateX(${-currentImageIndex * 100}%)` }}
@@ -33,30 +34,30 @@ const Carousel = ({ arrayOfObjects, sizeClass = "" }) => {
       </div>
 
       {arrayOfObjects.length > 1 && (
-        <>
+        <div className={styles.buttons}>
           <button
             onClick={handlePreviousImage}
-            className={styles.leftArrow}
+            className={`circleButton`}
             style={currentImageIndex === 0 ? { opacity: "0%" } : null}
           >
-            <div>&lt;</div>
+            <p>&larr;</p>
           </button>
 
           <button
             onClick={handleNextImage}
-            className={styles.rightArrow}
+            className={`circleButton`}
             style={
               currentImageIndex === arrayOfObjects.length - 1
                 ? { opacity: "0%" }
                 : null
             }
           >
-            <div> &gt;</div>
+            <p> &rarr;</p>
           </button>
-        </>
+        </div>
       )}
     </div>
   );
 };
 
-export default Carousel;
+export default SkillsCarousel;

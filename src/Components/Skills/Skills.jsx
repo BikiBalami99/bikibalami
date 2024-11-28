@@ -1,34 +1,18 @@
 import React from "react";
-import styles from "./Skills.module.css";
+import SkillSectionRow from "./SkillSectionRow/SkillSectionRow";
+import SectionTitle from "../../helperComponents/SectionTitle/SectionTitle";
 import skillsData from "../../data/skillsData";
-import SectionRow from "./SectionRow";
+import styles from "./Skills.module.css";
 
 const Skills = () => {
   return (
     <section>
-      <div className="sectionTitle">
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-        <h2>Skills</h2>
-      </div>
-
+      <SectionTitle title="SKILLS" />
       {/* Each Row is rendered below */}
       <div className={styles.allSkills}>
+        <h3>My Arsenal</h3>
         {skillsData.map((skillType) => {
-          return <SectionRow key={skillType.id} skillType={skillType} />;
+          return <SkillSectionRow key={skillType.id} skillType={skillType} />;
         })}
       </div>
     </section>

@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./Skills.module.css";
-import CertificationCarousal from "./CertificationCarousal";
-import TechIcons from "./TechIcons";
+import CertificationCarousal from "../CertificationCarousal/CertificationCarousal";
+import TechIcons from "../TechIcons/TechIcons";
+import styles from "./SkillSectionRow.module.css";
 
-const SectionRow = ({ skillType }) => {
+const SkillSectionRow = ({ skillType }) => {
   return (
     <div className={styles.skillRow}>
       <div className={styles.images}>
@@ -18,4 +18,4 @@ const SectionRow = ({ skillType }) => {
   );
 };
 
-export default SectionRow;
+export default SkillSectionRow;

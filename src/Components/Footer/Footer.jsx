@@ -2,29 +2,12 @@ import React from "react";
 import styles from "./Footer.module.css";
 import linkedinLogo from "/assets/images/linkedinLogo.png";
 import githubLogo from "/assets/images/githubLogo.png";
+import SectionTitle from "../../helperComponents/SectionTitle/SectionTitle";
 
 const Footer = () => {
   return (
     <>
-      <div className="sectionTitle">
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-        <h2>Lets Talk</h2>
-      </div>
+      <SectionTitle title={"LET'S TALK"} />
       <footer className={styles.footer}>
         <div className={styles.left}>
           <h3>Lets make something great together.</h3>

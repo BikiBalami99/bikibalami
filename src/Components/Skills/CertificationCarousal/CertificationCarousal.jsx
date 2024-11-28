@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./Skills.module.css";
-import Carousel from "../../helperComponents/Carousel/Carousel";
 import expandIcon from "/assets/icons/expandIcon.svg";
+import SkillsCarousel from "../../../helperComponents/Carousel/SkillsCarousel";
+import styles from "./CertificationCarousall.module.css";
 
 const CertificationCarousal = ({ skillType: { certificates } }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -23,24 +23,30 @@ const CertificationCarousal = ({ skillType: { certificates } }) => {
     }
   }, [isDialogOpen]);
 
+  
+
   return (
     <div>
       <div className={styles.carouselContainer}>
-        <Carousel arrayOfObjects={certificates} />
+        <SkillsCarousel arrayOfObjects={certificates} />
         <button onClick={openDialog} className={styles.expandButton}>
           <img src={expandIcon} alt="expandIcon" />
         </button>
       </div>
       {isDialogOpen && (
         <dialog ref={dialogRef} className={styles.modal}>
-          <Carousel arrayOfObjects={certificates} />
+          <div>
+            <SkillsCarousel arrayOfObjects={certificates} />
+          </div>
           <form method="dialog">
             <button
-              className={styles.modalCloseButton}
+              className={`circleButton ` + styles.modalCloseButton}
               type="button"
               onClick={closeDialog}
+              style={{ width: "40px" }}
+              // Overwriting the default width of the button cause this looks better smaller.
             >
-              &times;
+              <p> &times;</p>
             </button>
           </form>
         </dialog>
