@@ -46,7 +46,7 @@ const PrimaryButton = ({
 
   return (
     <button
-      desabled={disabled}
+      disabled={disabled}
       ref={buttonRef}
       className={styles.primaryButton}
       onMouseEnter={() => setIsHovered(true)}

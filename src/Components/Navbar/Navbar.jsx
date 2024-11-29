@@ -7,6 +7,8 @@ import LetsTalk from "../../helperComponents/LetsTalk/LetsTalk";
 const Navbar = () => {
   // This state handles show/hide navLinks on mobile
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Toggles Lets Talk form visibility
   const [letsTalkVisibility, setLetsTalkVisibility] = useState(false);
 
   const letsTalkRef = useRef();

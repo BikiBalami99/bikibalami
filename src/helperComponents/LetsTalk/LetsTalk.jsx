@@ -94,7 +94,6 @@ const LetsTalk = ({ onClose }) => {
       ></textarea>
 
       <PrimaryButton
-        disabled={formDisabled}
         buttonModifierClass={{ paddingTop: "3rem", width: "100%" }}
         textModifierClass={{ fontSize: "1.3rem" }}
         type="submit"
