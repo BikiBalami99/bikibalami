@@ -1,5 +1,5 @@
 .loadingScreen {
-  position: absolute;
+  position: fixed; /* Ensure it stays visible regardless of scroll */
   top: 0;
   bottom: 0;
   left: 0;
@@ -13,8 +13,6 @@
   align-items: center;
 
   background: linear-gradient(237deg, #161616 10.74%, #000 89.26%);
-
-  transition: transform 700ms ease-in-out;
 }
 
 .loadingScreen p {
@@ -46,8 +44,7 @@
   background-color: white;
   transform: translateX(-100%);
 
-  /* Make sure to match animation time with useEffect's setTimout's time */
-  animation: loadingBarAnimation 3s cubic-bezier(0.25, 1, 0.5, 1) forwards; /* Add a custom cubic-bezier for a dramatic speed-up at the end */
+  animation: loadingBarAnimation 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes loadingBarAnimation {
@@ -56,14 +53,14 @@
   }
 
   60% {
-    transform: translateX(-20%); /* Slow progress to create anticipation */
+    transform: translateX(-20%);
   }
 
   80% {
-    transform: translateX(-10%); /* Approaching the end */
+    transform: translateX(-10%);
   }
 
   100% {
-    transform: translateX(0); /* Final quick snap to the finish */
+    transform: translateX(0);
   }
 }

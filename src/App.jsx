@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Hero from "./Components/Hero/Hero";
 import Navbar from "./Components/Navbar/Navbar";
 import Projects from "./Components/Projects/Projects";
@@ -6,20 +7,18 @@ import Footer from "./Components/Footer/Footer";
 import LoadingScreen from "./helperComponents/LoadingScreen/LoadingScreen";
 
 import "./global.css";
-import { useEffect, useState } from "react";
 
 function App() {
   const [isAppLoaded, setIsAppLoaded] = useState(false);
-  console.log(isAppLoaded);
-
-  // Optionally trac specific images or fonts
 
   useEffect(() => {
     const images = Array.from(document.images);
     const totalImages = images.length;
     let loadedImages = 0;
 
-    // Checking if all images have loaded
+    // Disable scrolling and hide scrollbar
+    document.body.style.overflow = "hidden";
+
     images.forEach((image) => {
       if (image.complete) {
         loadedImages++;
@@ -37,8 +36,13 @@ function App() {
       setIsAppLoaded(true);
     }
 
-    console.log(isAppLoaded);
-  }, []);
+    if (isAppLoaded) {
+      // Re-enable scrolling after loading screen finishes
+      setTimeout(() => {
+        document.body.style.overflow = "auto";
+      }, 3500); // Match this duration with the animation time
+    }
+  }, [isAppLoaded]);
 
   return (
     <div className="ultimateWrapper">

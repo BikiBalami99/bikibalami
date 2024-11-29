@@ -2,28 +2,30 @@ import React, { useEffect, useState } from "react";
 import styles from "./LoadingScreen.module.css";
 
 const LoadingScreen = ({ isAppLoaded }) => {
-  const [translateAmt, setTranslateAmt] = useState(0);
+  const [translateAmt, setTranslateAmt] = useState("0%");
+  const [loadingScreenClass, setLoadingScreenClass] = useState(
+    styles.loadingScreen
+  );
 
   useEffect(() => {
-    let timeoutid;
-
     if (isAppLoaded) {
-      timeoutid = setTimeout(() => {
-        setTranslateAmt("-100%");
-      }, 3000);
+      triggerLoaderRemoval();
     }
-
-    return () => {
-      clearTimeout(timeoutid);
-    };
   }, [isAppLoaded]);
+
+  function triggerLoaderRemoval() {
+    setTimeout(() => {
+      setTranslateAmt("200%"); // Move the loading screen up
+    }, 3000); // Match this duration with .loadingBar::after animation duration
+  }
 
   return (
     <section
       style={{
-        transform: `translateY(${translateAmt})`,
+        transform: `translateX(${translateAmt})`,
+        transition: "transform 0.5s ease-in-out", // Smooth transition for the exit animation
       }}
-      className={styles.loadingScreen}
+      className={loadingScreenClass}
     >
       <p>Hello World.</p>
       <div className={styles.loadingBar}></div>
