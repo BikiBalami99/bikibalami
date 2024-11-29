@@ -1,7 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./PrimaryButton.module.css";
 
-const PrimaryButton = ({ children }) => {
+// Props description
+// Children = text of the button
+// onClick = onClick function
+// Type = If any specific button type
+// buttonModifierClass = if you wanna modify any style of the BUTTON, make a class and then give as a prop. It needs to be an object.
+// textModifierClass same as buttonModifierClass for button text
+const PrimaryButton = ({
+  children,
+  onClick,
+  type = "",
+  buttonModifierClass,
+  textModifierClass,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   const [hoverStyleTop, setHoverStyleTop] = useState(0);
   const [hoverStyleLeft, setHoverStyleLeft] = useState(0);
@@ -37,6 +49,9 @@ const PrimaryButton = ({ children }) => {
       className={styles.primaryButton}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
+      type={type}
+      style={buttonModifierClass}
     >
       <div
         className={styles.hoverStyle}
@@ -48,10 +63,12 @@ const PrimaryButton = ({ children }) => {
           transform: isHovered ? "scale(1)" : "scale(0)",
         }}
       ></div>
-      <p style={{ opacity: 0 }}>{children}</p>
+      <p style={{ opacity: 0, ...textModifierClass }}>{children}</p>
       {/* This above one has opacity 0 because, it is only to hold the shape of the button. */}
 
-      <p className={styles.children}>{children}</p>
+      <p style={textModifierClass} className={styles.children}>
+        {children}
+      </p>
     </button>
   );
 };
