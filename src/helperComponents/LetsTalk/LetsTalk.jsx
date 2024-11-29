@@ -10,8 +10,8 @@ const LetsTalk = ({ onClose }) => {
   const [formDisabled, setFormDisabled] = useState(false);
 
   async function handleSubmit(e) {
-    setFormDisabled(true);
     e.preventDefault();
+    setFormDisabled(true);
     setIsLoading(true);
     setIsSuccess(false);
     setError(null);
@@ -61,7 +61,6 @@ const LetsTalk = ({ onClose }) => {
       data-success={isSuccess}
       data-error={error ? "true" : "false"}
       method="POST" // Optional: you can add this to be explicit
-      action="javascript:void(0);"
     >
       <input
         type="hidden"
