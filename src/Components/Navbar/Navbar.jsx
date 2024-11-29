@@ -17,7 +17,6 @@ const Navbar = () => {
 
   function toggleLetsTalkVisibility() {
     setLetsTalkVisibility((prev) => !prev);
-    console.log(letsTalkVisibility);
   }
 
   useEffect(() => {
@@ -58,7 +57,7 @@ const Navbar = () => {
 
       {letsTalkVisibility && (
         <dialog ref={letsTalkRef} className={styles.letsTalkModule}>
-          <LetsTalk />
+          <LetsTalk onClose={toggleLetsTalkVisibility} />
           <form method="dialog">
             <button
               className={`circleButton ${styles.letsTalkCloseButton}`}

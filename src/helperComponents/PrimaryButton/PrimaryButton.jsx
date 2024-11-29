@@ -13,6 +13,7 @@ const PrimaryButton = ({
   type = "",
   buttonModifierClass,
   textModifierClass,
+  disabled,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [hoverStyleTop, setHoverStyleTop] = useState(0);
@@ -45,6 +46,7 @@ const PrimaryButton = ({
 
   return (
     <button
+      desabled={disabled}
       ref={buttonRef}
       className={styles.primaryButton}
       onMouseEnter={() => setIsHovered(true)}
@@ -63,12 +65,12 @@ const PrimaryButton = ({
           transform: isHovered ? "scale(1)" : "scale(0)",
         }}
       ></div>
-      <p style={{ opacity: 0, ...textModifierClass }}>{children}</p>
+      <div style={{ opacity: 0, ...textModifierClass }}>{children}</div>
       {/* This above one has opacity 0 because, it is only to hold the shape of the button. */}
 
-      <p style={textModifierClass} className={styles.children}>
+      <div style={textModifierClass} className={styles.children}>
         {children}
-      </p>
+      </div>
     </button>
   );
 };

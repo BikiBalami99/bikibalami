@@ -1,40 +1,101 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./LetsTalk.module.css";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import ButtonLoadingAnimation from "../ButtonLoadingAnimation/ButtonLoadingAnimation";
 
-const LetsTalk = () => {
+const LetsTalk = ({ onClose }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState(null);
+  const [formDisabled, setFormDisabled] = useState(false);
+
+  async function handleSubmit(e) {
+    setFormDisabled(true);
+    e.preventDefault();
+    setIsLoading(true);
+    setIsSuccess(false);
+    setError(null);
+
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/bikibalami1999@gmail.com",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (response.ok) {
+        setIsSuccess(true);
+        console.log("We succesfully sent a request");
+        handleClose();
+      } else {
+        throw new Error(`Error: ${response.status} ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error(error);
+      setError(error.message || "An unknown error occured");
+      handleClose();
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  function handleClose() {
+    setTimeout(() => {
+      onClose();
+      setIsLoading(false);
+      setIsSuccess(false);
+      setError(null);
+      setFormDisabled(false);
+    }, 3000);
+  }
+
   return (
     <form
       className={styles.letsTalkForm}
-      action="https://formsubmit.co/bikibalami1999@gmail.com"
-      method="POST"
+      onSubmit={handleSubmit}
+      data-loading={isLoading}
+      data-success={isSuccess}
+      data-error={error ? "true" : "false"}
+      method="POST" // Optional: you can add this to be explicit
+      action="javascript:void(0);"
     >
       <input
+        type="hidden"
+        name="_subject"
+        value="Submission from your portfolio website"
+      />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="#"></input>
+      <input
+        disabled={formDisabled}
         id="name"
         type="text"
         name="name"
         required
         placeholder="Full Name"
       />
-      <input id="email" type="email" name="email" placeholder="Email Address" />
-      <input type="hidden" name="_subject" value="New submission!" />
-
-      {/* Thank you page */}
       <input
-        type="hidden"
-        name="_next"
-        value="https://yourdomain.co/thanks.html"
+        disabled={formDisabled}
+        id="email"
+        type="email"
+        name="email"
+        required
+        placeholder="Email Address"
       />
-
       <textarea
+        disabled={formDisabled}
         placeholder="Your Message"
-        className="form-control"
         name="message"
         rows="10"
         required
       ></textarea>
 
       <PrimaryButton
+        disabled={formDisabled}
         buttonModifierClass={{ paddingTop: "3rem", width: "100%" }}
         textModifierClass={{ fontSize: "1.3rem" }}
         type="submit"

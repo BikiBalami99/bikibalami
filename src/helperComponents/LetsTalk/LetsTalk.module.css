@@ -4,7 +4,7 @@
   gap: 2rem;
   padding: 5rem;
   width: 100%;
-
+  overflow: hidden;
   background: linear-gradient(237deg, #161616 10.74%, #000 89.26%);
 }
 
@@ -24,4 +24,116 @@
   color: black;
   padding: 1rem;
   border-radius: 1rem;
+  border: none;
+}
+
+.letsTalkForm button:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+
+.letsTalkForm button:disabled::after {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Success Message or error message */
+
+/* New Code */
+
+.letsTalkForm::after,
+.letsTalkForm::before {
+  /* Positioning and Layout */
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 2rem;
+
+  /* Visual Design */
+  background-color: #000000e4;
+  backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+
+  /* Flexbox Centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Typography */
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+
+  /* Opacity and Transitions */
+  opacity: 0;
+  transition: opacity 400ms ease-in-out;
+
+  /* Restricting Overflow */
+  clip-path: inset(0); /* Ensures content doesn't overflow */
+}
+
+.letsTalkForm[data-loading="false"]::before {
+  content: "Sending Your Message. Please wait. Sometimes it takes a while...";
+  opacity: 0;
+}
+
+.letsTalkForm[data-loading="true"]::before {
+  content: "Sending Your Message. Please wait. Sometimes it takes a while...";
+  opacity: 1;
+  animation: fade-in-out 1.5s linear infinite;
+}
+
+.letsTalkForm[data-success="true"]::before {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  content: "Thank you for message!";
+  opacity: 1;
+}
+
+.letsTalkForm[data-error="true"]::before {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  content: "There was an error, please either email me directly at bikibalami1999@gmail.com or try refreshing the page.";
+  opacity: 1;
+}
+
+@keyframes fade-in-out {
+  0% {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: white;
+  }
+
+  50% {
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    color: #f4a914;
+  }
+
+  100% {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: white;
+  }
+}
+
+/* Success Error Message ends here */
+
+@media screen and (max-width: 750px) {
+  .letsTalkForm {
+    padding: 1rem;
+    padding-top: 5rem;
+    gap: 1rem;
+  }
 }
