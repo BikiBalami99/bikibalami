@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Hero.module.css";
 import linkedinLogo from "/assets/images/linkedinLogo.png";
 import githubLogo from "/assets/images/githubLogo.png";
 import PrimaryButton from "../../helperComponents/PrimaryButton/PrimaryButton";
+import Resume from "../../helperComponents/Resume/Resume";
 
 const Hero = () => {
+  const [isDialogOn, setIsDialogOn] = useState(false);
+  const resumeDialogRef = useRef();
+
+  useEffect(() => {
+    if (isDialogOn) {
+      resumeDialogRef.current.showModal();
+      // Disable body scroll by setting overflow and preventing default scroll behavior
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${window.scrollY}px`; // Keep the scroll position intact
+    } else {
+      resumeDialogRef.current.close();
+      // Re-enable body scroll and reset position
+      document.body.style.position = "";
+      document.body.style.top = "";
+      window.scrollTo(0, parseInt(document.body.style.top || "0") * -1); // Restore the scroll position
+    }
+  }, [isDialogOn]);
+
+  function handleDownloadResume() {
+    const link = document.createElement("a");
+    link.href = "/assets/Resume/Biki_Balami_Resume.pdf";
+    link.download = "Biki_Balami_Resume.pdf";
+    link.click();
+  }
   return (
     <section className={styles.hero}>
       <section className={styles.left}>
@@ -50,9 +75,33 @@ const Hero = () => {
               </a>
             </div>
           </div>
-          <PrimaryButton>Resume</PrimaryButton>
+          <PrimaryButton onClick={() => setIsDialogOn(true)}>
+            Resume
+          </PrimaryButton>
         </section>
       </section>
+
+      <dialog ref={resumeDialogRef} className={styles.resumeDialog}>
+        <div className={styles.resumeModalHeading}>
+          <h1>Digital Resume</h1>
+          <p>
+            This is a responsive digital resume. If you want a pdf, hit the
+            download button. Thank you.
+          </p>
+          <PrimaryButton onClick={handleDownloadResume}>Download</PrimaryButton>
+        </div>
+        <Resume />
+        <form method="dialog">
+          <button
+            onClick={() => {
+              setIsDialogOn(false);
+            }}
+            className={`${styles.closeButton} circleButton`}
+          >
+            <p>&times;</p>
+          </button>
+        </form>
+      </dialog>
     </section>
   );
 };
