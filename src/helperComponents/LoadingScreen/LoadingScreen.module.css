@@ -14,8 +14,14 @@
 
   background: linear-gradient(237deg, #161616 10.74%, #000 89.26%);
 }
+.helloWorldWrapper {
+  position: relative;
 
-.loadingScreen p {
+  width: 100%;
+  text-align: center;
+}
+
+.helloWorld {
   text-align: center;
   font-size: 2rem;
 
@@ -23,6 +29,54 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  opacity: 1; /* Only affects the main text */
+
+  animation: dissappear 3s ease-in-out forwards;
+}
+
+.helloWorldWrapper::after {
+  content: "こんにちは";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  font-size: 2rem; /* Match the .helloWorld font-size */
+  text-align: center;
+
+  background: linear-gradient(0deg, #c8c8c8 27.08%, #fff 75%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  opacity: 0; /* Ensure this is visible */
+  z-index: 100;
+
+  animation: dissappear 3s ease-in-out reverse forwards;
+}
+
+@keyframes dissappear {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  37% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .loadingBar {

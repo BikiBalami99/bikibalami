@@ -3,21 +3,15 @@ import styles from "./LoadingScreen.module.css";
 
 const LoadingScreen = ({ isAppLoaded }) => {
   const [translateAmt, setTranslateAmt] = useState("0%");
-  const [loadingScreenClass, setLoadingScreenClass] = useState(
-    styles.loadingScreen
-  );
 
   useEffect(() => {
     if (isAppLoaded) {
-      triggerLoaderRemoval();
+      setTimeout(() => {
+        setTranslateAmt("200%"); // Move the loading screen right
+      }, 3000);
+      // Match this duration with .loadingBar::after animation duration
     }
   }, [isAppLoaded]);
-
-  function triggerLoaderRemoval() {
-    setTimeout(() => {
-      setTranslateAmt("200%"); // Move the loading screen up
-    }, 3000); // Match this duration with .loadingBar::after animation duration
-  }
 
   return (
     <section
@@ -25,9 +19,12 @@ const LoadingScreen = ({ isAppLoaded }) => {
         transform: `translateX(${translateAmt})`,
         transition: "transform 0.5s ease-in-out", // Smooth transition for the exit animation
       }}
-      className={loadingScreenClass}
+      className={styles.loadingScreen}
     >
-      <p>Hello World.</p>
+      <div className={styles.helloWorldWrapper}>
+        <p className={styles.helloWorld}>Hello World</p>
+      </div>
+
       <div className={styles.loadingBar}></div>
     </section>
   );
