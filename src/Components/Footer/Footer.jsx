@@ -73,6 +73,11 @@ const Footer = () => {
           <div className={styles.copyright}>
             <p>© Biki Balami {year}</p>
           </div>
+          <div>
+            <p style={{ opacity: "0.5" }}>
+              Desgned with Figma. Made with React.
+            </p>
+          </div>
         </div>
         {letsTalkVisibility && (
           <dialog ref={letsTalkRef} className={styles.letsTalkModule}>

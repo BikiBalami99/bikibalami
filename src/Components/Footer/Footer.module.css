@@ -80,6 +80,7 @@
 
   .copyright {
     white-space: nowrap;
+    opacity: 0.5;
   }
 }
 
