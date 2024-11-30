@@ -85,8 +85,8 @@ const Hero = () => {
         <div className={styles.resumeModalHeading}>
           <h1>Digital Resume</h1>
           <p>
-            This is a responsive digital resume. If you want a pdf, hit the
-            download button. Thank you.
+            This is a digital representation. For a PDF file, please click the
+            download button below.
           </p>
           <PrimaryButton onClick={handleDownloadResume}>Download</PrimaryButton>
         </div>

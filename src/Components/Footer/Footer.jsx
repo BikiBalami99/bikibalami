@@ -6,6 +6,8 @@ import SectionTitle from "../../helperComponents/SectionTitle/SectionTitle";
 import PrimaryButton from "../../helperComponents/PrimaryButton/PrimaryButton";
 import LetsTalk from "../../helperComponents/LetsTalk/LetsTalk";
 
+const year = new Date().getFullYear();
+
 const Footer = () => {
   // Toggles Lets Talk form visibility
   const [letsTalkVisibility, setLetsTalkVisibility] = useState(false);
@@ -69,7 +71,7 @@ const Footer = () => {
           </ul>
 
           <div className={styles.copyright}>
-            <p>© Biki Balami 2024</p>
+            <p>© Biki Balami {year}</p>
           </div>
         </div>
         {letsTalkVisibility && (
