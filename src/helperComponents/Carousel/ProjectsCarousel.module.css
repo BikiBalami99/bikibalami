@@ -1,73 +1,78 @@
 .projectsCarousel {
-  background: linear-gradient(
-    84deg,
-    rgba(255, 255, 255, 0.1) 0.16%,
-    rgba(255, 255, 255, 0.05) 99.84%
-  );
-  border-radius: 1rem;
+    background: linear-gradient(
+        84deg,
+        rgba(255, 255, 255, 0.1) 0.16%,
+        rgba(255, 255, 255, 0.05) 99.84%
+    );
+    border-radius: 1rem;
 
-  overflow: hidden;
-  padding-bottom: 1rem;
+    overflow: hidden;
+    padding-bottom: 1rem;
 }
 
 .movingPart {
-  display: flex;
-  width: fit-content;
+    display: flex;
+    width: fit-content;
 }
 
 .card {
-  /* min-width: 250px; */
-  flex-shrink: 0;
+    /* min-width: 250px; */
+    flex-shrink: 0;
 
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem;
 
-  border-radius: 0.8rem;
+    border-radius: 0.8rem;
+    background-color: red;
+    cursor: pointer;
 }
 
 .cardTitle {
-  font-size: 1.5rem;
-  font-weight: 900;
-  text-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.25);
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.25);
 }
 
 .cardDescription {
-  font-size: 0.8rem;
-  font-weight: 400;
-  text-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.25);
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.25);
 }
 
 .thumbnailWrapper img {
-  width: 100%;
-  object-fit: cover;
+    width: 100%;
+    max-height: 17rem;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    border: 2px solid white;
 }
 
 .leftRightButtons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
 /* Bounce animation when user tries to go after the edge on left and right */
 @keyframes bounceLeft {
-  50% {
-    padding-left: 4rem;
-  }
+    50% {
+        padding-left: 4rem;
+    }
 }
 
 @keyframes bounceRight {
-  50% {
-    padding-left: 0;
-  }
+    50% {
+        padding-left: 0;
+    }
 }
 
 /* Apply the animations to the bounce triggers */
 .triggerBounceLeft {
-  animation: bounceLeft 300ms linear;
+    animation: bounceLeft 300ms linear;
 }
 
 .triggerBounceRight {
-  animation: bounceRight 300ms linear;
+    animation: bounceRight 300ms linear;
 }
