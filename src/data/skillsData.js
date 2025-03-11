@@ -10,8 +10,24 @@ const skillsData = [
                 image: "/assets/certificates/codecademy/Front_End_Engineer_Path.png",
             },
             {
-                title: "TypeScript",
+                title: "Next",
+                image: "/assets/certificates/codecademy/Next.jpg",
+            },
+            {
+                title: "React",
+                image: "/assets/certificates/codecademy/React.jpg",
+            },
+            {
+                title: "TypeScriptUdemy",
                 image: "/assets/certificates/udemy/Mastering TypeScript.jpg",
+            },
+            {
+                title: "TypeScriptCodecademy",
+                image: "/assets/certificates/codecademy/TypeScript.jpg",
+            },
+            {
+                title: "GitAndGithub",
+                image: "/assets/certificates/codecademy/Git and Github.jpg",
             },
         ],
         techIcons: [
