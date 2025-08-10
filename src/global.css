@@ -1,49 +1,49 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --primary-orange: #f4a914;
-  --dark-gray: #8e8e8e;
+	--primary-orange: #f4a914;
+	--dark-gray: #8e8e8e;
 }
 
 /* Reset */
 *::before,
 *::after,
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: white;
-  line-height: 1;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: white;
+	line-height: 1;
 }
 
 html,
 body {
-  font-family: "Poppins", sans-serif; /* Set a consistent font-family across the application */
-  background: #f1f1f1;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+	font-family: "Poppins", sans-serif; /* Set a consistent font-family across the application */
+	background: #f1f1f1;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
 }
 
 ul,
 ol {
-  list-style: none; /* Remove default list styling */
+	list-style: none; /* Remove default list styling */
 }
 
 a {
-  color: white; /* Set link color to white */
-  text-decoration: none; /* Remove underline */
+	color: white; /* Set link color to white */
+	text-decoration: none; /* Remove underline */
 }
 
 a:visited {
-  color: white; /* Ensure visited links are also white */
+	color: white; /* Ensure visited links are also white */
 }
 
 a:hover {
-  color: white; /* Ensure links stay white on hover */
+	color: white; /* Ensure links stay white on hover */
 }
 
 a:active {
-  color: white; /* Ensure links stay white when active (clicked) */
+	color: white; /* Ensure links stay white when active (clicked) */
 }
 
 /* Finish reset */
@@ -51,126 +51,128 @@ a:active {
 /* Section Title  */
 
 .sectionTitle {
-  position: relative;
-  width: 300%;
-  margin: 2rem 0;
-  display: flex;
-  gap: 2rem;
-  animation: sectionTitleAnimation 40s ease-in-out alternate infinite;
+	position: relative;
+	width: 300%;
+	margin: 2rem 0;
+	display: flex;
+	gap: 2rem;
+	animation: sectionTitleAnimation 40s ease-in-out alternate infinite;
 }
 
 .sectionTitle p,
 .sectionTitle h2 {
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+	background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 
-  font-weight: 900;
-  font-size: 2.5rem;
-  white-space: nowrap;
+	font-weight: 900;
+	font-size: 2.5rem;
+	white-space: nowrap;
 }
 
 @media screen and (min-width: 750px) {
-  .sectionTitle {
-    gap: 4rem;
-  }
-  .sectionTitle p,
-  .sectionTitle h2 {
-    font-size: 5rem;
-  }
+	.sectionTitle {
+		gap: 4rem;
+	}
+	.sectionTitle p,
+	.sectionTitle h2 {
+		font-size: 5rem;
+	}
 }
 
 @keyframes sectionTitleAnimation {
-  0% {
-    transform: translateX(-60%);
-  }
+	0% {
+		transform: translateX(-60%);
+	}
 
-  100% {
-    transform: translateX(0%);
-  }
+	100% {
+		transform: translateX(0%);
+	}
 }
 
 /* Circle Buttons */
 
 .circleButton {
-  background-color: #f4a914;
-  border: none;
-  border-radius: 10rem;
-  width: 3rem;
-  aspect-ratio: 1/1;
-  font-size: 1.4rem;
-  line-height: 1;
-  transition: background-color 200ms ease-in-out, transform 100ms ease-in-out;
+	background-color: #f4a914;
+	border: none;
+	border-radius: 10rem;
+	width: 3rem;
+	aspect-ratio: 1/1;
+	font-size: 1.4rem;
+	line-height: 1;
+	transition: background-color 200ms ease-in-out, transform 100ms ease-in-out;
 }
 
 .circleButton:hover,
 .circleButton:focus-visible,
 .circleButton:active {
-  background-color: #f4ce14;
-  cursor: pointer;
-  border: none;
+	background-color: #f4ce14;
+	cursor: pointer;
+	border: none;
 }
 
 .circleButton:active {
-  transform: scale(0.9);
+	transform: scale(0.9);
 }
 
 .circleButton p {
-  color: black;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 1.5px;
+	color: black;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	/* Centering it */
+	transform: translateY(2px);
 }
 
 @media (hover: none) {
-  .circleButton:hover,
-  .circleButton:active {
-    background: #f4ce14;
-  }
+	.circleButton:hover,
+	.circleButton:active {
+		background: #f4ce14;
+	}
 }
 
 /* Socials Icon */
 
 .socialLinks {
-  display: flex;
-  gap: 0.5rem;
+	display: flex;
+	gap: 0.5rem;
 }
 
 .socialsLinkIcon {
-  width: 2rem;
-  height: 2rem;
-  overflow: hidden;
+	width: 2rem;
+	height: 2rem;
+	overflow: hidden;
 }
 
 .socialsLinkIcon a {
-  display: block; /* Ensure the <a> element fills the icon area */
-  width: 100%;
-  height: 100%;
+	display: block; /* Ensure the <a> element fills the icon area */
+	width: 100%;
+	height: 100%;
 }
 
 .socialsLinkIcon img {
-  object-position: center;
-  width: 100%;
-  height: 100%;
-  border: 1px solid var(--primary-orange);
-  transition: border 200ms ease-in-out;
-  border-radius: 0.4rem;
+	object-position: center;
+	width: 100%;
+	height: 100%;
+	border: 1px solid var(--primary-orange);
+	transition: border 200ms ease-in-out;
+	border-radius: 0.4rem;
 }
 
 .socialsLinkIcon:hover img,
 .socialsLinkIcon:active img,
 .socialsLinkIcon a:focus-visible img {
-  border: 3px solid white; /* Correctly apply border on focus-visible */
-  cursor: pointer;
+	border: 3px solid white; /* Correctly apply border on focus-visible */
+	cursor: pointer;
 }
 
 /* Ultimate Wrapper */
 
 .ultimateWrapper {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
 }
