@@ -31,12 +31,12 @@ const Footer = () => {
       <SectionTitle title={"LET'S TALK"} />
       <footer className={styles.footer}>
         <div className={styles.left}>
-          <h3>Lets make something great together.</h3>
+          <h3>Let's build something amazing together.</h3>
 
           <p>bikibalami1999@gmail.com</p>
 
           <PrimaryButton onClick={toggleLetsTalkVisibility}>
-            Lets Talk
+            Let's Talk
           </PrimaryButton>
         </div>
 
@@ -75,7 +75,7 @@ const Footer = () => {
           </div>
           <div>
             <p style={{ opacity: "0.5" }}>
-              Desgned with Figma. Made with React.
+              Designed with Figma. Built with Next.js & React.
             </p>
           </div>
         </div>
