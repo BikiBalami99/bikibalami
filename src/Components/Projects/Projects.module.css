@@ -1,33 +1,68 @@
 .projects {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  background: linear-gradient(237deg, #161616 10.74%, #000 89.26%);
-  margin: 1rem;
-  border-radius: 1rem;
-  padding: 3rem 1rem;
-  max-width: 1730px;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	background: linear-gradient(237deg, #161616 10.74%, #000 89.26%);
+	margin: 1rem;
+	border-radius: 1rem;
+	padding: 3rem 1rem;
+	max-width: 1730px;
 
-  /* If you ever change the gap or padding make sure to update it in the react component, or else the left and right button wont translate the desired distance */
+	/* If you ever change the gap or padding make sure to update it in the react component, or else the left and right button wont translate the desired distance */
 }
 
 .projects h3 {
-  font-size: 3rem;
-  text-align: center;
-  background: linear-gradient(0deg, #c8c8c8 27.08%, #fff 75%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+	font-size: 3rem;
+	text-align: center;
+	background: linear-gradient(0deg, #c8c8c8 27.08%, #fff 75%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .projects > p {
-  text-align: center;
+	text-align: center;
 }
 
 @media screen and (min-width: 1750px) {
-  .projects {
-    width: 1730px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+	.projects {
+		width: 1730px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 768px) {
+	.projects {
+		padding: 2rem 0.75rem;
+		gap: 1.5rem;
+		margin: 0.5rem;
+	}
+
+	.projects h3 {
+		font-size: 2rem;
+		line-height: 1.2;
+	}
+
+	.projects > p {
+		font-size: 0.9rem;
+		line-height: 1.4;
+		padding: 0 0.5rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.projects {
+		padding: 1.5rem 0.5rem;
+		gap: 1rem;
+	}
+
+	.projects h3 {
+		font-size: 1.75rem;
+	}
+
+	.projects > p {
+		font-size: 0.85rem;
+	}
 }
