@@ -10,7 +10,7 @@ const Skills = () => {
       <SectionTitle title="SKILLS" />
       {/* Each Row is rendered below */}
       <div className={styles.allSkills}>
-        <h3>My Arsenal</h3>
+        <h3>My Technical Arsenal</h3>
         <div className={styles.sectionRowsWrapper}>
           {skillsData.map((skillType) => {
             return <SkillSectionRow key={skillType.id} skillType={skillType} />;

@@ -11,7 +11,7 @@ const Projects = () => {
 			<SectionTitle title="PROJECTS" />
 			<div className={styles.projects}>
 				<h3>My Passion Projects</h3>
-				<p>More coming very soon...</p>
+				<p>From SaaS platforms to social media applications</p>
 				<ProjectsCarousel arrayOfProjects={projects} />
 			</div>
 		</section>

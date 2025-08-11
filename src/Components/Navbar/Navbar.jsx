@@ -51,7 +51,7 @@ const Navbar = () => {
 
           <li>
             <PrimaryButton onClick={toggleLetsTalkVisibility}>
-              Lets Talk
+              Let's Talk
             </PrimaryButton>
           </li>
         </div>
