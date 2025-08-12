@@ -6,6 +6,7 @@ import PrimaryButton from "../../helperComponents/PrimaryButton/PrimaryButton";
 
 const Hero = () => {
 	const [isDialogOn, setIsDialogOn] = useState(false);
+	const [isClosing, setIsClosing] = useState(false);
 	const [pdfError, setPdfError] = useState(false);
 	const resumeDialogRef = useRef();
 
@@ -35,6 +36,22 @@ const Hero = () => {
 	function handlePdfLoad() {
 		setPdfError(false);
 	}
+
+	function closeResumeDialog() {
+		setIsClosing(true);
+		setTimeout(() => {
+			setIsDialogOn(false);
+			setIsClosing(false);
+			setPdfError(false);
+		}, 200);
+	}
+
+	// Handle click outside to close
+	const handleDialogClick = (e) => {
+		if (e.target === resumeDialogRef.current) {
+			closeResumeDialog();
+		}
+	};
 
 	return (
 		<section className={styles.hero}>
@@ -81,11 +98,22 @@ const Hero = () => {
 							</a>
 						</div>
 					</div>
-					<PrimaryButton onClick={() => setIsDialogOn(true)}>Resume</PrimaryButton>
+					<PrimaryButton
+						onClick={() => {
+							setIsDialogOn(true);
+							setIsClosing(false);
+						}}
+					>
+						Resume
+					</PrimaryButton>
 				</section>
 			</section>
 
-			<dialog ref={resumeDialogRef} className={styles.resumeDialog}>
+			<dialog
+				ref={resumeDialogRef}
+				className={`${styles.resumeDialog} ${isClosing ? styles.closing : ""}`}
+				onClick={handleDialogClick}
+			>
 				<div className={styles.resumeModalHeading}>
 					<h1>Resume</h1>
 					<p>
@@ -116,10 +144,7 @@ const Hero = () => {
 
 				<form method="dialog">
 					<button
-						onClick={() => {
-							setIsDialogOn(false);
-							setPdfError(false);
-						}}
+						onClick={closeResumeDialog}
 						className={`${styles.closeButton} circleButton`}
 					>
 						<p>&times;</p>

@@ -5,76 +5,95 @@ import PrimaryButton from "../../helperComponents/PrimaryButton/PrimaryButton";
 import LetsTalk from "../../helperComponents/LetsTalk/LetsTalk";
 
 const Navbar = () => {
-  // This state handles show/hide navLinks on mobile
-  const [isExpanded, setIsExpanded] = useState(false);
+	// This state handles show/hide navLinks on mobile
+	const [isExpanded, setIsExpanded] = useState(false);
 
-  // Toggles Lets Talk form visibility
-  const [letsTalkVisibility, setLetsTalkVisibility] = useState(false);
+	// Toggles Lets Talk form visibility
+	const [letsTalkVisibility, setLetsTalkVisibility] = useState(false);
+	const [isClosing, setIsClosing] = useState(false);
 
-  const letsTalkRef = useRef();
+	const letsTalkRef = useRef();
 
-  function toggleNavBarView() {
-    setIsExpanded((prev) => !prev);
-  }
+	function toggleNavBarView() {
+		setIsExpanded((prev) => !prev);
+	}
 
-  function toggleLetsTalkVisibility() {
-    setLetsTalkVisibility((prev) => !prev);
-  }
+	function openLetsTalkDialog() {
+		setLetsTalkVisibility(true);
+		setIsClosing(false);
+	}
 
-  useEffect(() => {
-    if (letsTalkVisibility && letsTalkRef.current) {
-      letsTalkRef.current.showModal();
-    } else if (letsTalkRef.current) {
-      letsTalkRef.current.close();
-    }
-  }, [letsTalkVisibility]);
+	function closeLetsTalkDialog() {
+		setIsClosing(true);
+		setTimeout(() => {
+			setLetsTalkVisibility(false);
+			setIsClosing(false);
+		}, 200);
+	}
 
-  return (
-    <nav className={styles.navBar} data-expanded={isExpanded}>
-      <a href="#" className={styles.logo}>
-        <h1>Biki Balami</h1>
-      </a>
+	// Handle click outside to close
+	const handleDialogClick = (e) => {
+		if (e.target === letsTalkRef.current) {
+			closeLetsTalkDialog();
+		}
+	};
 
-      <ul className={styles.navItems}>
-        <Hamburger toggleNavBarView={toggleNavBarView} />
+	useEffect(() => {
+		if (letsTalkVisibility && letsTalkRef.current) {
+			letsTalkRef.current.showModal();
+		} else if (letsTalkRef.current) {
+			letsTalkRef.current.close();
+		}
+	}, [letsTalkVisibility]);
 
-        <div className={styles.navLinks}>
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#skills">Skills</a>
-          </li>
-          <li>
-            <a href="#projects">Projects</a>
-          </li>
-          <li>
-            <a href="#art">Art</a>
-          </li>
+	return (
+		<nav className={styles.navBar} data-expanded={isExpanded}>
+			<a href="#" className={styles.logo}>
+				<h1>Biki Balami</h1>
+			</a>
 
-          <li>
-            <PrimaryButton onClick={toggleLetsTalkVisibility}>
-              Let's Talk
-            </PrimaryButton>
-          </li>
-        </div>
-      </ul>
+			<ul className={styles.navItems}>
+				<Hamburger toggleNavBarView={toggleNavBarView} />
 
-      {letsTalkVisibility && (
-        <dialog ref={letsTalkRef} className={styles.letsTalkModule}>
-          <LetsTalk onClose={toggleLetsTalkVisibility} />
-          <form method="dialog">
-            <button
-              className={`circleButton ${styles.letsTalkCloseButton}`}
-              onClick={toggleLetsTalkVisibility}
-            >
-              <p>&times;</p>
-            </button>
-          </form>
-        </dialog>
-      )}
-    </nav>
-  );
+				<div className={styles.navLinks}>
+					<li>
+						<a href="#">Home</a>
+					</li>
+					<li>
+						<a href="#skills">Skills</a>
+					</li>
+					<li>
+						<a href="#projects">Projects</a>
+					</li>
+					<li>
+						<a href="#art">Art</a>
+					</li>
+
+					<li>
+						<PrimaryButton onClick={openLetsTalkDialog}>Let's Talk</PrimaryButton>
+					</li>
+				</div>
+			</ul>
+
+			{letsTalkVisibility && (
+				<dialog
+					ref={letsTalkRef}
+					className={`${styles.letsTalkModule} ${isClosing ? styles.closing : ""}`}
+					onClick={handleDialogClick}
+				>
+					<LetsTalk onClose={closeLetsTalkDialog} />
+					<form method="dialog">
+						<button
+							className={`circleButton ${styles.letsTalkCloseButton}`}
+							onClick={closeLetsTalkDialog}
+						>
+							<p>&times;</p>
+						</button>
+					</form>
+				</dialog>
+			)}
+		</nav>
+	);
 };
 
 export default Navbar;

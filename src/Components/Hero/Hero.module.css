@@ -180,6 +180,14 @@
 
 /* Resume Modal Dialog Section */
 
+.resumeDialog[open] {
+	animation: slide-in-from-top 300ms ease-out;
+}
+
+.resumeDialog.closing {
+	animation: slide-out-to-top 300ms ease-in forwards;
+}
+
 .resumeDialog {
 	padding: 2rem;
 	width: 95vw;
@@ -211,6 +219,28 @@
 
 .resumeDialog::backdrop {
 	background: rgba(0, 0, 0, 0.7);
+}
+
+@keyframes slide-in-from-top {
+	0% {
+		top: 30%;
+		opacity: 0;
+	}
+	100% {
+		top: 50%;
+		opacity: 1;
+	}
+}
+
+@keyframes slide-out-to-top {
+	0% {
+		top: 50%;
+		opacity: 1;
+	}
+	100% {
+		top: 30%;
+		opacity: 0;
+	}
 }
 
 .resumeModalHeading {

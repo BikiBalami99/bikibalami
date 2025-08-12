@@ -6,6 +6,7 @@ import ArtDialogCarousel from "../../helperComponents/Carousel/ArtDialogCarousel
 
 const Art = () => {
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
+	const [isClosing, setIsClosing] = useState(false);
 	const [selectedArtIndex, setSelectedArtIndex] = useState(0);
 	const dialogRef = useRef(null);
 
@@ -28,11 +29,23 @@ const Art = () => {
 	function openDialog(artIndex) {
 		setSelectedArtIndex(artIndex);
 		setIsDialogOpen(true);
+		setIsClosing(false);
 	}
 
 	function closeDialog() {
-		setIsDialogOpen(false);
+		setIsClosing(true);
+		setTimeout(() => {
+			setIsDialogOpen(false);
+			setIsClosing(false);
+		}, 200);
 	}
+
+	// Handle click outside to close
+	const handleDialogClick = (e) => {
+		if (e.target === dialogRef.current) {
+			closeDialog();
+		}
+	};
 
 	useEffect(() => {
 		if (isDialogOpen && dialogRef.current) {
@@ -52,7 +65,11 @@ const Art = () => {
 					<ArtCarousel arrayOfArt={artImages} onArtClick={openDialog} />
 				</div>
 				{isDialogOpen && (
-					<dialog ref={dialogRef} className={styles.modal}>
+					<dialog
+						ref={dialogRef}
+						className={`${styles.modal} ${isClosing ? styles.closing : ""}`}
+						onClick={handleDialogClick}
+					>
 						<div>
 							<ArtDialogCarousel
 								arrayOfArt={artImages}
