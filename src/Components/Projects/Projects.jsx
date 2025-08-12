@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styles from "./Projects.module.css";
 import projects from "../../data/projects";
 import ProjectsCarousel from "../../helperComponents/Carousel/ProjectsCarousel";
@@ -11,7 +10,6 @@ const Projects = () => {
 			<SectionTitle title="PROJECTS" />
 			<div className={styles.projects}>
 				<h3>My Passion Projects</h3>
-				<p>From SaaS platforms to social media applications</p>
 				<ProjectsCarousel arrayOfProjects={projects} />
 			</div>
 		</section>
