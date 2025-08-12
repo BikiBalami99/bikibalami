@@ -27,6 +27,11 @@
 	border-radius: 0.8rem;
 	background-color: red;
 	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.card:hover {
+	transform: translateY(-5px);
 }
 
 .cardTitle {
@@ -46,7 +51,12 @@
 	max-height: 17rem;
 	border-radius: 0.5rem;
 	object-fit: cover;
-	border: 2px solid white;
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	transition: border-color 0.3s ease;
+}
+
+.card:hover .thumbnailWrapper img {
+	border-color: rgba(255, 255, 255, 0.3);
 }
 
 .leftRightButtons {
