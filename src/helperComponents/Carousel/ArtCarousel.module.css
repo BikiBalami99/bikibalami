@@ -1,0 +1,70 @@
+.artCarousel {
+	background: linear-gradient(
+		84deg,
+		rgba(255, 255, 255, 0.1) 0.16%,
+		rgba(255, 255, 255, 0.05) 99.84%
+	);
+	border-radius: 1rem;
+	overflow: hidden;
+	padding-bottom: 1rem;
+}
+
+.movingPart {
+	display: flex;
+	width: fit-content;
+}
+
+.artCard {
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	padding: 0.5rem;
+	border-radius: 0.8rem;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.artCard:hover {
+	transform: translateY(-5px);
+}
+
+.artImageWrapper img {
+	width: 100%;
+	height: 250px;
+	border-radius: 0.5rem;
+	object-fit: cover;
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	transition: border-color 0.3s ease;
+}
+
+.artCard:hover .artImageWrapper img {
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+.leftRightButtons {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+
+/* Bounce animation when user tries to go after the edge on left and right */
+@keyframes bounceLeft {
+	50% {
+		padding-left: 1.5rem;
+	}
+}
+
+@keyframes bounceRight {
+	50% {
+		padding-left: 0;
+	}
+}
+
+/* Apply the animations to the bounce triggers */
+.triggerBounceLeft {
+	animation: bounceLeft 200ms ease-out;
+}
+
+.triggerBounceRight {
+	animation: bounceRight 200ms ease-out;
+}
