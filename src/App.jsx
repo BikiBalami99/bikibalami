@@ -11,104 +11,62 @@ import RippleEffect from "./helperComponents/RippleEffect/RippleEffect";
 import "./global.css";
 
 function App() {
-	const [isAppLoaded, setIsAppLoaded] = useState(false);
-	const [loadingProgress, setLoadingProgress] = useState(0);
+  const [isAppLoaded, setIsAppLoaded] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
 
-	useEffect(() => {
-		// Disable scrolling and hide scrollbar
-		document.body.style.overflow = "hidden";
+  useEffect(() => {
+    // Disable scrolling and hide scrollbar during initial splash
+    document.body.style.overflow = "hidden";
 
-		// Track loading progress
-		let totalResources = 0;
-		let loadedResources = 0;
+    const MIN_DISPLAY_MS = 600; // avoid flicker but keep snappy
+    const start = performance.now();
 
-		// Function to update progress
-		const updateProgress = () => {
-			const progress = totalResources > 0 ? (loadedResources / totalResources) * 100 : 0;
-			setLoadingProgress(Math.min(progress, 99)); // Cap at 99% until everything is loaded
-		};
+    // Drive a time-based progress up to 90%
+    let rafId = null;
+    const tick = () => {
+      const elapsed = performance.now() - start;
+      const progress = Math.min(90, (elapsed / MIN_DISPLAY_MS) * 90);
+      setLoadingProgress(progress);
+      if (progress < 90 && !isAppLoaded) {
+        rafId = requestAnimationFrame(tick);
+      }
+    };
+    rafId = requestAnimationFrame(tick);
 
-		// Track images
-		const images = Array.from(document.images);
-		totalResources += images.length;
+    const finish = () => {
+      const elapsed = performance.now() - start;
+      const remaining = Math.max(0, MIN_DISPLAY_MS - elapsed);
+      setTimeout(() => {
+        setLoadingProgress(100);
+        setIsAppLoaded(true);
+      }, remaining);
+    };
 
-		images.forEach((image) => {
-			if (image.complete) {
-				loadedResources++;
-				updateProgress();
-			} else {
-				image.onload = () => {
-					loadedResources++;
-					updateProgress();
-					checkIfAllLoaded();
-				};
-				image.onerror = () => {
-					loadedResources++; // Count errors as loaded to avoid infinite loading
-					updateProgress();
-					checkIfAllLoaded();
-				};
-			}
-		});
+    // Prefer the 'load' event so we don't wait on lazy images
+    if (document.readyState === "complete") {
+      finish();
+    } else {
+      window.addEventListener("load", finish, { once: true });
+    }
 
-		// Track other resources (CSS, JS, etc.)
-		const resources = Array.from(
-			document.querySelectorAll('link[rel="stylesheet"], script[src]')
-		);
-		totalResources += resources.length;
+    // Hard cap fallback
+    const fallbackTimer = setTimeout(finish, 4000);
 
-		resources.forEach((resource) => {
-			if (resource instanceof HTMLLinkElement && resource.sheet) {
-				loadedResources++;
-				updateProgress();
-			} else {
-				// For resources that don't have clear loading states, simulate loading
-				setTimeout(() => {
-					loadedResources++;
-					updateProgress();
-					checkIfAllLoaded();
-				}, Math.random() * 1000 + 500); // Random delay between 500-1500ms
-			}
-		});
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      clearTimeout(fallbackTimer);
+      window.removeEventListener("load", finish);
+    };
+  }, [isAppLoaded]);
 
-		// If no resources to load, set progress to 100%
-		if (totalResources === 0) {
-			setLoadingProgress(100);
-			setTimeout(() => {
-				setIsAppLoaded(true);
-			}, 1000);
-		}
-
-		// Check if all resources are loaded
-		const checkIfAllLoaded = () => {
-			if (loadedResources >= totalResources) {
-				setLoadingProgress(100);
-				setTimeout(() => {
-					setIsAppLoaded(true);
-				}, 500);
-			}
-		};
-
-		// Fallback: if loading takes too long, force completion
-		const fallbackTimer = setTimeout(() => {
-			if (!isAppLoaded) {
-				setLoadingProgress(100);
-				setIsAppLoaded(true);
-			}
-		}, 10000); // 10 second fallback
-
-		return () => {
-			clearTimeout(fallbackTimer);
-		};
-	}, [isAppLoaded]);
-
-	useEffect(() => {
-		if (isAppLoaded) {
-			// Re-enable scrolling after loading screen finishes
-			setTimeout(() => {
-				document.body.style.overflow = "auto";
-			}, 1000); // Match this duration with the animation time
-		}
-	}, [isAppLoaded]);
+  useEffect(() => {
+    if (isAppLoaded) {
+      // Re-enable scrolling sooner for better UX
+      setTimeout(() => {
+        document.body.style.overflow = "auto";
+      }, 400);
+    }
+  }, [isAppLoaded]);
 
 	return (
 		<div className="ultimateWrapper">
