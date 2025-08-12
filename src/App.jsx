@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Hero from "./Components/Hero/Hero";
 import Navbar from "./Components/Navbar/Navbar";
 import Projects from "./Components/Projects/Projects";
+import Art from "./Components/Art/Art";
 import Skills from "./Components/Skills/Skills";
 import Footer from "./Components/Footer/Footer";
 import LoadingScreen from "./helperComponents/LoadingScreen/LoadingScreen";
@@ -118,6 +119,7 @@ function App() {
 				<Hero />
 				<Skills />
 				<Projects />
+				<Art />
 			</main>
 			<Footer />
 		</div>

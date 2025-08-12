@@ -48,6 +48,9 @@ const Navbar = () => {
           <li>
             <a href="#projects">Projects</a>
           </li>
+          <li>
+            <a href="#art">Art</a>
+          </li>
 
           <li>
             <PrimaryButton onClick={toggleLetsTalkVisibility}>
