@@ -12,7 +12,7 @@ const ProjectsCarousel = ({ arrayOfProjects }) => {
 	const [goLeftOk, setGoLeftOk] = useState(false);
 	const [goRightOk, setGoRightOk] = useState(false);
 
-	// Animation for when we reach left or right edge
+	// Bounce feedback when user tries to go past the edges
 	const [triggerLeftBounce, setTriggerLeftBounce] = useState(false);
 	const [triggerRightBounce, setTriggerRightBounce] = useState(false);
 
@@ -78,8 +78,6 @@ const ProjectsCarousel = ({ arrayOfProjects }) => {
 		} else {
 			setTriggerLeftBounce(true);
 			setTimeout(() => setTriggerLeftBounce(false), 200);
-			// Reset animation after 200ms
-			// Always match this setTimeout time with the animation time
 		}
 	};
 
@@ -90,8 +88,6 @@ const ProjectsCarousel = ({ arrayOfProjects }) => {
 		} else {
 			setTriggerRightBounce(true);
 			setTimeout(() => setTriggerRightBounce(false), 200);
-			// Reset animation after 200ms
-			// Always match this setTimeout time with the animation time
 		}
 	};
 
@@ -104,7 +100,7 @@ const ProjectsCarousel = ({ arrayOfProjects }) => {
 				} ${triggerRightBounce ? styles.triggerBounceRight : ""}`}
 				style={{
 					transform: `translateX(${movingPartPosition}px)`,
-					transition: "transform 500ms cubic-bezier(0.3, 1.8, 0.3, 0.7)",
+					transition: "transform 300ms ease-in-out",
 					gap: `${gap}px`,
 					padding: `${gap}px`,
 				}}
