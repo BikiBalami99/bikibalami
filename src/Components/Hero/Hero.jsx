@@ -58,7 +58,7 @@ const Hero = () => {
 			<section className={styles.left}>
 				<h3>Biki Balami</h3>
 				<h2>FULL STACK DEVELOPER</h2>
-				<h2>TECHNICAL TEAM LEAD</h2>
+				<h2>UI/UX DESIGNER</h2>
 				<p className={styles.email}>bikibalami1999@gmail.com</p>
 				<div className={styles.heroDescription}>
 					<span>Next.js 13+ | </span>
@@ -78,7 +78,7 @@ const Hero = () => {
 						<strong>Residing:</strong> Tokyo, Japan
 					</p>
 					<p>
-						<strong>Focus:</strong> Next.js 13+, TypeScript, AWS, Team Leadership
+						<strong>Focus:</strong> Next.js 13+, TypeScript, AWS
 					</p>
 				</article>
 
