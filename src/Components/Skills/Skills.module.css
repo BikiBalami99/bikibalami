@@ -408,7 +408,9 @@
 @media screen and (max-width: 1030px) {
 	/* The modal looked too small in screen smaller than 1030px */
 	.modal {
-		width: 90vw;
+		width: 95vw;
+		height: 85vh;
+		max-height: 800px;
 	}
 }
 
@@ -571,6 +573,13 @@
 	.certificationsTitle {
 		font-size: 1.5rem;
 	}
+
+	/* Modal responsive adjustments for tablet */
+	.modal {
+		width: 95vw;
+		height: 80vh;
+		max-height: 700px;
+	}
 }
 
 @media screen and (max-width: 480px) {
@@ -622,6 +631,14 @@
 
 	.certificationCard {
 		padding: 1rem;
+	}
+
+	/* Modal responsive adjustments for mobile */
+	.modal {
+		width: 98vw;
+		height: 75vh;
+		max-height: 600px;
+		border-radius: 0.5rem;
 	}
 }
 

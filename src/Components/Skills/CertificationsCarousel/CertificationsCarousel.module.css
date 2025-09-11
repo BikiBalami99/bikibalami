@@ -18,66 +18,97 @@
 	flex-shrink: 0;
 	display: flex;
 	flex-direction: column;
-	padding: 0.5rem;
-	border-radius: 0.8rem;
+	padding: 1rem;
+	border-radius: 1rem;
 	cursor: pointer;
-	transition: transform 0.3s ease;
+	transition: all 0.3s ease;
+	background: linear-gradient(
+		135deg,
+		rgba(248, 248, 248, 0.9),
+		rgba(245, 245, 245, 0.95)
+	);
+	border: 1px solid rgba(200, 200, 200, 0.2);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
 }
 
 .certificationCard:hover {
-	transform: translateY(-5px);
+	transform: translateY(-6px) scale(1.02);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .certImageWrapper {
 	width: 100%;
 	height: 200px;
-	margin-bottom: 0.5rem;
+	margin-bottom: 1rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(135deg, rgba(248, 248, 248, 0.8), rgba(245, 245, 245, 0.9));
-	border-radius: 0.5rem;
-	border: 1px solid rgba(200, 200, 200, 0.3);
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.95),
+		rgba(248, 248, 248, 0.9)
+	);
+	border-radius: 0.75rem;
+	border: 1px solid rgba(220, 220, 220, 0.4);
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05), 0 0px 8px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease;
 }
 
 .certImageWrapper img {
 	width: 100%;
 	height: 100%;
-	object-fit: contain;
-	border-radius: 0.5rem;
+	object-fit: cover;
+	border-radius: 0.75rem;
+	transition: all 0.3s ease;
 }
 
 .certInfo {
 	display: flex;
 	flex-direction: column;
-	gap: 0.3rem;
+	gap: 0.5rem;
 	padding: 0.5rem;
 }
 
 .certTitle {
-	font-size: 0.9rem;
-	font-weight: 600;
-	color: #2a2a2a;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #1a1a1a;
 	margin: 0;
-	line-height: 1.2;
+	line-height: 1.3;
+	transition: color 0.3s ease;
 }
 
 .certProvider {
-	font-size: 0.8rem;
+	font-size: 0.85rem;
 	color: var(--primary-orange);
-	font-weight: 500;
+	font-weight: 600;
 	margin: 0;
+	transition: color 0.3s ease;
 }
 
 .certDescription {
-	font-size: 0.75rem;
-	color: #666;
+	font-size: 0.8rem;
+	color: #555;
 	margin: 0;
-	line-height: 1.3;
+	line-height: 1.4;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+	transition: color 0.3s ease;
+}
+
+.certificationCard:hover .certTitle {
+	color: #000;
+}
+
+.certificationCard:hover .certProvider {
+	color: #e0990f;
+}
+
+.certificationCard:hover .certDescription {
+	color: #444;
 }
 
 .leftRightButtons {
