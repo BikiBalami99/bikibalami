@@ -1,3 +1,93 @@
+// All skills organized by category
+export const allSkills = {
+	development: [
+		{ title: "Next.JS", icon: "/assets/icons/FrontEndDevelopment/NextJs.jpg" },
+		{ title: "TypeScript", icon: "/assets/icons/FrontEndDevelopment/TypeScript.jpg" },
+		{ title: "React", icon: "/assets/icons/FrontEndDevelopment/React.jpg" },
+		{ title: "JavaScript", icon: "/assets/icons/FrontEndDevelopment/JavaScript.jpg" },
+		{ title: "HTML", icon: "/assets/icons/FrontEndDevelopment/HTML.jpg" },
+		{ title: "CSS", icon: "/assets/icons/FrontEndDevelopment/CSS.jpg" },
+		{ title: "Redux", icon: "/assets/icons/FrontEndDevelopment/redux.jpg" },
+		{ title: "Git", icon: "/assets/icons/FrontEndDevelopment/git.jpg" },
+		{ title: "C", icon: "/assets/icons/ComputerScience/C.jpg" },
+		{ title: "Java", icon: "/assets/icons/ComputerScience/java.jpg" },
+		{ title: "Python", icon: "/assets/icons/ComputerScience/Python.jpg" },
+		{
+			title: "Data Structures",
+			icon: "/assets/icons/ComputerScience/Data-structures.jpg",
+		},
+	],
+	creative: [
+		{ title: "Figma", icon: "/assets/icons/GraphicDesign/Figma.jpeg" },
+		{ title: "Photoshop", icon: "/assets/icons/GraphicDesign/photoshop.jpeg" },
+		{ title: "Procreate", icon: "/assets/icons/GraphicDesign/Procreate.jpeg" },
+		{ title: "InDesign", icon: "/assets/icons/GraphicDesign/indesign.jpeg" },
+		{ title: "Blender", icon: "/assets/icons/GraphicDesign/Blender.jpeg" },
+		{ title: "Illustrator", icon: "/assets/icons/GraphicDesign/illustrator.jpeg" },
+	],
+};
+
+// Certifications with descriptions
+export const certifications = [
+	{
+		title: "Front End Engineer Path",
+		provider: "Codecademy",
+		image: "/assets/certificates/codecademy/Front_End_Engineer_Path.png",
+		description:
+			"Comprehensive frontend development curriculum covering modern web technologies, responsive design, and interactive user interfaces.",
+	},
+	{
+		title: "Next.js Course",
+		provider: "Codecademy",
+		image: "/assets/certificates/codecademy/Next.jpg",
+		description:
+			"Mastered Next.js framework including App Router, Server Components, and full-stack React development patterns.",
+	},
+	{
+		title: "React Development",
+		provider: "Codecademy",
+		image: "/assets/certificates/codecademy/React.jpg",
+		description:
+			"Advanced React concepts including hooks, state management, component architecture, and modern development practices.",
+	},
+	{
+		title: "Mastering TypeScript",
+		provider: "Udemy",
+		image: "/assets/certificates/udemy/Mastering TypeScript.jpg",
+		description:
+			"Deep dive into TypeScript's type system, advanced features, and integration with modern JavaScript frameworks.",
+	},
+	{
+		title: "TypeScript Fundamentals",
+		provider: "Codecademy",
+		image: "/assets/certificates/codecademy/TypeScript.jpg",
+		description:
+			"Core TypeScript concepts including type annotations, interfaces, generics, and type-safe development workflows.",
+	},
+	{
+		title: "Git and GitHub",
+		provider: "Codecademy",
+		image: "/assets/certificates/codecademy/Git and Github.jpg",
+		description:
+			"Version control mastery including Git workflows, branching strategies, and collaborative development practices.",
+	},
+	{
+		title: "Figma Advanced Design",
+		provider: "Udemy",
+		image: "/assets/certificates/udemy/Figma Advanced from BYOL.jpg",
+		description:
+			"Advanced Figma techniques for UI/UX design, prototyping, design systems, and collaborative design workflows.",
+	},
+	{
+		title: "Bachelor's Degree",
+		provider: "Temple University Japan",
+		image: "/assets/certificates/TUJ/Undergrad.jpg",
+		description:
+			"Dual degree in Computer Science and Art with focus on Graphic Design, providing strong technical and creative foundations.",
+	},
+];
+
+// Legacy data structure for backward compatibility (if needed)
 const skillsData = [
 	{
 		id: 1,
