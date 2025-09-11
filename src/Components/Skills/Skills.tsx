@@ -80,7 +80,7 @@ const Skills = () => {
 
 	return (
 		<section id="skills">
-			<SectionTitle title="SKILLS" />
+			<SectionTitle title="SKILLS" speed="normal" direction="left" />
 			<div className={styles.allSkills}>
 				<h3>My Technical Arsenal</h3>
 

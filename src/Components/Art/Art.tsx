@@ -57,7 +57,7 @@ const Art = () => {
 
 	return (
 		<section id="art">
-			<SectionTitle title="ART" />
+			<SectionTitle title="ART" speed="normal" direction="left" />
 			<div className={styles.art}>
 				<h3>My Creative Expression</h3>
 				<p>Digital art, paintings, and illustrations</p>

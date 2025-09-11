@@ -7,7 +7,7 @@ const Projects = () => {
 	return (
 		<section id="projects">
 			{/* Title that goes left and write */}
-			<SectionTitle title="PROJECTS" />
+			<SectionTitle title="PROJECTS" speed="normal" direction="right" />
 			<div className={styles.projects}>
 				<h3>My Passion Projects</h3>
 				<ProjectsCarousel arrayOfProjects={projects} />

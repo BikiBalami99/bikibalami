@@ -45,7 +45,7 @@ const Footer = () => {
 
 	return (
 		<section>
-			<SectionTitle title={"LET'S TALK"} />
+			<SectionTitle title={"LET'S TALK"} speed="normal" direction="right" />
 			<footer className={styles.footer}>
 				<div className={styles.left}>
 					<h3>Let's build something amazing together.</h3>
