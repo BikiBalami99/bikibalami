@@ -8,7 +8,7 @@ const Art = () => {
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 	const [isClosing, setIsClosing] = useState(false);
 	const [selectedArtIndex, setSelectedArtIndex] = useState(0);
-	const dialogRef = useRef(null);
+	const dialogRef = useRef<HTMLDialogElement | null>(null);
 
 	const artImages = [
 		"/assets/Art/Chitlang.jpeg",
@@ -41,7 +41,7 @@ const Art = () => {
 	}
 
 	// Handle click outside to close
-	const handleDialogClick = (e) => {
+	const handleDialogClick = (e: React.MouseEvent<HTMLDialogElement>) => {
 		if (e.target === dialogRef.current) {
 			closeDialog();
 		}

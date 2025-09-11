@@ -1,7 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./ProjectsCarousel.module.css";
 
-const ProjectsCarousel = ({ arrayOfProjects }) => {
+type Project = {
+	id: string;
+	URL: string;
+	background: string;
+	title: string;
+	description: string;
+	thumbnail: string;
+};
+const ProjectsCarousel = ({ arrayOfProjects }: { arrayOfProjects: Project[] }) => {
 	// State management
 	const [movingPartPosition, setMovingPartPosition] = useState(0);
 	const [stoppingDistance, setStoppingDistance] = useState(0);
@@ -16,7 +24,7 @@ const ProjectsCarousel = ({ arrayOfProjects }) => {
 	const [triggerLeftBounce, setTriggerLeftBounce] = useState(false);
 	const [triggerRightBounce, setTriggerRightBounce] = useState(false);
 
-	const carouselRef = useRef();
+	const carouselRef = useRef<HTMLDivElement | null>(null);
 
 	// Making responsive card size
 	useEffect(() => {
@@ -32,7 +40,7 @@ const ProjectsCarousel = ({ arrayOfProjects }) => {
 	const moveDistance = cardWidth + gap + 1;
 
 	useEffect(() => {
-		const carouselWidth = carouselRef.current.getBoundingClientRect().width;
+		const carouselWidth = carouselRef.current!.getBoundingClientRect().width;
 		const maxCardsOnView = Math.floor(carouselWidth / (cardWidth + gap));
 		const totalCards = arrayOfProjects.length;
 		const initialHiddenCards = totalCards - maxCardsOnView;

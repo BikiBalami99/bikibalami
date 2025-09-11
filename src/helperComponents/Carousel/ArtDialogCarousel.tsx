@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ArtDialogCarousel.module.css";
 
-const ArtDialogCarousel = ({ arrayOfArt, startingIndex = 0 }) => {
+const ArtDialogCarousel = ({
+	arrayOfArt,
+	startingIndex = 0,
+}: {
+	arrayOfArt: string[];
+	startingIndex?: number;
+}) => {
 	const [currentImageIndex, setCurrentImageIndex] = useState(startingIndex);
 
 	// Update currentImageIndex when startingIndex changes
@@ -39,7 +45,7 @@ const ArtDialogCarousel = ({ arrayOfArt, startingIndex = 0 }) => {
 					<button
 						onClick={handlePreviousImage}
 						className="circleButton"
-						style={currentImageIndex === 0 ? { opacity: "0%" } : null}
+						style={currentImageIndex === 0 ? { opacity: "0%" } : undefined}
 					>
 						<p>&larr;</p>
 					</button>
@@ -47,7 +53,9 @@ const ArtDialogCarousel = ({ arrayOfArt, startingIndex = 0 }) => {
 					<button
 						onClick={handleNextImage}
 						className="circleButton"
-						style={currentImageIndex === arrayOfArt.length - 1 ? { opacity: "0%" } : null}
+						style={
+							currentImageIndex === arrayOfArt.length - 1 ? { opacity: "0%" } : undefined
+						}
 					>
 						<p> &rarr;</p>
 					</button>

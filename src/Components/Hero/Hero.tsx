@@ -8,15 +8,15 @@ const Hero = () => {
 	const [isDialogOn, setIsDialogOn] = useState(false);
 	const [isClosing, setIsClosing] = useState(false);
 	const [pdfError, setPdfError] = useState(false);
-	const resumeDialogRef = useRef();
+	const resumeDialogRef = useRef<HTMLDialogElement | null>(null);
 
 	useEffect(() => {
 		if (isDialogOn) {
-			resumeDialogRef.current.showModal();
+			resumeDialogRef.current?.showModal();
 			// Disable body scroll without hiding elements
 			document.body.style.overflow = "hidden";
 		} else {
-			resumeDialogRef.current.close();
+			resumeDialogRef.current?.close();
 			// Re-enable body scroll
 			document.body.style.overflow = "auto";
 		}
@@ -47,7 +47,7 @@ const Hero = () => {
 	}
 
 	// Handle click outside to close
-	const handleDialogClick = (e) => {
+	const handleDialogClick = (e: React.MouseEvent<HTMLDialogElement>) => {
 		if (e.target === resumeDialogRef.current) {
 			closeResumeDialog();
 		}
@@ -128,7 +128,6 @@ const Hero = () => {
 					<iframe
 						className={styles.resume}
 						src="/assets/Resume/Resume_BikiBalami.pdf"
-						type="application/pdf"
 						width="100%"
 						height="100%"
 						title="Biki Balami Resume"

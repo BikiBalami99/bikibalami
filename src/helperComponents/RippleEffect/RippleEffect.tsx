@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "./RippleEffect.module.css";
 
+type Ripple = { id: number; x: number; y: number; timestamp: number };
 const RippleEffect = () => {
-	const [ripples, setRipples] = useState([]);
+	const [ripples, setRipples] = useState<Ripple[]>([]);
 
 	useEffect(() => {
-		const handleClick = (e) => {
+		const handleClick = (e: MouseEvent) => {
 			// Create a new ripple
 			const ripple = {
 				id: Date.now() + Math.random(),

@@ -1,7 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./ArtCarousel.module.css";
 
-const ArtCarousel = ({ arrayOfArt, startingIndex = 0, onArtClick }) => {
+const ArtCarousel = ({
+	arrayOfArt,
+	startingIndex = 0,
+	onArtClick,
+}: {
+	arrayOfArt: string[];
+	startingIndex?: number;
+	onArtClick?: (index: number) => void;
+}) => {
 	// State management
 	const [movingPartPosition, setMovingPartPosition] = useState(0);
 	const [stoppingDistance, setStoppingDistance] = useState(0);
@@ -16,7 +24,7 @@ const ArtCarousel = ({ arrayOfArt, startingIndex = 0, onArtClick }) => {
 	const [triggerLeftBounce, setTriggerLeftBounce] = useState(false);
 	const [triggerRightBounce, setTriggerRightBounce] = useState(false);
 
-	const carouselRef = useRef();
+	const carouselRef = useRef<HTMLDivElement | null>(null);
 
 	// Making responsive card size
 	useEffect(() => {
@@ -40,7 +48,7 @@ const ArtCarousel = ({ arrayOfArt, startingIndex = 0, onArtClick }) => {
 	const moveDistance = cardWidth + gap + 1;
 
 	useEffect(() => {
-		const carouselWidth = carouselRef.current.getBoundingClientRect().width;
+		const carouselWidth = carouselRef.current!.getBoundingClientRect().width;
 		const maxCardsOnView = Math.floor(carouselWidth / (cardWidth + gap));
 		const totalCards = arrayOfArt.length;
 		const initialHiddenCards = totalCards - maxCardsOnView;

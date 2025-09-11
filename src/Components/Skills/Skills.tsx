@@ -9,7 +9,7 @@ import Certifications from "./Certifications/Certifications";
 import CertificationModal from "./CertificationModal/CertificationModal";
 
 const Skills = () => {
-	const categoryOrder = [
+	const categoryOrder: Array<{ key: keyof typeof allSkills; label: string }> = [
 		{ key: "frontend", label: "Frontend" },
 		{ key: "backend", label: "Backend" },
 		{ key: "devops", label: "DevOps" },
@@ -20,10 +20,10 @@ const Skills = () => {
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 	const [isClosing, setIsClosing] = useState(false);
 	const [selectedCertIndex, setSelectedCertIndex] = useState(0);
-	const dialogRef = useRef(null);
+	const dialogRef = useRef<HTMLDialogElement | null>(null);
 	const [direction, setDirection] = useState(0); // -1: left, 0: none, 1: right
 	const contentRef = useRef(null);
-	const [panelHeight, setPanelHeight] = useState("auto");
+	const [panelHeight, setPanelHeight] = useState<string | number>("auto");
 
 	// Improved transitions with direction detection
 	const prevActiveIdx = useRef(activeIdx);
@@ -35,8 +35,8 @@ const Skills = () => {
 	// Smooth height transition of the active panel
 	useEffect(() => {
 		if (!contentRef.current) return;
-		const node = contentRef.current;
-		const update = () => setPanelHeight(node.getBoundingClientRect().height);
+		const node = contentRef.current as HTMLDivElement;
+		const update = () => setPanelHeight(node.getBoundingClientRect().height + "px");
 		const observer = new ResizeObserver(() => update());
 		observer.observe(node);
 		update();
@@ -57,7 +57,7 @@ const Skills = () => {
 		}, 200);
 	}
 
-	const handleDialogClick = (e) => {
+	const handleDialogClick = (e: React.MouseEvent<HTMLDialogElement>) => {
 		if (e.target === dialogRef.current) {
 			closeDialog();
 		}

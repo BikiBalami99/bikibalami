@@ -3,17 +3,25 @@ import styles from "../Skills.module.css";
 import { allSkills } from "../../../data/skillsData";
 
 // Animate only added/removed items; keep unchanged items static
-const PreviewStrip = ({ side, categories }) => {
+type Category = { key: keyof typeof allSkills; label: string };
+type Item = { id: string; icon: string; state?: "entering" | "present" | "exiting" };
+const PreviewStrip = ({
+	side,
+	categories,
+}: {
+	side: "left" | "right";
+	categories: Category[];
+}) => {
 	if (!categories || categories.length === 0) return null;
 	const sideClass = side === "left" ? styles.previewLeftSide : styles.previewRightSide;
 
 	const nextSkills = useMemo(() => {
-		const list = categories.flatMap((c) => allSkills[c.key] || []);
-		return list.map((s) => ({ id: s.title, icon: s.icon }));
+		const list = categories.flatMap((c) => (allSkills as any)[c.key] || []);
+		return list.map((s: any) => ({ id: s.title as string, icon: s.icon as string }));
 	}, [categories]);
 
-	const [items, setItems] = useState([]); // { id, icon, state }
-	const exitTimersRef = useRef(new Map());
+	const [items, setItems] = useState<Item[]>([]); // { id, icon, state }
+	const exitTimersRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
 
 	useEffect(() => {
 		const nextIds = new Set(nextSkills.map((s) => s.id));
@@ -23,14 +31,14 @@ const PreviewStrip = ({ side, categories }) => {
 
 		let updated = items.map((it) => {
 			if (exitingIds.includes(it.id) && it.state !== "exiting") {
-				return { ...it, state: "exiting" };
+				return { ...it, state: "exiting" } as Item;
 			}
-			return { ...it, icon: nextIconById.get(it.id) || it.icon };
+			return { ...it, icon: (nextIconById.get(it.id) as string) || it.icon } as Item;
 		});
 
 		const newOnes = nextSkills
 			.filter((s) => !currentIds.has(s.id))
-			.map((s) => ({ id: s.id, icon: s.icon, state: "entering" }));
+			.map((s) => ({ id: s.id, icon: s.icon, state: "entering" } as Item));
 
 		updated = [...updated, ...newOnes];
 		setItems(updated);
@@ -63,7 +71,7 @@ const PreviewStrip = ({ side, categories }) => {
 		}
 	}, [items]);
 
-	const indexInNext = (id) => nextSkills.findIndex((s) => s.id === id);
+	const indexInNext = (id: string) => nextSkills.findIndex((s) => s.id === id);
 	const orderedItems = useMemo(() => {
 		const copy = [...items];
 		copy.sort((a, b) => {

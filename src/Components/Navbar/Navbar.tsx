@@ -12,7 +12,7 @@ const Navbar = () => {
 	const [letsTalkVisibility, setLetsTalkVisibility] = useState(false);
 	const [isClosing, setIsClosing] = useState(false);
 
-	const letsTalkRef = useRef();
+	const letsTalkRef = useRef<HTMLDialogElement | null>(null);
 
 	function toggleNavBarView() {
 		setIsExpanded((prev) => !prev);
@@ -32,7 +32,7 @@ const Navbar = () => {
 	}
 
 	// Handle click outside to close
-	const handleDialogClick = (e) => {
+	const handleDialogClick = (e: React.MouseEvent<HTMLDialogElement>) => {
 		if (e.target === letsTalkRef.current) {
 			closeLetsTalkDialog();
 		}
@@ -70,7 +70,14 @@ const Navbar = () => {
 					</li>
 
 					<li>
-						<PrimaryButton onClick={openLetsTalkDialog}>Let's Talk</PrimaryButton>
+						<PrimaryButton
+							onClick={openLetsTalkDialog}
+							buttonModifierClass={{}}
+							textModifierClass={{}}
+							disabled={false}
+						>
+							Let's Talk
+						</PrimaryButton>
 					</li>
 				</div>
 			</ul>
