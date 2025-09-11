@@ -1,29 +1,61 @@
-// All skills organized by category
+// All skills organized by category based on resume
 export const allSkills = {
-	development: [
-		{ title: "Next.JS", icon: "/assets/icons/FrontEndDevelopment/NextJs.jpg" },
-		{ title: "TypeScript", icon: "/assets/icons/FrontEndDevelopment/TypeScript.jpg" },
+	frontend: [
+		{ title: "Next.js", icon: "/assets/icons/FrontEndDevelopment/NextJs.jpg" },
 		{ title: "React", icon: "/assets/icons/FrontEndDevelopment/React.jpg" },
+		{ title: "TypeScript", icon: "/assets/icons/FrontEndDevelopment/TypeScript.jpg" },
 		{ title: "JavaScript", icon: "/assets/icons/FrontEndDevelopment/JavaScript.jpg" },
-		{ title: "HTML", icon: "/assets/icons/FrontEndDevelopment/HTML.jpg" },
-		{ title: "CSS", icon: "/assets/icons/FrontEndDevelopment/CSS.jpg" },
+		{ title: "HTML5", icon: "/assets/icons/FrontEndDevelopment/HTML.jpg" },
+		{ title: "CSS3", icon: "/assets/icons/FrontEndDevelopment/CSS.jpg" },
 		{ title: "Redux", icon: "/assets/icons/FrontEndDevelopment/redux.jpg" },
-		{ title: "Git", icon: "/assets/icons/FrontEndDevelopment/git.jpg" },
+		{ title: "UI/UX Design", icon: "/assets/icons/GraphicDesign/Figma.jpeg" },
+		{ title: "REST APIs", icon: "/assets/icons/FrontEndDevelopment/NextJs.jpg" }, // placeholder
+	],
+	backend: [
+		{ title: "Node.js", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "Express.js", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "PostgreSQL", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "Prisma", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "Python", icon: "/assets/icons/ComputerScience/Python.jpg" },
+	],
+	devops: [
+		{ title: "AWS Amplify", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "AWS Cognito", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "AWS DynamoDB", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "AWS Lambda", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "AWS API Gateway", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "AWS S3", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+	],
+	tools: [
+		{ title: "Git/GitHub", icon: "/assets/icons/FrontEndDevelopment/git.jpg" },
+		{ title: "Figma", icon: "/assets/icons/GraphicDesign/Figma.jpeg" },
+		{ title: "Photoshop", icon: "/assets/icons/GraphicDesign/photoshop.jpeg" },
+		{ title: "Illustrator", icon: "/assets/icons/GraphicDesign/illustrator.jpeg" },
+		{ title: "Procreate", icon: "/assets/icons/GraphicDesign/Procreate.jpeg" },
+		{ title: "Blender 3D", icon: "/assets/icons/GraphicDesign/Blender.jpeg" },
+		{ title: "InDesign", icon: "/assets/icons/GraphicDesign/indesign.jpeg" },
+	],
+	computerScience: [
 		{ title: "C", icon: "/assets/icons/ComputerScience/C.jpg" },
 		{ title: "Java", icon: "/assets/icons/ComputerScience/java.jpg" },
-		{ title: "Python", icon: "/assets/icons/ComputerScience/Python.jpg" },
 		{
 			title: "Data Structures",
 			icon: "/assets/icons/ComputerScience/Data-structures.jpg",
 		},
-	],
-	creative: [
-		{ title: "Figma", icon: "/assets/icons/GraphicDesign/Figma.jpeg" },
-		{ title: "Photoshop", icon: "/assets/icons/GraphicDesign/photoshop.jpeg" },
-		{ title: "Procreate", icon: "/assets/icons/GraphicDesign/Procreate.jpeg" },
-		{ title: "InDesign", icon: "/assets/icons/GraphicDesign/indesign.jpeg" },
-		{ title: "Blender", icon: "/assets/icons/GraphicDesign/Blender.jpeg" },
-		{ title: "Illustrator", icon: "/assets/icons/GraphicDesign/illustrator.jpeg" },
+		{
+			title: "Discrete Mathematics",
+			icon: "/assets/icons/ComputerScience/Data-structures.jpg",
+		},
+		{ title: "Computer Systems", icon: "/assets/icons/ComputerScience/C.jpg" },
+		{
+			title: "Probability & Statistics",
+			icon: "/assets/icons/ComputerScience/Python.jpg",
+		},
+		{
+			title: "Program Design & Abstraction",
+			icon: "/assets/icons/ComputerScience/Python.jpg",
+		},
+		{ title: "Calculus I/II", icon: "/assets/icons/ComputerScience/Data-structures.jpg" },
 	],
 };
 

@@ -46,11 +46,11 @@ const Skills = () => {
 
 				{/* Skills Grid */}
 				<div className={styles.skillsGrid}>
-					{/* Development Skills */}
+					{/* Frontend Skills */}
 					<div className={styles.skillCategory}>
-						<h4 className={styles.categoryTitle}>Development</h4>
+						<h4 className={styles.categoryTitle}>Frontend</h4>
 						<div className={styles.skillsList}>
-							{allSkills.development.map((skill, index) => (
+							{allSkills.frontend.map((skill, index) => (
 								<div key={index} className={styles.skillItem}>
 									<div className={styles.skillIconWrapper}>
 										<img src={skill.icon} alt={skill.title} />
@@ -61,11 +61,56 @@ const Skills = () => {
 						</div>
 					</div>
 
-					{/* Creative Skills */}
+					{/* Backend Skills */}
 					<div className={styles.skillCategory}>
-						<h4 className={styles.categoryTitle}>Creative</h4>
+						<h4 className={styles.categoryTitle}>Backend</h4>
 						<div className={styles.skillsList}>
-							{allSkills.creative.map((skill, index) => (
+							{allSkills.backend.map((skill, index) => (
+								<div key={index} className={styles.skillItem}>
+									<div className={styles.skillIconWrapper}>
+										<img src={skill.icon} alt={skill.title} />
+									</div>
+									<p>{skill.title}</p>
+								</div>
+							))}
+						</div>
+					</div>
+
+					{/* DevOps Skills */}
+					<div className={styles.skillCategory}>
+						<h4 className={styles.categoryTitle}>DevOps</h4>
+						<div className={styles.skillsList}>
+							{allSkills.devops.map((skill, index) => (
+								<div key={index} className={styles.skillItem}>
+									<div className={styles.skillIconWrapper}>
+										<img src={skill.icon} alt={skill.title} />
+									</div>
+									<p>{skill.title}</p>
+								</div>
+							))}
+						</div>
+					</div>
+
+					{/* Tools Skills */}
+					<div className={styles.skillCategory}>
+						<h4 className={styles.categoryTitle}>Tools</h4>
+						<div className={styles.skillsList}>
+							{allSkills.tools.map((skill, index) => (
+								<div key={index} className={styles.skillItem}>
+									<div className={styles.skillIconWrapper}>
+										<img src={skill.icon} alt={skill.title} />
+									</div>
+									<p>{skill.title}</p>
+								</div>
+							))}
+						</div>
+					</div>
+
+					{/* Computer Science Skills */}
+					<div className={styles.skillCategory}>
+						<h4 className={styles.categoryTitle}>Computer Science</h4>
+						<div className={styles.skillsList}>
+							{allSkills.computerScience.map((skill, index) => (
 								<div key={index} className={styles.skillItem}>
 									<div className={styles.skillIconWrapper}>
 										<img src={skill.icon} alt={skill.title} />

@@ -30,68 +30,66 @@
 /* Skills Grid */
 .skillsGrid {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 4rem;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 1.5rem;
 	margin-bottom: 3rem;
 	position: relative;
-}
-
-.skillsGrid::before {
-	content: "";
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 2px;
-	height: 80%;
-	background: linear-gradient(180deg, transparent, #c8c8c8, #fff, transparent);
-	opacity: 0.3;
 }
 
 .skillCategory {
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
+	gap: 1rem;
 	position: relative;
 }
 
 .categoryTitle {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	color: var(--primary-orange);
 	text-align: center;
 	font-weight: 700;
-	margin-bottom: 1.5rem;
+	margin-bottom: 1rem;
 	position: relative;
 }
 
 .skillsList {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-	gap: 1.5rem;
+	grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+	gap: 1rem;
 	justify-items: center;
-	padding: 1rem;
+	padding: 0.5rem;
 }
 
 .skillItem {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 0.8rem;
-	padding: 1.2rem;
-	border-radius: 1rem;
+	justify-content: space-between;
+	padding: 0.8rem 0.5rem;
+	border-radius: 0.8rem;
 	position: relative;
 	background: rgba(255, 255, 255, 0.02);
 	border: 1px solid rgba(244, 169, 20, 0.1);
 	backdrop-filter: blur(10px);
+	width: 100%;
+	height: 100px;
+	min-height: 100px;
+	box-sizing: border-box;
 }
 
 .skillIconWrapper {
-	width: 70px;
-	height: 70px;
+	width: 50px;
+	height: 50px;
+	min-width: 50px;
+	min-height: 50px;
+	max-width: 50px;
+	max-height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	position: relative;
+	flex-shrink: 0;
+	margin-top: 0.2rem;
 }
 
 .skillIconWrapper img {
@@ -101,13 +99,30 @@
 	border-radius: 0.8rem;
 	filter: grayscale(0.1);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	flex-shrink: 0;
 }
 
 .skillItem p {
-	font-size: 0.85rem;
+	font-size: 0.75rem;
 	text-align: center;
 	color: #c8c8c8;
 	font-weight: 600;
+	line-height: 1.2;
+	height: 2.4rem;
+	min-height: 2.4rem;
+	max-height: 2.4rem;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: keep-all;
+	overflow-wrap: normal;
+	hyphens: none;
+	margin-bottom: 0;
+	width: 100%;
+	padding: 0.1rem 0.2rem;
+	box-sizing: border-box;
 }
 
 /* Certifications Section */
@@ -312,15 +327,11 @@
 @media screen and (max-width: 768px) {
 	.skillsGrid {
 		grid-template-columns: 1fr;
-		gap: 2rem;
-	}
-
-	.skillsGrid::before {
-		display: none;
+		gap: 1.5rem;
 	}
 
 	.skillsList {
-		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
 	}
 
 	.certificationsGrid {
@@ -339,7 +350,7 @@
 	}
 
 	.categoryTitle {
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 	}
 
 	.certificationsTitle {
@@ -362,12 +373,37 @@
 	}
 
 	.skillItem {
-		padding: 1rem;
+		padding: 0.6rem 0.4rem;
+		height: 90px;
+		min-height: 90px;
 	}
 
 	.skillIconWrapper {
-		width: 60px;
-		height: 60px;
+		width: 40px;
+		height: 40px;
+		min-width: 40px;
+		min-height: 40px;
+		max-width: 40px;
+		max-height: 40px;
+		margin-top: 0.1rem;
+	}
+
+	.skillItem p {
+		font-size: 0.7rem;
+		line-height: 1.2;
+		height: 2.1rem;
+		min-height: 2.1rem;
+		max-height: 2.1rem;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-break: keep-all;
+		overflow-wrap: normal;
+		hyphens: none;
+		margin-bottom: 0;
+		padding: 0.1rem 0.1rem;
 	}
 
 	.certificationCard {
