@@ -227,29 +227,38 @@
 	bottom: 0;
 	transition: opacity 0.3s ease-in-out;
 	display: flex;
-	align-items: center;
-	min-height: min-content;
+	align-items: flex-start;
 	flex-wrap: wrap;
 	gap: 8px;
 	width: 200px;
+	min-height: 0px !important;
+	max-height: 100% !important;
 }
 
 .previewLeftSide {
 	right: 102%;
-	min-height: min-content;
 	justify-content: flex-end;
 
-	mask-image: linear-gradient(to right, transparent 0%, black 90%, black 100%);
-	-webkit-mask-image: linear-gradient(to right, transparent 0%, black 90%, black 100%);
+	/* Horizontal mask (left fade) */
+	mask-image: linear-gradient(to right, transparent 0%, black 90%, black 100%),
+		linear-gradient(to top, transparent 0%, black 90%, black 100%);
+	-webkit-mask-image: linear-gradient(to right, transparent 0%, black 90%, black 100%),
+		linear-gradient(to top, transparent 0%, black 90%, black 100%);
+	mask-composite: intersect;
+	-webkit-mask-composite: source-in;
 }
 
 .previewRightSide {
 	left: 102%;
-	min-height: min-content;
 	justify-content: flex-start;
 
-	mask-image: linear-gradient(to left, transparent 0%, black 90%, black 100%);
-	-webkit-mask-image: linear-gradient(to left, transparent 0%, black 90%, black 100%);
+	/* Horizontal mask (right fade) + vertical mask (top fade) */
+	mask-image: linear-gradient(to left, transparent 0%, black 90%, black 100%),
+		linear-gradient(to top, transparent 0%, black 90%, black 100%);
+	-webkit-mask-image: linear-gradient(to left, transparent 0%, black 90%, black 100%),
+		linear-gradient(to top, transparent 0%, black 90%, black 100%);
+	mask-composite: intersect;
+	-webkit-mask-composite: source-in;
 }
 
 /* Honeycomb items */
@@ -513,8 +522,82 @@
 	}
 }
 
-/* Responsive Design */
+/* Responsive Design - Smart calculation based on parent container */
+@media screen and (max-width: 1224px) {
+	/* Available width: 1224px - 4rem (margins/padding) = ~1160px */
+	/* Need space for: 2 preview strips + active panel + gaps */
+	.activePanel {
+		max-width: 700px;
+		padding: 1.4rem;
+	}
+
+	.panelHeightWrapper {
+		max-width: 700px;
+	}
+
+	.previewStrip {
+		width: 130px;
+		gap: 5px;
+	}
+
+	.honeyItem {
+		width: 30px;
+		height: 30px;
+		border-radius: 6px;
+	}
+
+	/* Limit to 3 columns maximum */
+	.skillsList {
+		grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+	}
+}
+
 @media screen and (max-width: 1030px) {
+	/* Available width: 1030px - 4rem = ~990px */
+	.activePanel {
+		max-width: 600px;
+		padding: 1.25rem;
+	}
+
+	.panelHeightWrapper {
+		max-width: 600px;
+	}
+
+	.previewStrip {
+		width: 120px;
+		gap: 4px;
+	}
+
+	.honeyItem {
+		width: 28px;
+		height: 28px;
+		border-radius: 6px;
+	}
+
+	/* Tabs a bit smaller */
+	.tabButton {
+		padding: 0.45rem 0.8rem;
+		font-size: 0.85rem;
+	}
+
+	/* Slightly smaller skill icons/cards */
+	.skillsList {
+		grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+	}
+
+	.skillItem {
+		height: 95px;
+		min-height: 95px;
+	}
+
+	.skillIconWrapper {
+		width: 46px;
+		height: 46px;
+		min-width: 46px;
+		min-height: 46px;
+		max-width: 46px;
+		max-height: 46px;
+	}
 	.previewPanel {
 		width: 100px;
 	}
@@ -537,7 +620,131 @@
 	}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 860px) {
+	/* Available width: 860px - 4rem = ~820px */
+	.activePanel {
+		max-width: 520px;
+		padding: 1rem;
+	}
+
+	.panelHeightWrapper {
+		max-width: 520px;
+	}
+
+	.previewStrip {
+		width: 100px;
+		gap: 3px;
+	}
+
+	.honeyItem {
+		width: 27px;
+		height: 27px;
+		border-radius: 5px;
+	}
+
+	/* Smaller cards and icons */
+	.skillsList {
+		grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+		gap: 0.8rem;
+	}
+
+	.skillItem {
+		height: 90px;
+		min-height: 90px;
+	}
+
+	.skillIconWrapper {
+		width: 42px;
+		height: 42px;
+		min-width: 42px;
+		min-height: 42px;
+		max-width: 42px;
+		max-height: 42px;
+	}
+
+	/* Tabs spacing on small screens - make them smaller to fit one line */
+	.tabsBar {
+		gap: 0.3rem;
+		flex-wrap: nowrap;
+		justify-content: center;
+		overflow-x: auto;
+		padding: 0 0.5rem;
+	}
+
+	.tabButton {
+		padding: 0.35rem 0.6rem;
+		font-size: 0.8rem;
+		flex-shrink: 0;
+		white-space: nowrap;
+	}
+}
+
+@media screen and (max-width: 766px) {
+	/* Ultra responsive for very small screens */
+	.activePanel {
+		max-width: 460px;
+		padding: 0.8rem;
+	}
+
+	.panelHeightWrapper {
+		max-width: 460px;
+	}
+
+	.previewStrip {
+		width: 85px;
+		gap: 2px;
+	}
+
+	.honeyItem {
+		width: 24px;
+		height: 24px;
+		border-radius: 4px;
+	}
+
+	/* Ultra compact skill cards */
+	.skillsList {
+		grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+		gap: 0.6rem;
+		padding: 0.3rem;
+	}
+
+	.skillItem {
+		height: 75px;
+		min-height: 75px;
+		padding: 0.5rem 0.3rem;
+		border-radius: 0.6rem;
+	}
+
+	.skillIconWrapper {
+		width: 35px;
+		height: 35px;
+		min-width: 35px;
+		min-height: 35px;
+		max-width: 35px;
+		max-height: 35px;
+		margin-top: 0.1rem;
+	}
+
+	.skillItem p {
+		font-size: 0.65rem;
+		line-height: 1.1;
+		height: 1.8rem;
+		min-height: 1.8rem;
+		max-height: 1.8rem;
+		padding: 0.05rem 0.1rem;
+	}
+
+	/* Ultra compact tabs */
+	.tabsBar {
+		gap: 0.25rem;
+		padding: 0 0.3rem;
+	}
+
+	.tabButton {
+		padding: 0.3rem 0.5rem;
+		font-size: 0.75rem;
+	}
+
 	/* hide side previews on small screens */
 	.previewPanel {
 		display: none;
@@ -582,7 +789,101 @@
 	}
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 679px) {
+	/* Available width: 679px - 4rem = ~615px */
+	.activePanel {
+		max-width: 420px;
+		padding: 0.9rem;
+	}
+
+	.panelHeightWrapper {
+		max-width: 420px;
+	}
+
+	/* Keep preview strips visible but very compact */
+	.previewStrip {
+		width: 75px;
+		gap: 2px;
+	}
+
+	.honeyItem {
+		width: 25px;
+		height: 25px;
+		border-radius: 4px;
+	}
+}
+
+@media screen and (max-width: 591px) {
+	/* Ultra compact for very small screens */
+	.activePanel {
+		max-width: 280px;
+		padding: 0.7rem;
+	}
+
+	.panelHeightWrapper {
+		max-width: 280px;
+	}
+
+	/* Ultra compact preview strips */
+	.previewStrip {
+		width: 60px;
+		gap: 1px;
+	}
+
+	.honeyItem {
+		width: 20px;
+		height: 20px;
+		border-radius: 3px;
+	}
+
+	/* Micro skill cards */
+	.skillsList {
+		grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+		gap: 0.4rem;
+		padding: 0.2rem;
+	}
+
+	.skillItem {
+		gap: 0;
+		max-height: 10px !important;
+	}
+
+	.skillIconWrapper {
+		width: 28px;
+		height: 28px;
+		min-width: 28px;
+		min-height: 28px;
+		max-width: 28px;
+		max-height: 28px;
+		margin-top: 0.05rem;
+	}
+
+	.skillItem p {
+		font-size: 0.55rem;
+		line-height: 1;
+		height: 1.4rem;
+		min-height: 1.4rem;
+		max-height: 1.4rem;
+		padding: 0.02rem 0.05rem;
+	}
+
+	/* Micro tabs */
+	.tabsBar {
+		gap: 0.2rem;
+		flex-wrap: nowrap;
+		justify-content: center;
+		overflow-x: auto;
+		padding: 0 0.2rem;
+	}
+
+	.tabButton {
+		padding: 0.25rem 0.4rem;
+		font-size: 0.7rem;
+		flex-shrink: 0;
+		white-space: nowrap;
+	}
+
+	/* Container adjustments */
 	.allSkills {
 		padding: 1.5rem 0.5rem;
 		gap: 1.5rem;
@@ -596,39 +897,6 @@
 		grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 	}
 
-	.skillItem {
-		padding: 0.6rem 0.4rem;
-		height: 90px;
-		min-height: 90px;
-	}
-
-	.skillIconWrapper {
-		width: 40px;
-		height: 40px;
-		min-width: 40px;
-		min-height: 40px;
-		max-width: 40px;
-		max-height: 40px;
-		margin-top: 0.1rem;
-	}
-
-	.skillItem p {
-		font-size: 0.7rem;
-		line-height: 1.2;
-		height: 2.1rem;
-		min-height: 2.1rem;
-		max-height: 2.1rem;
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		text-overflow: ellipsis;
-		word-break: keep-all;
-		overflow-wrap: normal;
-		hyphens: none;
-		margin-bottom: 0;
-		padding: 0.1rem 0.1rem;
-	}
-
 	.certificationCard {
 		padding: 1rem;
 	}
@@ -639,6 +907,116 @@
 		height: 75vh;
 		max-height: 600px;
 		border-radius: 0.5rem;
+	}
+}
+
+@media screen and (max-width: 415px) {
+	/* Ultra small for iPhone 8 and below */
+	.activePanel {
+		max-width: 240px;
+		padding: 0.5rem;
+	}
+
+	.panelHeightWrapper {
+		max-width: 240px;
+	}
+
+	/* Ultra compact preview strips */
+	.previewStrip {
+		width: 50px;
+		gap: 1px;
+	}
+
+	.honeyItem {
+		width: 18px;
+		height: 18px;
+		border-radius: 3px;
+	}
+
+	/* Nano skill cards */
+	.skillsList {
+		grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+		gap: 0.3rem;
+		padding: 0.1rem;
+	}
+
+	.skillItem {
+		gap: 0;
+		padding: 0.1rem;
+		border-radius: 0.3rem;
+		min-height: 60px;
+	}
+
+	.skillIconWrapper {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		max-width: 24px;
+		max-height: 24px;
+		margin-top: 0.02rem;
+
+		border: 1px solid green;
+	}
+
+	.skillItem p {
+		font-size: 0.5rem;
+		line-height: 0.9;
+		height: 1.2rem;
+		min-height: 1.2rem;
+		max-height: 1.2rem;
+		padding: 0.01rem 0.03rem;
+	}
+
+	/* Nano tabs */
+	.tabsBar {
+		gap: 0.15rem;
+		flex-wrap: nowrap;
+		justify-content: center;
+		overflow-x: auto;
+		padding: 0 0.15rem;
+	}
+
+	.tabButton {
+		padding: 0.2rem 0.3rem;
+		font-size: 0.65rem;
+		flex-shrink: 0;
+		white-space: nowrap;
+	}
+
+	/* Container adjustments */
+	.allSkills {
+		padding: 1rem 0.3rem;
+		gap: 1rem;
+	}
+
+	.allSkills h3 {
+		font-size: 1.5rem;
+	}
+
+	.certificationsGrid {
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+		gap: 0.8rem;
+	}
+
+	.certificationCard {
+		padding: 0.8rem;
+	}
+
+	.categoryTitle {
+		font-size: 1rem;
+	}
+
+	.certificationsTitle {
+		font-size: 1.2rem;
+	}
+
+	/* Modal responsive adjustments for ultra small */
+	.modal {
+		width: 99vw;
+		height: 70vh;
+		max-height: 500px;
+		border-radius: 0.3rem;
 	}
 }
 
