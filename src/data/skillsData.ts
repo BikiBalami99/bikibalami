@@ -66,56 +66,55 @@ export const certifications = [
 		provider: "Codecademy",
 		image: "/assets/certificates/codecademy/Front_End_Engineer_Path.png",
 		description:
-			"Comprehensive frontend development curriculum covering modern web technologies, responsive design, and interactive user interfaces.",
+			"HTML/CSS, JavaScript, React, TypeScript, Git, testing, accessibility, and projects.",
 	},
 	{
 		title: "Next.js Course",
 		provider: "Codecademy",
 		image: "/assets/certificates/codecademy/Next.jpg",
 		description:
-			"Mastered Next.js framework including App Router, Server Components, and full-stack React development patterns.",
+			"App Router, SSR/SSG, routing, data fetching, API routes, middleware, deployment.",
 	},
 	{
 		title: "React Development",
 		provider: "Codecademy",
 		image: "/assets/certificates/codecademy/React.jpg",
 		description:
-			"Advanced React concepts including hooks, state management, component architecture, and modern development practices.",
+			"Hooks, state/effects, props, context, routing, forms, performance patterns.",
 	},
 	{
 		title: "Mastering TypeScript",
 		provider: "Udemy",
 		image: "/assets/certificates/udemy/Mastering TypeScript.jpg",
 		description:
-			"Deep dive into TypeScript's type system, advanced features, and integration with modern JavaScript frameworks.",
+			"Advanced types, generics, utility types, decorators, tsconfig, tooling, and React usage.",
 	},
 	{
 		title: "TypeScript Fundamentals",
 		provider: "Codecademy",
 		image: "/assets/certificates/codecademy/TypeScript.jpg",
 		description:
-			"Core TypeScript concepts including type annotations, interfaces, generics, and type-safe development workflows.",
+			"Types, interfaces, unions, narrowing, generics, modules, and type‑safe workflows.",
 	},
 	{
 		title: "Git and GitHub",
 		provider: "Codecademy",
 		image: "/assets/certificates/codecademy/Git and Github.jpg",
 		description:
-			"Version control mastery including Git workflows, branching strategies, and collaborative development practices.",
+			"CLI Git, branching/merging, rebasing, PRs, issues, workflows, and collaboration.",
 	},
 	{
 		title: "Figma Advanced Design",
 		provider: "Udemy",
 		image: "/assets/certificates/udemy/Figma Advanced from BYOL.jpg",
 		description:
-			"Advanced Figma techniques for UI/UX design, prototyping, design systems, and collaborative design workflows.",
+			"Components/variants, Auto Layout, design systems, prototyping, handoff, and collaboration.",
 	},
 	{
 		title: "Bachelor's Degree",
 		provider: "Temple University Japan",
 		image: "/assets/certificates/TUJ/Undergrad.jpg",
-		description:
-			"Dual degree in Computer Science and Art with focus on Graphic Design, providing strong technical and creative foundations.",
+		description: "B.A. in Art (Graphic Design) with a Computer Science minor.",
 	},
 ];
 
