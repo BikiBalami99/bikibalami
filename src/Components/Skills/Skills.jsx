@@ -22,12 +22,25 @@ const Skills = () => {
 	const [selectedCertIndex, setSelectedCertIndex] = useState(0);
 	const dialogRef = useRef(null);
 	const [direction, setDirection] = useState(0); // -1: left, 0: none, 1: right
+	const contentRef = useRef(null);
+	const [panelHeight, setPanelHeight] = useState("auto");
 
 	// Improved transitions with direction detection
 	const prevActiveIdx = useRef(activeIdx);
 	useEffect(() => {
 		setDirection(activeIdx > prevActiveIdx.current ? 1 : -1);
 		prevActiveIdx.current = activeIdx;
+	}, [activeIdx]);
+
+	// Smooth height transition of the active panel
+	useEffect(() => {
+		if (!contentRef.current) return;
+		const node = contentRef.current;
+		const update = () => setPanelHeight(node.getBoundingClientRect().height);
+		const observer = new ResizeObserver(() => update());
+		observer.observe(node);
+		update();
+		return () => observer.disconnect();
 	}, [activeIdx]);
 
 	function openDialog(certIndex) {
@@ -80,28 +93,28 @@ const Skills = () => {
 
 				{/* Active Panel with vertical previews and masked fades */}
 				<div className={styles.skillsWrapper}>
-					<div
-						className={`${styles.activePanel} ${
-							direction === 1
-								? styles.slideInRight
-								: direction === -1
-								? styles.slideInLeft
-								: ""
-						}`}
-					>
-						{/* Left vertical preview */}
-						<PreviewStrip side="left" categories={leftCategories} activeIdx={activeIdx} />
+					<div className={styles.panelHeightWrapper} style={{ height: panelHeight }}>
+						<div
+							ref={contentRef}
+							key={activeIdx}
+							className={`${styles.activePanel} ${
+								direction === 1
+									? styles.slideInRight
+									: direction === -1
+									? styles.slideInLeft
+									: ""
+							}`}
+						>
+							{/* Left vertical preview */}
+							<PreviewStrip side="left" categories={leftCategories} />
 
-						{/* Active centered panel */}
-						<h4 className={styles.categoryTitle}>{categoryOrder[activeIdx].label}</h4>
-						<SkillsList skills={allSkills[categoryOrder[activeIdx].key]} />
+							{/* Active centered panel */}
+							<h4 className={styles.categoryTitle}>{categoryOrder[activeIdx].label}</h4>
+							<SkillsList skills={allSkills[categoryOrder[activeIdx].key]} />
 
-						{/* Right vertical preview */}
-						<PreviewStrip
-							side="right"
-							categories={rightCategories}
-							activeIdx={activeIdx}
-						/>
+							{/* Right vertical preview */}
+							<PreviewStrip side="right" categories={rightCategories} />
+						</div>
 					</div>
 				</div>
 

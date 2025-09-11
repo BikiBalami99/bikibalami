@@ -80,6 +80,45 @@
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Height transition wrapper for the panel */
+.panelHeightWrapper {
+	width: 100%;
+	max-width: 780px;
+	overflow: visible;
+	transition: height 300ms ease;
+}
+
+/* Slide/fade in depending on tab navigation direction */
+.slideInRight {
+	animation: fadeSlideInRight 300ms ease both;
+}
+
+.slideInLeft {
+	animation: fadeSlideInLeft 300ms ease both;
+}
+
+@keyframes fadeSlideInRight {
+	0% {
+		opacity: 0;
+		transform: translateX(12px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes fadeSlideInLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-12px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
 .categoryTitle {
 	font-size: 1.5rem;
 	color: var(--primary-orange);
@@ -220,7 +259,6 @@
 	background: rgba(255, 255, 255, 0.03);
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	transition: all 0.3s ease;
-	animation: popIn 0.5s ease-out;
 }
 
 .honeyItem:hover {
@@ -238,6 +276,37 @@
 
 .honeyItem:hover img {
 	filter: grayscale(0);
+}
+
+/* Enter/exit animations with optional stagger via animation-delay */
+.honeyEnter {
+	animation: honey-fade-in 250ms ease both;
+}
+
+.honeyExit {
+	animation: honey-fade-out 250ms ease both;
+}
+
+@keyframes honey-fade-in {
+	0% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes honey-fade-out {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
 }
 
 /* removed mask classes by merging into side classes */
