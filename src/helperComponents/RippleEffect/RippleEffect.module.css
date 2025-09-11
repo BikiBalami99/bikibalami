@@ -3,11 +3,11 @@
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
-	border: 1px solid rgba(255, 255, 255, 0.7);
+	border: 1px solid rgba(255, 255, 255);
 	background: transparent;
 	pointer-events: none;
 	z-index: 9999;
-	animation: rippleExpand 600ms ease-out forwards;
+	animation: rippleExpand 400ms ease-out forwards;
 	transform: scale(0);
 }
 
@@ -17,8 +17,8 @@
 		opacity: 1;
 		border-width: 1px;
 	}
-	50% {
-		opacity: 0.6;
+	20% {
+		opacity: 0.5;
 		border-width: 0.8px;
 	}
 	100% {
