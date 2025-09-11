@@ -185,26 +185,12 @@
 	box-sizing: border-box;
 }
 
-/* Preview Panels */
-.previewPanel {
+/* Preview strip (merged panel + honeycomb container) */
+.previewStrip {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	transition: opacity 0.3s ease-in-out;
-}
-
-.previewLeft {
-	right: 102%;
-	min-height: min-content;
-}
-
-.previewRight {
-	left: 102%;
-	min-height: min-content;
-}
-
-/* Honeycomb Vertical */
-.honeycombVertical {
 	display: flex;
 	align-items: center;
 	min-height: min-content;
@@ -212,6 +198,20 @@
 	gap: 8px;
 	width: 200px;
 }
+
+.previewLeftSide {
+	right: 102%;
+	min-height: min-content;
+	justify-content: flex-end;
+}
+
+.previewRightSide {
+	left: 102%;
+	min-height: min-content;
+	justify-content: flex-start;
+}
+
+/* Honeycomb items */
 
 .honeyItem {
 	width: 36px;
@@ -240,15 +240,7 @@
 	filter: grayscale(0);
 }
 
-.honeyMaskLeft {
-	left: 0;
-	justify-content: flex-end;
-}
-
-.honeyMaskRight {
-	right: 0;
-	justify-content: flex-start;
-}
+/* removed mask classes by merging into side classes */
 
 /* Certifications Section */
 .certificationsSection {

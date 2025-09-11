@@ -64,6 +64,8 @@ const Skills = () => {
 			<div className={styles.allSkills}>
 				<h3>My Technical Arsenal</h3>
 
+				<h4 className={styles.certificationsTitle}>Skills</h4>
+
 				{/* Tabs */}
 				<div className={styles.tabsBar}>
 					{categoryOrder.map((cat, idx) => (
@@ -92,19 +94,17 @@ const Skills = () => {
 					>
 						{/* Left vertical preview */}
 						{leftCategories.length > 0 && (
-							<div className={`${styles.previewPanel} ${styles.previewLeft}`}>
-								<div className={styles.honeycombVertical + " " + styles.honeyMaskLeft}>
-									{leftCategories
-										.flatMap((c) => allSkills[c.key])
-										.map((skill, i) => (
-											<div
-												className={styles.honeyItem}
-												key={`L-${activeIdx}-${skill.title}-${i}`}
-											>
-												<img src={skill.icon} alt="" />
-											</div>
-										))}
-								</div>
+							<div className={`${styles.previewStrip} ${styles.previewLeftSide}`}>
+								{leftCategories
+									.flatMap((c) => allSkills[c.key])
+									.map((skill, i) => (
+										<div
+											className={styles.honeyItem}
+											key={`L-${activeIdx}-${skill.title}-${i}`}
+										>
+											<img src={skill.icon} alt="" />
+										</div>
+									))}
 							</div>
 						)}
 
@@ -126,19 +126,17 @@ const Skills = () => {
 
 						{/* Right vertical preview */}
 						{rightCategories.length > 0 && (
-							<div className={`${styles.previewPanel} ${styles.previewRight}`}>
-								<div className={styles.honeycombVertical + " " + styles.honeyMaskRight}>
-									{rightCategories
-										.flatMap((c) => allSkills[c.key])
-										.map((skill, i) => (
-											<div
-												className={styles.honeyItem}
-												key={`R-${activeIdx}-${skill.title}-${i}`}
-											>
-												<img src={skill.icon} alt="" />
-											</div>
-										))}
-								</div>
+							<div className={`${styles.previewStrip} ${styles.previewRightSide}`}>
+								{rightCategories
+									.flatMap((c) => allSkills[c.key])
+									.map((skill, i) => (
+										<div
+											className={styles.honeyItem}
+											key={`R-${activeIdx}-${skill.title}-${i}`}
+										>
+											<img src={skill.icon} alt="" />
+										</div>
+									))}
 							</div>
 						)}
 					</div>
