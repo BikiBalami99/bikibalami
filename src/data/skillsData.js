@@ -9,22 +9,22 @@ export const allSkills = {
 		{ title: "CSS3", icon: "/assets/icons/FrontEndDevelopment/CSS.jpg" },
 		{ title: "Redux", icon: "/assets/icons/FrontEndDevelopment/redux.jpg" },
 		{ title: "UI/UX Design", icon: "/assets/icons/GraphicDesign/Figma.jpeg" },
-		{ title: "REST APIs", icon: "/assets/icons/FrontEndDevelopment/NextJs.jpg" }, // placeholder
+		{ title: "REST APIs", icon: "/assets/icons/FrontEndDevelopment/rest-apis.jpg" }, // updated
 	],
 	backend: [
-		{ title: "Node.js", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
-		{ title: "Express.js", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
-		{ title: "PostgreSQL", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
-		{ title: "Prisma", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "Node.js", icon: "/assets/icons/Backend/nodejs.webp" },
+		{ title: "Express.js", icon: "/assets/icons/Backend/ExpressJS.webp" },
+		{ title: "PostgreSQL", icon: "/assets/icons/Backend/PostgreSQL.webp" },
+		{ title: "Prisma", icon: "/assets/icons/Backend/Prisma.webp" },
 		{ title: "Python", icon: "/assets/icons/ComputerScience/Python.jpg" },
 	],
 	devops: [
-		{ title: "AWS Amplify", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
-		{ title: "AWS Cognito", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
-		{ title: "AWS DynamoDB", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
-		{ title: "AWS Lambda", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
-		{ title: "AWS API Gateway", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
-		{ title: "AWS S3", icon: "/assets/icons/ComputerScience/Python.jpg" }, // placeholder
+		{ title: "AWS Amplify", icon: "/assets/icons/DevOps/AWS-Amplify.webp" },
+		{ title: "AWS Cognito", icon: "/assets/icons/DevOps/AWS-Cognito.webp" },
+		{ title: "AWS DynamoDB", icon: "/assets/icons/DevOps/AWS-DynamoDB.webp" },
+		{ title: "AWS Lambda", icon: "/assets/icons/DevOps/AWS-Lambda.webp" },
+		{ title: "AWS API Gateway", icon: "/assets/icons/DevOps/AWS-API-Gateway.webp" },
+		{ title: "AWS S3", icon: "/assets/icons/DevOps/AWS-S3.webp" },
 	],
 	tools: [
 		{ title: "Git/GitHub", icon: "/assets/icons/FrontEndDevelopment/git.jpg" },
@@ -49,13 +49,13 @@ export const allSkills = {
 		{ title: "Computer Systems", icon: "/assets/icons/ComputerScience/C.jpg" },
 		{
 			title: "Probability & Statistics",
-			icon: "/assets/icons/ComputerScience/Python.jpg",
+			icon: "/assets/icons/ComputerScience/Probability-and-statistics.png",
 		},
 		{
 			title: "Program Design & Abstraction",
-			icon: "/assets/icons/ComputerScience/Python.jpg",
+			icon: "/assets/icons/ComputerScience/java.jpg",
 		},
-		{ title: "Calculus I/II", icon: "/assets/icons/ComputerScience/Data-structures.jpg" },
+		{ title: "Calculus I/II", icon: "/assets/icons/ComputerScience/calculus.webp" },
 	],
 };
 
