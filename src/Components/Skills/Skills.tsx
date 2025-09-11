@@ -109,7 +109,6 @@ const Skills = () => {
 							<PreviewStrip side="left" categories={leftCategories} />
 
 							{/* Active centered panel */}
-							<h4 className={styles.categoryTitle}>{categoryOrder[activeIdx].label}</h4>
 							<SkillsList skills={allSkills[categoryOrder[activeIdx].key]} />
 
 							{/* Right vertical preview */}
