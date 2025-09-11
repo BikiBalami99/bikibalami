@@ -5,8 +5,8 @@ import styles from "./Skills.module.css";
 import Tabs from "./Tabs/Tabs";
 import PreviewStrip from "./PreviewStrip/PreviewStrip";
 import SkillsList from "./SkillsList/SkillsList";
-import Certifications from "./Certifications/Certifications";
-import CertificationModal from "./CertificationModal/CertificationModal";
+import CertificationsCarousel from "./CertificationsCarousel/CertificationsCarousel";
+import CertificationsDialogCarousel from "./CertificationsDialogCarousel/CertificationsDialogCarousel";
 
 const Skills = () => {
 	const categoryOrder: Array<{ key: keyof typeof allSkills; label: string }> = [
@@ -17,12 +17,12 @@ const Skills = () => {
 		{ key: "computerScience", label: "Comp Sci" },
 	];
 	const [activeIdx, setActiveIdx] = useState(0);
+	const [direction, setDirection] = useState(0); // -1: left, 0: none, 1: right
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 	const [isClosing, setIsClosing] = useState(false);
 	const [selectedCertIndex, setSelectedCertIndex] = useState(0);
-	const dialogRef = useRef<HTMLDialogElement | null>(null);
-	const [direction, setDirection] = useState(0); // -1: left, 0: none, 1: right
 	const contentRef = useRef(null);
+	const dialogRef = useRef<HTMLDialogElement | null>(null);
 	const [panelHeight, setPanelHeight] = useState<string | number>("auto");
 
 	// Improved transitions with direction detection
@@ -43,13 +43,14 @@ const Skills = () => {
 		return () => observer.disconnect();
 	}, [activeIdx]);
 
-	function openDialog(certIndex) {
+	// Dialog functions
+	function openCertDialog(certIndex: number) {
 		setSelectedCertIndex(certIndex);
 		setIsDialogOpen(true);
 		setIsClosing(false);
 	}
 
-	function closeDialog() {
+	function closeCertDialog() {
 		setIsClosing(true);
 		setTimeout(() => {
 			setIsDialogOpen(false);
@@ -57,9 +58,10 @@ const Skills = () => {
 		}, 200);
 	}
 
+	// Handle click outside to close
 	const handleDialogClick = (e: React.MouseEvent<HTMLDialogElement>) => {
 		if (e.target === dialogRef.current) {
-			closeDialog();
+			closeCertDialog();
 		}
 	};
 
@@ -117,19 +119,41 @@ const Skills = () => {
 					</div>
 				</div>
 
-				{/* Certifications Collage */}
-				<Certifications certifications={certifications} onSelect={openDialog} />
-
-				{/* Fullscreen Modal */}
-				<CertificationModal
-					isOpen={isDialogOpen}
-					isClosing={isClosing}
-					dialogRef={dialogRef}
-					certification={certifications[selectedCertIndex]}
-					onClose={closeDialog}
-					handleDialogClick={handleDialogClick}
-				/>
+				{/* Certifications Carousel */}
+				<div className={styles.certificationsSection}>
+					<h4 className={styles.certificationsTitle}>Certifications & Education</h4>
+					<CertificationsCarousel
+						certifications={certifications}
+						onCertClick={openCertDialog}
+					/>
+				</div>
 			</div>
+
+			{/* Certifications Dialog */}
+			{isDialogOpen && (
+				<dialog
+					ref={dialogRef}
+					className={`${styles.modal} ${isClosing ? styles.closing : ""}`}
+					onClick={handleDialogClick}
+				>
+					<div>
+						<CertificationsDialogCarousel
+							certifications={certifications}
+							startingIndex={selectedCertIndex}
+						/>
+					</div>
+					<form method="dialog">
+						<button
+							className={`circleButton ${styles.modalCloseButton}`}
+							type="button"
+							onClick={closeCertDialog}
+							style={{ width: "40px" }}
+						>
+							<p> &times;</p>
+						</button>
+					</form>
+				</dialog>
+			)}
 		</section>
 	);
 };
