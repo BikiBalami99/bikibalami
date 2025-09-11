@@ -58,3 +58,41 @@
 .buttons button:hover {
 	opacity: 1;
 }
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+	.imageContainer {
+		padding: 0.5rem;
+	}
+
+	.image {
+		max-width: 95%;
+		max-height: 95%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.imageContainer {
+		padding: 0.25rem;
+	}
+
+	.image {
+		max-width: 90%;
+		max-height: 90%;
+	}
+
+	.buttons {
+		padding: 0.5rem;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.imageContainer {
+		padding: 0.1rem;
+	}
+
+	.image {
+		max-width: 85%;
+		max-height: 85%;
+	}
+}
