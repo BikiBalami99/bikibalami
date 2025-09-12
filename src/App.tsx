@@ -7,6 +7,7 @@ import Skills from "./Components/Skills/Skills";
 import Footer from "./Components/Footer/Footer";
 import LoadingScreen from "./helperComponents/LoadingScreen/LoadingScreen";
 import RippleEffect from "./helperComponents/RippleEffect/RippleEffect";
+import AnimatedSection from "./helperComponents/AnimatedSection/AnimatedSection";
 
 import "./global.css";
 
@@ -75,11 +76,19 @@ function App() {
 			<Navbar />
 			<main>
 				<Hero />
-				<Skills />
-				<Projects />
-				<Art />
+				<AnimatedSection delay={100}>
+					<Skills />
+				</AnimatedSection>
+				<AnimatedSection delay={200}>
+					<Projects />
+				</AnimatedSection>
+				<AnimatedSection delay={300}>
+					<Art />
+				</AnimatedSection>
 			</main>
-			<Footer />
+			<AnimatedSection delay={400}>
+				<Footer />
+			</AnimatedSection>
 		</div>
 	);
 }
