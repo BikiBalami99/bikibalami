@@ -1,17 +1,33 @@
-const projects = [
+type Project = {
+	id: string;
+	URL: string;
+	background: string;
+	title: string;
+	description: string;
+	thumbnail: string;
+	logo?: string;
+	screenshots?: string[];
+	videos?: string[];
+	videoThumbnails?: string[];
+	technologies?: string[];
+	features?: string[];
+};
+
+const projects: Project[] = [
 	{
 		id: "1",
 		title: "Pachiku",
 		description:
 			"A complete text-based social network where users can post, like, comment, and share content with both authenticated and anonymous access. Built with Next.js 14 App Router, featuring Server Components, Server Actions, and optimized database architecture.",
-		thumbnail: "/assets/images/ProjectThumbnails/pachiku-screenshot.webp",
+		thumbnail: "/assets/images/ProjectThumbnails/pachiku/pachiku-screenshot.webp",
+		logo: "/assets/images/ProjectThumbnails/pachiku/logo.webp",
 		background: "#ae5cda",
 		URL: "https://pachiku.vercel.app",
 		screenshots: [
-			"/assets/images/ProjectThumbnails/pachiku-screenshot.webp",
-			"/assets/images/ProjectThumbnails/pachiku-screenshot.webp",
-			"/assets/images/ProjectThumbnails/pachiku-screenshot.webp",
-			"/assets/images/ProjectThumbnails/pachiku-screenshot.webp",
+			"/assets/images/ProjectThumbnails/pachiku/pachiku-screenshot.webp",
+			"/assets/images/ProjectThumbnails/pachiku/screenshot1.png",
+			"/assets/images/ProjectThumbnails/pachiku/screenshot2.png",
+			"/assets/images/ProjectThumbnails/pachiku/screenshot3.png",
 		],
 		technologies: [
 			"Next.js 14",
@@ -36,14 +52,22 @@ const projects = [
 		title: "DoorsOS",
 		description:
 			"A fully functional macOS-inspired web operating system with complete desktop environment simulation. Features draggable/resizable windows, dock, menu bar, and built-in applications including Notes, Settings, and JavaScript Playground.",
-		thumbnail: "/assets/images/ProjectThumbnails/doorsos-screenshot.webp",
+		thumbnail: "/assets/images/ProjectThumbnails/doorsOS/doorsos-screenshot.webp",
 		background: "#0ea5e9",
 		URL: "https://doorsos.vercel.app/",
 		screenshots: [
-			"/assets/images/ProjectThumbnails/doorsos-screenshot.webp",
-			"/assets/images/ProjectThumbnails/doorsos-screenshot.webp",
-			"/assets/images/ProjectThumbnails/doorsos-screenshot.webp",
-			"/assets/images/ProjectThumbnails/doorsos-screenshot.webp",
+			"/assets/images/ProjectThumbnails/doorsOS/doorsos-screenshot.webp",
+			"/assets/images/ProjectThumbnails/doorsOS/screenshot-1.png",
+		],
+		videos: [
+			"/assets/images/ProjectThumbnails/doorsOS/video-1.mp4",
+			"/assets/images/ProjectThumbnails/doorsOS/video-2.mp4",
+			"/assets/images/ProjectThumbnails/doorsOS/video-3.mp4",
+		],
+		videoThumbnails: [
+			"/assets/images/ProjectThumbnails/doorsOS/video-1.gif",
+			"/assets/images/ProjectThumbnails/doorsOS/video-2.gif",
+			"/assets/images/ProjectThumbnails/doorsOS/video-3.gif",
 		],
 		technologies: ["Next.js", "TypeScript", "React", "CSS3", "HTML5", "JavaScript"],
 		features: [

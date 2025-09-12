@@ -10,8 +10,10 @@ type Project = {
 	title: string;
 	description: string;
 	thumbnail: string;
+	logo?: string;
 	screenshots?: string[];
 	videos?: string[];
+	videoThumbnails?: string[];
 	technologies?: string[];
 	features?: string[];
 };
@@ -144,8 +146,8 @@ const ProjectsCarousel = ({ arrayOfProjects }: { arrayOfProjects: Project[] }) =
 						onClick={() => handleProjectClick(data)}
 					>
 						<div className={styles.cardHeader}>
-							<div className={styles.appIcon} style={{ background: data.background }}>
-								<img src={data.thumbnail} alt={`${data.title} icon`} />
+							<div className={styles.appIcon}>
+								<img src={data.logo ?? data.thumbnail} alt={`${data.title} icon`} />
 							</div>
 							<div className={styles.appInfo}>
 								<h4 className={styles.cardTitle}>{data.title}</h4>

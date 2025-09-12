@@ -223,14 +223,11 @@
 /* Image Modal */
 .imageModal {
 	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
+	margin: auto;
+
 	background: rgba(0, 0, 0, 0.95);
 	z-index: 2000;
 	border: none;
-	padding: 0;
 	animation: fadeIn 200ms ease-out;
 }
 

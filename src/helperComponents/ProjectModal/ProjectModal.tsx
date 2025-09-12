@@ -11,8 +11,10 @@ type Project = {
 	title: string;
 	description: string;
 	thumbnail: string;
+	logo?: string;
 	screenshots?: string[];
 	videos?: string[];
+	videoThumbnails?: string[];
 	technologies?: string[];
 	features?: string[];
 };
@@ -30,8 +32,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 	const dialogRef = useRef<HTMLDialogElement | null>(null);
 	const imageDialogRef = useRef<HTMLDialogElement | null>(null);
 
-	// Combine screenshots and videos for the media carousel
-	const allMedia = [...(project?.screenshots || []), ...(project?.videos || [])];
+	// Only use videos for now - GIFs in preview, MP4s in modal
+	const videos = project?.videos || [];
+	const videoThumbnails = project?.videoThumbnails || videos;
+
+	const allMedia = videoThumbnails;
+	const allMediaForModal = videos;
 
 	// Reset state when modal opens/closes
 	useEffect(() => {
@@ -72,6 +78,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 		if (e.target === dialogRef.current) {
 			handleClose();
 		}
+	};
+
+	const isVideo = (path: string) => {
+		return path.match(/\.(mp4|webm|ogg|mov|avi)$/i);
 	};
 
 	const handleImageClick = (index: number) => {
@@ -142,11 +152,20 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 											className={styles.mediaItem}
 											onClick={() => handleImageClick(index)}
 										>
-											<img
-												src={media}
-												alt={`${project.title} screenshot ${index + 1}`}
-												className={styles.mediaPreview}
-											/>
+											{isVideo(media) ? (
+												<video
+													src={media}
+													className={styles.mediaPreview}
+													preload="metadata"
+													muted
+												/>
+											) : (
+												<img
+													src={media}
+													alt={`${project.title} screenshot ${index + 1}`}
+													className={styles.mediaPreview}
+												/>
+											)}
 										</div>
 									))}
 								</div>
@@ -195,7 +214,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 					}}
 				>
 					<div className={styles.imageModalContent}>
-						<ArtDialogCarousel arrayOfArt={allMedia} startingIndex={selectedImageIndex} />
+						<ArtDialogCarousel
+							arrayOfArt={allMediaForModal}
+							startingIndex={selectedImageIndex}
+						/>
 						<button
 							className={`circleButton ${styles.imageModalClose}`}
 							onClick={handleImageModalClose}

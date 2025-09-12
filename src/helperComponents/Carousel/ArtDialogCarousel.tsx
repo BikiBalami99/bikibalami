@@ -11,6 +11,10 @@ const ArtDialogCarousel = ({
 }) => {
 	const [currentImageIndex, setCurrentImageIndex] = useState(startingIndex);
 
+	const isVideo = (path: string) => {
+		return path.match(/\.(mp4|webm|ogg|mov|avi)$/i);
+	};
+
 	// Update currentImageIndex when startingIndex changes
 	useEffect(() => {
 		setCurrentImageIndex(startingIndex);
@@ -36,7 +40,18 @@ const ArtDialogCarousel = ({
 			>
 				{arrayOfArt.map((artPath, index) => (
 					<div key={index} className={styles.imageContainer}>
-						<img src={artPath} className={styles.image} alt={`Artwork ${index + 1}`} />
+						{isVideo(artPath) ? (
+							<video
+								src={artPath}
+								className={styles.image}
+								controls
+								autoPlay
+								loop
+								muted
+							/>
+						) : (
+							<img src={artPath} className={styles.image} alt={`Artwork ${index + 1}`} />
+						)}
 					</div>
 				))}
 			</div>
