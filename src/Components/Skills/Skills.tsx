@@ -147,7 +147,6 @@ const Skills = () => {
 							className={`circleButton ${styles.modalCloseButton}`}
 							type="button"
 							onClick={closeCertDialog}
-							style={{ width: "40px" }}
 						>
 							<p> &times;</p>
 						</button>

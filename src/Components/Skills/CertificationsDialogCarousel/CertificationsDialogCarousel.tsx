@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./CertificationsDialogCarousel.module.css";
 
 const CertificationsDialogCarousel = ({
@@ -58,22 +59,18 @@ const CertificationsDialogCarousel = ({
 				<div className={styles.buttons}>
 					<button
 						onClick={handlePreviousCert}
-						className="circleButton"
-						style={currentCertIndex === 0 ? { opacity: "0%" } : undefined}
+						className={styles.navButton}
+						disabled={currentCertIndex === 0}
 					>
-						<p>&larr;</p>
+						<ChevronLeft size={20} color="black" />
 					</button>
 
 					<button
 						onClick={handleNextCert}
-						className="circleButton"
-						style={
-							currentCertIndex === certifications.length - 1
-								? { opacity: "0%" }
-								: undefined
-						}
+						className={styles.navButton}
+						disabled={currentCertIndex === certifications.length - 1}
 					>
-						<p> &rarr;</p>
+						<ChevronRight size={20} color="black" />
 					</button>
 				</div>
 			)}

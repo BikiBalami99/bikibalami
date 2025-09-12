@@ -107,14 +107,40 @@
 	pointer-events: none;
 }
 
-.buttons button {
-	opacity: 0.95;
-	transition: opacity 100ms ease-in-out;
+.navButton {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background-color: #f4a914;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: background-color 200ms ease-in-out, transform 100ms ease-in-out;
 	pointer-events: auto;
+	color: black;
+	opacity: 0.9;
 }
 
-.buttons button:hover {
+.navButton svg {
+	color: black;
+}
+
+.navButton:hover:not(:disabled),
+.navButton:focus-visible:not(:disabled) {
+	background-color: #f4ce14;
 	opacity: 1;
+}
+
+.navButton:disabled {
+	opacity: 0.3;
+	cursor: not-allowed;
+	background-color: #8e8e8e;
+}
+
+.navButton:active:not(:disabled) {
+	transform: scale(0.9);
 }
 
 /* Responsive Design */
@@ -144,6 +170,11 @@
 	.certDescription {
 		font-size: 0.85rem;
 	}
+
+	.navButton {
+		width: 44px;
+		height: 44px;
+	}
 }
 
 @media screen and (max-width: 480px) {
@@ -170,5 +201,14 @@
 
 	.certDescription {
 		font-size: 0.8rem;
+	}
+
+	.navButton {
+		width: 40px;
+		height: 40px;
+	}
+
+	.buttons {
+		padding: 0.5rem;
 	}
 }
