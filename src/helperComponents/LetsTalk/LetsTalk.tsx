@@ -54,53 +54,115 @@ const LetsTalk = ({ onClose }: { onClose: () => void }) => {
 	}
 
 	return (
-		<form
-			className={styles.letsTalkForm}
-			onSubmit={handleSubmit}
-			data-loading={isLoading}
-			data-success={isSuccess}
-			data-error={error ? "true" : "false"}
-			method="POST" // Optional: you can add this to be explicit
-		>
-			<input
-				type="hidden"
-				name="_subject"
-				value="Submission from your portfolio website"
-			/>
-			<input type="hidden" name="_captcha" value="false" />
-			<input type="hidden" name="_next" value="#"></input>
-			<input
-				disabled={formDisabled}
-				id="name"
-				type="text"
-				name="name"
-				required
-				placeholder="Full Name"
-			/>
-			<input
-				disabled={formDisabled}
-				id="email"
-				type="email"
-				name="email"
-				required
-				placeholder="Email Address"
-			/>
-			<textarea
-				disabled={formDisabled}
-				placeholder="Your Message"
-				name="message"
-				rows={10}
-				required
-			></textarea>
+		<div className={styles.modalContent}>
+			{/* Header */}
+			<div className={styles.header}>
+				<h2 className={styles.title}>Let's Talk</h2>
+				<p className={styles.subtitle}>
+					Ready to start your next project? I'd love to hear about your ideas.
+				</p>
+			</div>
 
-			<PrimaryButton
-				buttonModifierClass={{ paddingTop: "3rem", width: "100%" }}
-				textModifierClass={{ fontSize: "1.3rem" }}
-				type="submit"
+			{/* Form */}
+			<form
+				className={styles.form}
+				onSubmit={handleSubmit}
+				data-loading={isLoading}
+				data-success={isSuccess}
+				data-error={error ? "true" : "false"}
+				method="POST"
 			>
-				Send
-			</PrimaryButton>
-		</form>
+				<input
+					type="hidden"
+					name="_subject"
+					value="Submission from your portfolio website"
+				/>
+				<input type="hidden" name="_captcha" value="false" />
+				<input type="hidden" name="_next" value="#"></input>
+
+				<div className={styles.inputGroup}>
+					<label htmlFor="name" className={styles.label}>
+						Full Name
+					</label>
+					<input
+						disabled={formDisabled}
+						id="name"
+						type="text"
+						name="name"
+						required
+						className={styles.input}
+					/>
+				</div>
+
+				<div className={styles.inputGroup}>
+					<label htmlFor="email" className={styles.label}>
+						Email Address
+					</label>
+					<input
+						disabled={formDisabled}
+						id="email"
+						type="email"
+						name="email"
+						required
+						className={styles.input}
+					/>
+				</div>
+
+				<div className={styles.inputGroup}>
+					<label htmlFor="message" className={styles.label}>
+						Your Message
+					</label>
+					<textarea
+						disabled={formDisabled}
+						id="message"
+						name="message"
+						rows={6}
+						required
+						className={styles.textarea}
+						placeholder="Tell me about your project, ideas, or just say hello!"
+					></textarea>
+				</div>
+
+				<PrimaryButton
+					buttonModifierClass={{ paddingTop: "3rem", width: "100%" }}
+					textModifierClass={{ fontSize: "1.3rem" }}
+					type="submit"
+				>
+					Send
+				</PrimaryButton>
+			</form>
+
+			{/* Loading/Success/Error Overlay */}
+			{(isLoading || isSuccess || error) && (
+				<div className={styles.overlay}>
+					<div className={styles.overlayContent}>
+						{isLoading && (
+							<>
+								<div className={styles.spinner}></div>
+								<p className={styles.overlayText}>Sending your message...</p>
+							</>
+						)}
+						{isSuccess && (
+							<>
+								<div className={styles.successIcon}>✓</div>
+								<p className={styles.overlayText}>Thank you for your message!</p>
+								<p className={styles.overlaySubtext}>I'll get back to you soon.</p>
+							</>
+						)}
+						{error && (
+							<>
+								<div className={styles.errorIcon}>✗</div>
+								<p className={styles.overlayText}>Something went wrong</p>
+								<p className={styles.overlaySubtext}>
+									Please email me directly at bikibalami1999@gmail.com or try refreshing
+									the page.
+								</p>
+							</>
+						)}
+					</div>
+				</div>
+			)}
+		</div>
 	);
 };
 

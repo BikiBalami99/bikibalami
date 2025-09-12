@@ -131,7 +131,14 @@ const Hero = () => {
 							? "Preview unavailable. Download below."
 							: "View online or download for offline access."}
 					</p>
-					<PrimaryButton onClick={handleDownloadResume}>Download Resume</PrimaryButton>
+					<PrimaryButton
+						onClick={handleDownloadResume}
+						buttonModifierClass={{
+							maxWidth: "250px",
+						}}
+					>
+						Download Resume
+					</PrimaryButton>
 				</div>
 
 				{!pdfError ? (

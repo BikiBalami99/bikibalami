@@ -108,7 +108,7 @@
 }
 
 .resume {
-	height: 50vh;
+	min-height: 70%;
 	overflow: hidden;
 	border-radius: 1rem;
 }
