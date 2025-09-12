@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./ArtDialogCarousel.module.css";
 
 const ArtDialogCarousel = ({
@@ -44,20 +45,20 @@ const ArtDialogCarousel = ({
 				<div className={styles.buttons}>
 					<button
 						onClick={handlePreviousImage}
-						className="circleButton"
+						className="circleButton leftArrow"
 						style={currentImageIndex === 0 ? { opacity: "0%" } : undefined}
 					>
-						<p>&larr;</p>
+						<ChevronLeft size={20} color="black" />
 					</button>
 
 					<button
 						onClick={handleNextImage}
-						className="circleButton"
+						className="circleButton rightArrow"
 						style={
 							currentImageIndex === arrayOfArt.length - 1 ? { opacity: "0%" } : undefined
 						}
 					>
-						<p> &rarr;</p>
+						<ChevronRight size={20} color="black" />
 					</button>
 				</div>
 			)}

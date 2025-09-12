@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./SkillsCarousel.module.css";
 
 const SkillsCarousel = ({ arrayOfObjects, modifierClass = "" }) => {
@@ -37,22 +38,22 @@ const SkillsCarousel = ({ arrayOfObjects, modifierClass = "" }) => {
 				<div className={styles.buttons}>
 					<button
 						onClick={handlePreviousImage}
-						className={`circleButton`}
+						className={`circleButton leftArrow`}
 						style={currentImageIndex === 0 ? { opacity: "0%" } : undefined}
 					>
-						<p>&larr;</p>
+						<ChevronLeft size={20} color="black" />
 					</button>
 
 					<button
 						onClick={handleNextImage}
-						className={`circleButton`}
+						className={`circleButton rightArrow`}
 						style={
 							currentImageIndex === arrayOfObjects.length - 1
 								? { opacity: "0%" }
 								: undefined
 						}
 					>
-						<p> &rarr;</p>
+						<ChevronRight size={20} color="black" />
 					</button>
 				</div>
 			)}

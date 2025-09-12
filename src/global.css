@@ -162,6 +162,25 @@ a:active {
 	transform: translate(1px, 1px);
 }
 
+.circleButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.circleButton svg {
+	color: black;
+}
+
+/* Intentional positioning for directional arrows */
+.circleButton.leftArrow svg {
+	transform: translateX(-4px);
+}
+
+.circleButton.rightArrow svg {
+	transform: translateX(4px);
+}
+
 @media (hover: none) {
 	.circleButton:hover,
 	.circleButton:active {

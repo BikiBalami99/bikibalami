@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./ProjectsCarousel.module.css";
 
 type Project = {
@@ -134,11 +135,11 @@ const ProjectsCarousel = ({ arrayOfProjects }: { arrayOfProjects: Project[] }) =
 			</div>
 
 			<div className={styles.leftRightButtons}>
-				<button onClick={handleLeftClick} className="circleButton">
-					<p> &larr;</p>
+				<button onClick={handleLeftClick} className="circleButton leftArrow">
+					<ChevronLeft size={20} color="black" />
 				</button>
-				<button onClick={handleRightClick} className="circleButton">
-					<p> &rarr;</p>
+				<button onClick={handleRightClick} className="circleButton rightArrow">
+					<ChevronRight size={20} color="black" />
 				</button>
 			</div>
 		</div>

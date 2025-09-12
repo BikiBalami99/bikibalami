@@ -27,14 +27,14 @@
 		rgba(248, 248, 248, 0.9),
 		rgba(245, 245, 245, 0.95)
 	);
-	border: 1px solid rgba(200, 200, 200, 0.2);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	backdrop-filter: blur(10px);
+
+	border-radius: 32px;
+	background: linear-gradient(219deg, #f4a914 0.69%, #e56e13 99.31%);
+	box-shadow: 0 0 24px 0 rgba(142, 0, 0, 0.3) inset;
 }
 
 .certificationCard:hover {
-	transform: translateY(-6px) scale(1.02);
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	transform: translateY(-6px);
 }
 
 .certImageWrapper {
@@ -73,23 +73,25 @@
 .certTitle {
 	font-size: 1rem;
 	font-weight: 700;
-	color: #1a1a1a;
+	color: #ffffff;
 	margin: 0;
 	line-height: 1.3;
 	transition: color 0.3s ease;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .certProvider {
 	font-size: 0.85rem;
-	color: var(--primary-orange);
+	color: #fff8e1;
 	font-weight: 600;
 	margin: 0;
 	transition: color 0.3s ease;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .certDescription {
 	font-size: 0.8rem;
-	color: #555;
+	color: #f5f5f5;
 	margin: 0;
 	line-height: 1.4;
 	display: -webkit-box;
@@ -97,18 +99,7 @@
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	transition: color 0.3s ease;
-}
-
-.certificationCard:hover .certTitle {
-	color: #000;
-}
-
-.certificationCard:hover .certProvider {
-	color: #e0990f;
-}
-
-.certificationCard:hover .certDescription {
-	color: #444;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .leftRightButtons {
