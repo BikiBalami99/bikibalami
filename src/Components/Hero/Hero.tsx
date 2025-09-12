@@ -13,14 +13,24 @@ const Hero = () => {
 	useEffect(() => {
 		if (isDialogOn) {
 			resumeDialogRef.current?.showModal();
-			// Disable body scroll without hiding elements
+			// Disable body scroll more effectively
 			document.body.style.overflow = "hidden";
+			document.documentElement.style.overflow = "hidden";
 		} else {
 			resumeDialogRef.current?.close();
 			// Re-enable body scroll
 			document.body.style.overflow = "auto";
+			document.documentElement.style.overflow = "auto";
 		}
 	}, [isDialogOn]);
+
+	// Cleanup effect to ensure scroll is restored on unmount
+	useEffect(() => {
+		return () => {
+			document.body.style.overflow = "auto";
+			document.documentElement.style.overflow = "auto";
+		};
+	}, []);
 
 	function handleDownloadResume() {
 		const link = document.createElement("a");

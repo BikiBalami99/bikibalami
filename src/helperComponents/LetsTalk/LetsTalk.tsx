@@ -42,6 +42,9 @@ const LetsTalk = ({ onClose }: { onClose: () => void }) => {
 
 	function handleClose() {
 		setTimeout(() => {
+			// Restore scroll before closing modal
+			document.body.style.overflow = "auto";
+			document.documentElement.style.overflow = "auto";
 			onClose();
 			setIsLoading(false);
 			setIsSuccess(false);

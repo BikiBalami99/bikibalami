@@ -50,10 +50,26 @@ const Art = () => {
 	useEffect(() => {
 		if (isDialogOpen && dialogRef.current) {
 			dialogRef.current.showModal();
-		} else if (dialogRef.current) {
-			dialogRef.current.close();
+			// Disable body scroll more effectively
+			document.body.style.overflow = "hidden";
+			document.documentElement.style.overflow = "hidden";
+		} else {
+			if (dialogRef.current) {
+				dialogRef.current.close();
+			}
+			// Always re-enable body scroll when modal is not open
+			document.body.style.overflow = "auto";
+			document.documentElement.style.overflow = "auto";
 		}
 	}, [isDialogOpen]);
+
+	// Cleanup effect to ensure scroll is restored on unmount
+	useEffect(() => {
+		return () => {
+			document.body.style.overflow = "auto";
+			document.documentElement.style.overflow = "auto";
+		};
+	}, []);
 
 	return (
 		<section id="art">

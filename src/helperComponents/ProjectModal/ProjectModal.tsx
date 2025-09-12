@@ -52,8 +52,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 	useEffect(() => {
 		if (isOpen && dialogRef.current) {
 			dialogRef.current.showModal();
-		} else if (dialogRef.current) {
-			dialogRef.current.close();
+			// Disable body scroll more effectively
+			document.body.style.overflow = "hidden";
+			document.documentElement.style.overflow = "hidden";
+		} else {
+			if (dialogRef.current) {
+				dialogRef.current.close();
+			}
+			// Always re-enable body scroll when modal is not open
+			document.body.style.overflow = "auto";
+			document.documentElement.style.overflow = "auto";
 		}
 	}, [isOpen]);
 
@@ -61,10 +69,22 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 	useEffect(() => {
 		if (isImageModalOpen && imageDialogRef.current) {
 			imageDialogRef.current.showModal();
+			// Body scroll is already disabled by parent modal, but ensure it stays disabled
+			document.body.style.overflow = "hidden";
+			document.documentElement.style.overflow = "hidden";
 		} else if (imageDialogRef.current) {
 			imageDialogRef.current.close();
+			// Don't re-enable body scroll here as parent modal might still be open
 		}
 	}, [isImageModalOpen]);
+
+	// Cleanup effect to ensure scroll is restored on unmount
+	useEffect(() => {
+		return () => {
+			document.body.style.overflow = "auto";
+			document.documentElement.style.overflow = "auto";
+		};
+	}, []);
 
 	const handleClose = () => {
 		setIsClosing(true);

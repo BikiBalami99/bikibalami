@@ -25,6 +25,8 @@
 
 .modal::backdrop {
 	background-color: rgba(0, 0, 0, 0.9);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 }
 
 .modalContent {

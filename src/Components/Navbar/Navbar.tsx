@@ -41,10 +41,26 @@ const Navbar = () => {
 	useEffect(() => {
 		if (letsTalkVisibility && letsTalkRef.current) {
 			letsTalkRef.current.showModal();
-		} else if (letsTalkRef.current) {
-			letsTalkRef.current.close();
+			// Disable body scroll more effectively
+			document.body.style.overflow = "hidden";
+			document.documentElement.style.overflow = "hidden";
+		} else {
+			if (letsTalkRef.current) {
+				letsTalkRef.current.close();
+			}
+			// Always re-enable body scroll when modal is not visible
+			document.body.style.overflow = "auto";
+			document.documentElement.style.overflow = "auto";
 		}
 	}, [letsTalkVisibility]);
+
+	// Cleanup effect to ensure scroll is restored on unmount
+	useEffect(() => {
+		return () => {
+			document.body.style.overflow = "auto";
+			document.documentElement.style.overflow = "auto";
+		};
+	}, []);
 
 	return (
 		<nav className={styles.navBar} data-expanded={isExpanded}>
