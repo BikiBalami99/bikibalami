@@ -21,13 +21,6 @@ The website was built using modern front-end technologies, with React at its cor
 -   **CSS** for animation and stuling
 -   **Responsive Design** ensuring optimal viewing across all devices
 
-## Skills Showcase
-
-This project demonstrates my capabilities in:
-
--   **Graphic Design**: Figma, Photoshop, Illustrator, InDesign, Procreate, and Blender
--   **Front-End Development**: React, Next.js, TypeScript, JavaScript, HTML, CSS, Redux
--   **Computer Science**: Strong fundamentals from my formal education
 
 ## Getting Started
 
@@ -44,8 +37,6 @@ npm install
 # Start development server
 npm run dev
 ```
-
-Visit `localhost:3000` to view the site locally.
 
 ## Contact
 
