@@ -18,6 +18,7 @@ function App() {
 	useEffect(() => {
 		// Disable scrolling and hide scrollbar during initial splash
 		document.body.style.overflow = "hidden";
+		document.documentElement.style.overflow = "hidden";
 
 		const MIN_DISPLAY_MS = 600; // avoid flicker but keep snappy
 		const start = performance.now();
@@ -65,9 +66,18 @@ function App() {
 			// Re-enable scrolling sooner for better UX
 			setTimeout(() => {
 				document.body.style.overflow = "auto";
+				document.documentElement.style.overflow = "auto";
 			}, 400);
 		}
 	}, [isAppLoaded]);
+
+	// Cleanup effect to ensure scroll is restored on unmount
+	useEffect(() => {
+		return () => {
+			document.body.style.overflow = "auto";
+			document.documentElement.style.overflow = "auto";
+		};
+	}, []);
 
 	return (
 		<div className="ultimateWrapper">
