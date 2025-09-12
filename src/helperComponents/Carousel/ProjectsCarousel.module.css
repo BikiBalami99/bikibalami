@@ -16,47 +16,162 @@
 }
 
 .card {
-	/* min-width: 250px; */
 	flex-shrink: 0;
-
 	display: flex;
 	flex-direction: column;
-	gap: 0.6rem;
-	padding: 1rem;
+	background: linear-gradient(219deg, #f4a914 0.69%, #e56e13 99.31%);
 
-	border-radius: 0.8rem;
-	background-color: red;
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(244, 169, 20, 0.15);
+	border-radius: 1.5rem;
+	padding: 1.5rem;
 	cursor: pointer;
-	transition: transform 0.3s ease;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .card:hover {
-	transform: translateY(-5px);
+	transform: translateY(-3px);
+	border-color: rgba(244, 169, 20, 0.3);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.cardHeader {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.appIcon {
+	width: 60px;
+	height: 60px;
+	border-radius: 1rem;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease;
+}
+
+.card:hover .appIcon {
+	border-color: rgba(244, 169, 20, 0.4);
+	box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+.appIcon img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.appInfo {
+	flex: 1;
+	min-width: 0;
 }
 
 .cardTitle {
-	font-size: 1.5rem;
-	font-weight: 900;
-	text-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.25);
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: white;
+	margin-bottom: 0.25rem;
+	line-height: 1.2;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cardDescription {
-	font-size: 0.8rem;
+	font-size: 0.85rem;
 	font-weight: 400;
-	text-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.25);
+	color: white;
+	line-height: 1.4;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.thumbnailWrapper img {
+.cardPreview {
+	position: relative;
 	width: 100%;
-	max-height: 17rem;
-	border-radius: 0.5rem;
-	object-fit: cover;
-	border: 2px solid rgba(255, 255, 255, 0.1);
-	transition: border-color 0.3s ease;
+	height: 200px;
+	border-radius: 1rem;
+	overflow: hidden;
+	margin-bottom: 1rem;
+	background: rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(244, 169, 20, 0.1);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease;
 }
 
-.card:hover .thumbnailWrapper img {
-	border-color: rgba(255, 255, 255, 0.3);
+.card:hover .cardPreview {
+	border-color: rgba(244, 169, 20, 0.2);
+	box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+.cardPreview img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+
+.previewOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.4);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.card:hover .previewOverlay {
+	opacity: 1;
+}
+
+.card:hover .cardPreview img {
+	transform: scale(1.05);
+}
+
+.cardActions {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.actionButton {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(10px);
+	color: black;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 0.75rem;
+	font-weight: 600;
+	font-size: 0.85rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: -2px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.actionButton:hover {
+	background: rgba(255, 255, 255, 0.25);
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+	border-color: rgba(255, 255, 255, 0.4);
+}
+
+.actionButton svg {
+	color: black;
 }
 
 .leftRightButtons {
@@ -85,4 +200,76 @@
 
 .triggerBounceRight {
 	animation: bounceRight 200ms ease-out;
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 768px) {
+	.card {
+		padding: 1rem;
+	}
+
+	.cardHeader {
+		gap: 0.75rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.appIcon {
+		width: 50px;
+		height: 50px;
+		border-radius: 0.75rem;
+	}
+
+	.cardTitle {
+		font-size: 1.1rem;
+	}
+
+	.cardDescription {
+		font-size: 0.8rem;
+	}
+
+	.cardPreview {
+		height: 160px;
+		margin-bottom: 0.75rem;
+	}
+
+	.actionButton {
+		padding: 0.4rem 0.8rem;
+		font-size: 0.8rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.card {
+		padding: 0.75rem;
+	}
+
+	.cardHeader {
+		gap: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.appIcon {
+		width: 45px;
+		height: 45px;
+		border-radius: 0.5rem;
+	}
+
+	.cardTitle {
+		font-size: 1rem;
+	}
+
+	.cardDescription {
+		font-size: 0.75rem;
+		-webkit-line-clamp: 3;
+	}
+
+	.cardPreview {
+		height: 140px;
+		margin-bottom: 0.5rem;
+	}
+
+	.actionButton {
+		padding: 0.35rem 0.7rem;
+		font-size: 0.75rem;
+	}
 }

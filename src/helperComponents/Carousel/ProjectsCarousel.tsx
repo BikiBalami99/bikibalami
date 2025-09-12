@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, ExternalLink } from "lucide-react";
 import styles from "./ProjectsCarousel.module.css";
+import ProjectModal from "../ProjectModal/ProjectModal";
 
 type Project = {
 	id: string;
@@ -9,7 +10,12 @@ type Project = {
 	title: string;
 	description: string;
 	thumbnail: string;
+	screenshots?: string[];
+	videos?: string[];
+	technologies?: string[];
+	features?: string[];
 };
+
 const ProjectsCarousel = ({ arrayOfProjects }: { arrayOfProjects: Project[] }) => {
 	// State management
 	const [movingPartPosition, setMovingPartPosition] = useState(0);
@@ -25,15 +31,19 @@ const ProjectsCarousel = ({ arrayOfProjects }: { arrayOfProjects: Project[] }) =
 	const [triggerLeftBounce, setTriggerLeftBounce] = useState(false);
 	const [triggerRightBounce, setTriggerRightBounce] = useState(false);
 
+	// Modal state
+	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
 	const carouselRef = useRef<HTMLDivElement | null>(null);
 
 	// Making responsive card size
 	useEffect(() => {
 		if (windowWidth <= 450) {
-			setCardWidth(250);
+			setCardWidth(280);
 			setGap(16);
 		} else {
-			setCardWidth(300);
+			setCardWidth(320);
 			setGap(32);
 		}
 	}, [windowWidth]);
@@ -100,6 +110,16 @@ const ProjectsCarousel = ({ arrayOfProjects }: { arrayOfProjects: Project[] }) =
 		}
 	};
 
+	const handleProjectClick = (project: Project) => {
+		setSelectedProject(project);
+		setIsModalOpen(true);
+	};
+
+	const handleModalClose = () => {
+		setIsModalOpen(false);
+		setSelectedProject(null);
+	};
+
 	// Render
 	return (
 		<div ref={carouselRef} className={styles.projectsCarousel}>
@@ -115,22 +135,44 @@ const ProjectsCarousel = ({ arrayOfProjects }: { arrayOfProjects: Project[] }) =
 				}}
 			>
 				{arrayOfProjects.map((data) => (
-					<a
-						target="_blank"
-						href={data.URL}
+					<div
 						key={data.id}
 						className={styles.card}
 						style={{
 							width: `${cardWidth}px`,
-							background: data.background,
 						}}
+						onClick={() => handleProjectClick(data)}
 					>
-						<h4 className={styles.cardTitle}>{data.title}</h4>
-						<p className={styles.cardDescription}>{data.description}</p>
-						<div className={styles.thumbnailWrapper}>
-							<img src={data.thumbnail} alt="Thumbnail of current project" />
+						<div className={styles.cardHeader}>
+							<div className={styles.appIcon} style={{ background: data.background }}>
+								<img src={data.thumbnail} alt={`${data.title} icon`} />
+							</div>
+							<div className={styles.appInfo}>
+								<h4 className={styles.cardTitle}>{data.title}</h4>
+								<p className={styles.cardDescription}>{data.description}</p>
+							</div>
 						</div>
-					</a>
+
+						<div className={styles.cardPreview}>
+							<img src={data.thumbnail} alt={`${data.title} preview`} />
+							<div className={styles.previewOverlay}>
+								<Play size={32} />
+							</div>
+						</div>
+
+						<div className={styles.cardActions}>
+							<button
+								className={styles.actionButton}
+								onClick={(e) => {
+									e.stopPropagation();
+									window.open(data.URL, "_blank");
+								}}
+							>
+								<ExternalLink size={16} color="black" />
+								Visit
+							</button>
+						</div>
+					</div>
 				))}
 			</div>
 
@@ -142,6 +184,12 @@ const ProjectsCarousel = ({ arrayOfProjects }: { arrayOfProjects: Project[] }) =
 					<ChevronRight size={20} color="black" />
 				</button>
 			</div>
+
+			<ProjectModal
+				project={selectedProject}
+				isOpen={isModalOpen}
+				onClose={handleModalClose}
+			/>
 		</div>
 	);
 };
