@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Play, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import styles from "./ProjectsCarousel.module.css";
 import ProjectModal from "../ProjectModal/ProjectModal";
 
@@ -157,9 +157,6 @@ const ProjectsCarousel = ({ arrayOfProjects }: { arrayOfProjects: Project[] }) =
 
 						<div className={styles.cardPreview}>
 							<img src={data.thumbnail} alt={`${data.title} preview`} />
-							<div className={styles.previewOverlay}>
-								<Play size={32} />
-							</div>
 						</div>
 
 						<div className={styles.cardActions}>

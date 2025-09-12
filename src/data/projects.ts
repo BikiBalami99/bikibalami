@@ -52,7 +52,8 @@ const projects: Project[] = [
 		title: "DoorsOS",
 		description:
 			"A fully functional macOS-inspired web operating system with complete desktop environment simulation. Features draggable/resizable windows, dock, menu bar, and built-in applications including Notes, Settings, and JavaScript Playground.",
-		thumbnail: "/assets/images/ProjectThumbnails/doorsOS/doorsos-screenshot.webp",
+		thumbnail: "/assets/images/ProjectThumbnails/doorsOS/video-1.gif",
+		logo: "/assets/images/ProjectThumbnails/doorsOS/doorsos-screenshot.webp",
 		background: "#0ea5e9",
 		URL: "https://doorsos.vercel.app/",
 		screenshots: [
