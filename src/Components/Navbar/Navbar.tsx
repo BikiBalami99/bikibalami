@@ -5,13 +5,9 @@ import PrimaryButton from "../../helperComponents/PrimaryButton/PrimaryButton";
 import LetsTalk from "../../helperComponents/LetsTalk/LetsTalk";
 
 const Navbar = () => {
-	// This state handles show/hide navLinks on mobile
 	const [isExpanded, setIsExpanded] = useState(false);
-
-	// Toggles Lets Talk form visibility
 	const [letsTalkVisibility, setLetsTalkVisibility] = useState(false);
 	const [isClosing, setIsClosing] = useState(false);
-
 	const letsTalkRef = useRef<HTMLDialogElement | null>(null);
 
 	function toggleNavBarView() {
@@ -31,7 +27,6 @@ const Navbar = () => {
 		}, 200);
 	}
 
-	// Handle click outside to close
 	const handleDialogClick = (e: React.MouseEvent<HTMLDialogElement>) => {
 		if (e.target === letsTalkRef.current) {
 			closeLetsTalkDialog();
@@ -41,20 +36,17 @@ const Navbar = () => {
 	useEffect(() => {
 		if (letsTalkVisibility && letsTalkRef.current) {
 			letsTalkRef.current.showModal();
-			// Disable body scroll more effectively
 			document.body.style.overflow = "hidden";
 			document.documentElement.style.overflow = "hidden";
 		} else {
 			if (letsTalkRef.current) {
 				letsTalkRef.current.close();
 			}
-			// Always re-enable body scroll when modal is not visible
 			document.body.style.overflow = "auto";
 			document.documentElement.style.overflow = "auto";
 		}
 	}, [letsTalkVisibility]);
 
-	// Cleanup effect to ensure scroll is restored on unmount
 	useEffect(() => {
 		return () => {
 			document.body.style.overflow = "auto";
@@ -63,59 +55,81 @@ const Navbar = () => {
 	}, []);
 
 	return (
-		<nav className={styles.navBar} data-expanded={isExpanded}>
-			<a href="#" className={styles.logo}>
-				<h1>Biki Balami</h1>
-			</a>
+		<>
+			{/* SVG Filter for Liquid Glass Effect */}
+			<svg style={{ display: "none" }}>
+				<defs>
+					<filter id="displacementFilter">
+						<feImage
+							href="/assets/images/LIQUID_GLASS_ASSET_2.png"
+							preserveAspectRatio="none"
+							result="distortionMap"
+						/>
+						<feDisplacementMap
+							in="SourceGraphic"
+							in2="distortionMap"
+							scale={120}
+							xChannelSelector="R"
+							yChannelSelector="G"
+						/>
+					</filter>
+				</defs>
+			</svg>
 
-			<ul className={styles.navItems}>
-				<Hamburger toggleNavBarView={toggleNavBarView} />
+			<nav className={styles.navBar} data-expanded={isExpanded}>
+				<a href="#" className={styles.logo}>
+					<h1>Biki Balami</h1>
+				</a>
 
-				<div className={styles.navLinks}>
-					<li>
-						<a href="#">Home</a>
-					</li>
-					<li>
-						<a href="#skills">Skills</a>
-					</li>
-					<li>
-						<a href="#projects">Projects</a>
-					</li>
-					<li>
-						<a href="#art">Art</a>
-					</li>
+				<ul className={styles.navItems}>
+					<Hamburger toggleNavBarView={toggleNavBarView} />
 
-					<li>
-						<PrimaryButton
-							onClick={openLetsTalkDialog}
-							buttonModifierClass={{}}
-							textModifierClass={{}}
-							disabled={false}
-						>
-							Let's Talk
-						</PrimaryButton>
-					</li>
-				</div>
-			</ul>
+					<div className={styles.navLinks}>
+						<li>
+							<a href="#">Home</a>
+						</li>
+						<li>
+							<a href="#skills">Skills</a>
+						</li>
+						<li>
+							<a href="#projects">Projects</a>
+						</li>
+						<li>
+							<a href="#art">Art</a>
+						</li>
 
-			{letsTalkVisibility && (
-				<dialog
-					ref={letsTalkRef}
-					className={`${styles.letsTalkModule} ${isClosing ? styles.closing : ""}`}
-					onClick={handleDialogClick}
-				>
-					<LetsTalk onClose={closeLetsTalkDialog} />
-					<form method="dialog">
-						<button
-							className={`circleButton ${styles.letsTalkCloseButton}`}
-							onClick={closeLetsTalkDialog}
-						>
-							<p>&times;</p>
-						</button>
-					</form>
-				</dialog>
-			)}
-		</nav>
+						<li>
+							<PrimaryButton
+								onClick={openLetsTalkDialog}
+								buttonModifierClass={{}}
+								textModifierClass={{}}
+								disabled={false}
+							>
+								Let's Talk
+							</PrimaryButton>
+						</li>
+					</div>
+				</ul>
+
+				{letsTalkVisibility && (
+					<dialog
+						ref={letsTalkRef}
+						className={`${styles.letsTalkModule} ${isClosing ? styles.closing : ""}`}
+						onClick={handleDialogClick}
+					>
+						<LetsTalk onClose={closeLetsTalkDialog} />
+						<form method="dialog">
+							<button
+								className={`circleButton ${styles.letsTalkCloseButton}`}
+								onClick={closeLetsTalkDialog}
+							>
+								<p>&times;</p>
+							</button>
+						</form>
+					</dialog>
+				)}
+			</nav>
+		</>
 	);
 };
 

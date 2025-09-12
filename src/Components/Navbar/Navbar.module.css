@@ -12,18 +12,28 @@
 	right: 1rem;
 	max-width: 1500px;
 	position: fixed;
-
-	/* styling */
 	border-radius: 16px;
-	backdrop-filter: blur(10px);
+
 	-webkit-backdrop-filter: blur(10px);
 	background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%);
-	color: white;
 
+	/* Default backdrop-filter for non-Mozilla browsers */
+	backdrop-filter: url(#displacementFilter) blur(5px);
+	-webkit-backdrop-filter: blur(10px);
+
+	color: white;
 	height: 3.8rem;
 	transition: height 300ms ease-in-out;
 	overflow: hidden;
 	z-index: 1000;
+}
+
+/* Mozilla Firefox specific backdrop-filter */
+@-moz-document url-prefix() {
+	.navBar {
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+	}
 }
 
 .navBar[data-expanded="true"] {
@@ -33,6 +43,8 @@
 /* Good evening etc Section */
 .logo {
 	height: 100%;
+	position: relative;
+	z-index: 1;
 }
 
 .logo h1 {
@@ -47,6 +59,8 @@
 	flex-direction: column;
 	align-items: flex-end;
 	gap: 1rem;
+	position: relative;
+	z-index: 1;
 }
 
 /* This holds only the links and lets talk */
@@ -67,7 +81,6 @@
 	display: flex;
 	align-items: center;
 	width: 60vw;
-
 	border-radius: 2rem;
 	box-sizing: content-box;
 }
@@ -145,7 +158,6 @@
 	.navLinks {
 		flex-direction: row;
 		align-items: center;
-
 		width: 100%;
 		justify-content: space-between;
 	}
