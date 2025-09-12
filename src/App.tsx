@@ -85,18 +85,20 @@ function App() {
 			<RippleEffect />
 			<Navbar />
 			<main>
-				<Hero />
-				<AnimatedSection delay={100}>
+				<AnimatedSection delay={150}>
+					<Hero />
+				</AnimatedSection>
+				<AnimatedSection delay={150}>
 					<Skills />
 				</AnimatedSection>
-				<AnimatedSection delay={200}>
+				<AnimatedSection delay={150}>
 					<Projects />
 				</AnimatedSection>
-				<AnimatedSection delay={300}>
+				<AnimatedSection delay={150}>
 					<Art />
 				</AnimatedSection>
 			</main>
-			<AnimatedSection delay={400}>
+			<AnimatedSection delay={200}>
 				<Footer />
 			</AnimatedSection>
 		</div>
