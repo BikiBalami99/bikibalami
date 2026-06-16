@@ -1,0 +1,36 @@
+.panel {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	border-radius: 16px;
+	overflow: hidden;
+}
+
+.panel::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	border-radius: inherit;
+	background: rgba(0, 2, 7, 0.3);
+}
+
+.panel > * {
+	position: relative;
+	z-index: 2;
+}
+
+@supports (backdrop-filter: url("#displace")) {
+	.panel::before {
+		backdrop-filter: blur(3px) var(--liquid-glass-filter, blur(0)) blur(2px) saturate(2.2)
+			brightness(1.22) contrast(1.2);
+	}
+}
+
+@supports (-webkit-backdrop-filter: url("#displace")) {
+	.panel::before {
+		-webkit-backdrop-filter: blur(3px) var(--liquid-glass-filter, blur(0)) blur(2px)
+			saturate(2.2) brightness(1.22) contrast(1.2);
+	}
+}

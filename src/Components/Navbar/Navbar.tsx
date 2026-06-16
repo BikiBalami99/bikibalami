@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Navbar.module.css";
 import Hamburger from "../../helperComponents/Hamburger/Hamburger";
+import LiquidGlassPanel from "../../helperComponents/LiquidGlassPanel";
 import PrimaryButton from "../../helperComponents/PrimaryButton/PrimaryButton";
 import LetsTalk from "../../helperComponents/LetsTalk/LetsTalk";
 
@@ -56,60 +57,48 @@ const Navbar = () => {
 
 	return (
 		<>
-			{/* SVG Filter for Liquid Glass Effect */}
-			<svg style={{ display: "none" }}>
-				<defs>
-					<filter id="displacementFilter">
-						<feImage
-							href="/assets/images/LIQUID_GLASS_ASSET_2.png"
-							preserveAspectRatio="none"
-							result="distortionMap"
-						/>
-						<feDisplacementMap
-							in="SourceGraphic"
-							in2="distortionMap"
-							scale={120}
-							xChannelSelector="R"
-							yChannelSelector="G"
-						/>
-					</filter>
-				</defs>
-			</svg>
-
 			<nav className={styles.navBar} data-expanded={isExpanded}>
-				<a href="#" className={styles.logo}>
-					<h1>Biki Balami</h1>
-				</a>
+				<LiquidGlassPanel
+					className={styles.navBarGlass}
+					chromaticAberration={4}
+					depth={18}
+					radius={16}
+					strength={190}
+				>
+					<a href="#" className={styles.logo}>
+						<h1>Biki Balami</h1>
+					</a>
 
-				<ul className={styles.navItems}>
-					<Hamburger toggleNavBarView={toggleNavBarView} />
+					<ul className={styles.navItems}>
+						<Hamburger toggleNavBarView={toggleNavBarView} />
 
-					<div className={styles.navLinks}>
-						<li>
-							<a href="#">Home</a>
-						</li>
-						<li>
-							<a href="#skills">Skills</a>
-						</li>
-						<li>
-							<a href="#projects">Projects</a>
-						</li>
-						<li>
-							<a href="#art">Art</a>
-						</li>
+						<div className={styles.navLinks}>
+							<li>
+								<a href="#">Home</a>
+							</li>
+							<li>
+								<a href="#skills">Skills</a>
+							</li>
+							<li>
+								<a href="#projects">Projects</a>
+							</li>
+							<li>
+								<a href="#art">Art</a>
+							</li>
 
-						<li>
-							<PrimaryButton
-								onClick={openLetsTalkDialog}
-								buttonModifierClass={{}}
-								textModifierClass={{}}
-								disabled={false}
-							>
-								Let's Talk
-							</PrimaryButton>
-						</li>
-					</div>
-				</ul>
+							<li>
+								<PrimaryButton
+									onClick={openLetsTalkDialog}
+									buttonModifierClass={{}}
+									textModifierClass={{}}
+									disabled={false}
+								>
+									Let's Talk
+								</PrimaryButton>
+							</li>
+						</div>
+					</ul>
+				</LiquidGlassPanel>
 
 				{letsTalkVisibility && (
 					<dialog

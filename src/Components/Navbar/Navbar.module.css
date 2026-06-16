@@ -3,24 +3,12 @@
 	font-size: 1rem;
 	font-weight: 300;
 	line-height: 1;
-	display: flex;
-	padding: 1rem;
-	justify-content: space-between;
-	gap: 3rem;
 	top: 1rem;
 	left: 1rem;
 	right: 1rem;
 	max-width: 1500px;
 	position: fixed;
 	border-radius: 16px;
-
-	-webkit-backdrop-filter: blur(10px);
-	background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%);
-
-	/* Default backdrop-filter for non-Mozilla browsers */
-	backdrop-filter: url(#displacementFilter) blur(5px);
-	-webkit-backdrop-filter: blur(10px);
-
 	color: white;
 	height: 3.8rem;
 	transition: height 300ms ease-in-out;
@@ -28,11 +16,34 @@
 	z-index: 1000;
 }
 
-/* Mozilla Firefox specific backdrop-filter */
-@-moz-document url-prefix() {
-	.navBar {
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
+.navBar .navBarGlass {
+	width: 100%;
+	height: 100%;
+	padding: 1rem;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 3rem;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.18),
+		0 16px 42px rgba(0, 0, 0, 0.26);
+}
+
+.navBar .navBarGlass::before {
+	background:
+		linear-gradient(90deg, rgba(4, 5, 8, 0.54) 0%, rgba(0, 0, 0, 0.72) 100%),
+		rgba(0, 2, 7, 0.34);
+}
+
+@supports not (backdrop-filter: url("#displace")) {
+	.navBar .navBarGlass::before {
+		backdrop-filter: blur(12px) saturate(1.3);
+	}
+}
+
+@supports not (-webkit-backdrop-filter: url("#displace")) {
+	.navBar .navBarGlass::before {
+		-webkit-backdrop-filter: blur(12px) saturate(1.3);
 	}
 }
 
@@ -146,6 +157,10 @@
 @media screen and (min-width: 1024px) {
 	.navBar {
 		height: 4rem;
+	}
+
+	.navBar .navBarGlass {
+		align-items: center;
 	}
 
 	.navBar[data-expanded="true"] {
