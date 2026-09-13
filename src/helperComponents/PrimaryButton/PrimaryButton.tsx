@@ -1,19 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import styles from "./PrimaryButton.module.css";
 
-// Props description
-// Children = text of the button
-// onClick = onClick function
-// Type = If any specific button type
-// buttonModifierClass = if you wanna modify any style of the BUTTON, make a class and then give as a prop. It needs to be an object.
-// textModifierClass same as buttonModifierClass for button text
-type PrimaryButtonProps = {
+export type PrimaryButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 	children: React.ReactNode;
-	onClick?: React.MouseEventHandler<HTMLButtonElement>;
-	type?: "button" | "submit" | "reset";
+	/** Optional inline style override for the button container (supported for backward compatibility) */
 	buttonModifierClass?: React.CSSProperties;
+	/** Optional inline style override for the inner button label (supported for backward compatibility) */
 	textModifierClass?: React.CSSProperties;
-	disabled?: boolean;
 };
 
 const PrimaryButton = ({
@@ -23,63 +16,36 @@ const PrimaryButton = ({
 	buttonModifierClass,
 	textModifierClass,
 	disabled = false,
+	className,
+	style,
+	...restProps
 }: PrimaryButtonProps) => {
-	const [isHovered, setIsHovered] = useState(false);
-	const [hoverStyleTop, setHoverStyleTop] = useState(0);
-	const [hoverStyleLeft, setHoverStyleLeft] = useState(0);
-	const buttonRef = useRef<HTMLButtonElement | null>(null);
 	const hoverBallSize = 80;
 
-	useEffect(() => {
-		if (!isHovered) return;
-
-		function handleMouseMove(e: MouseEvent) {
-			const currentMouseX = e.clientX;
-			const currentMouseY = e.clientY;
-
-			// Getting the button's cordinates
-			const buttonCoordinates = buttonRef.current!.getBoundingClientRect();
-			const buttonX = buttonCoordinates.left;
-			const buttonY = buttonCoordinates.top;
-
-			setHoverStyleTop(currentMouseY - buttonY - hoverBallSize / 2);
-			setHoverStyleLeft(currentMouseX - buttonX - hoverBallSize / 2);
-		}
-
-		document.addEventListener("mousemove", handleMouseMove);
-
-		return () => {
-			document.removeEventListener("mousemove", handleMouseMove);
-		};
-	}, [isHovered]);
+	const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+		if (disabled) return;
+		const rect = e.currentTarget.getBoundingClientRect();
+		const x = e.clientX - rect.left - hoverBallSize / 2;
+		const y = e.clientY - rect.top - hoverBallSize / 2;
+		e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+		e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+	};
 
 	return (
 		<button
 			disabled={disabled}
-			ref={buttonRef}
-			className={styles.primaryButton}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			onClick={onClick}
+			className={[styles.primaryButton, className].filter(Boolean).join(" ")}
+			onMouseEnter={handleMouseMove}
+			onMouseMove={handleMouseMove}
+			onClick={disabled ? undefined : onClick}
 			type={type}
-			style={buttonModifierClass}
+			style={{ ...buttonModifierClass, ...style }}
+			{...restProps}
 		>
-			<div
-				className={styles.hoverStyle}
-				style={{
-					top: hoverStyleTop,
-					left: hoverStyleLeft,
-					opacity: isHovered ? 1 : 0,
-					transformOrigin: "center",
-					transform: isHovered ? "scale(1)" : "scale(0)",
-				}}
-			></div>
-			<div style={{ opacity: 0, ...textModifierClass }}>{children}</div>
-			{/* This above one has opacity 0 because, it is only to hold the shape of the button. */}
-
-			<div style={textModifierClass} className={styles.children}>
+			{!disabled && <div className={styles.hoverBall} aria-hidden="true" />}
+			<span className={styles.content} style={textModifierClass}>
 				{children}
-			</div>
+			</span>
 		</button>
 	);
 };

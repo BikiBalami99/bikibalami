@@ -33,3 +33,6 @@ output/
 outputs/
 .playwright-mcp/
 
+
+*storybook.log
+storybook-static

@@ -1,63 +1,150 @@
 .primaryButton {
 	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	border: none;
 	padding: 0.5rem 1.75rem;
-	max-width: 9rem;
-	max-height: 2rem;
+	min-height: 2.25rem;
+	min-width: 6.5rem;
+	font-family: inherit;
 	font-size: 1rem;
 	font-weight: 700;
 	line-height: 1;
 	border-radius: 0.75rem;
-	background-color: #f4ce14;
-	transition: background-color 200ms ease-in-out, color 100ms ease-in-out,
-		transform 100ms ease-in-out;
+	background-color: #f4bc14;
+	color: #000000;
+	transition: background-color 200ms ease-in-out;
 	overflow: hidden;
+	text-decoration: none;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
 }
 
-@media (hover: hover) {
-	.hoverStyle {
-		position: absolute;
-		content: "";
-		background: radial-gradient(circle, white 0%, rgba(255, 255, 255, 0) 70%);
-		opacity: 0.5;
-		z-index: 1; /* Ball is placed below the text */
-		/* background: radial-gradient(white); */
-		background: white;
-		width: 5rem;
-		height: 5rem;
-		border-radius: 50px;
-		pointer-events: none;
-		transform: scale(1);
-		transition: opacity 100ms ease-in-out, transform 200ms ease-in-out;
-	}
-}
-
-.primaryButton:hover,
-.primaryButton:active,
+/* Remove default browser focus ring on mouse click */
 .primaryButton:focus {
+	outline: none;
+}
+
+.primaryButton:focus:not(:focus-visible) {
+	outline: none;
+	box-shadow: none;
+}
+
+/* Keyboard Accessible Focus Ring (WCAG 2.4.7) - only displays when navigating via keyboard Tab */
+.primaryButton:focus-visible {
+	outline: 2px solid #ffffff;
+	outline-offset: 3px;
+}
+
+/* Active / interactive states only apply when NOT disabled */
+.primaryButton:not(:disabled):hover,
+.primaryButton:not(:disabled):focus-visible {
 	background-color: #f90;
 	cursor: pointer;
 }
 
-.primaryButton:active {
-	transform: scale(0.9);
+.primaryButton:not(:disabled):active {
+	background-color: #f90;
+	cursor: pointer;
 }
 
-.children {
-	position: absolute;
-	z-index: 3;
-	left: 50%;
-	top: 50%;
-	transform: translateX(-50%) translateY(-50%);
+/* Disabled State: muted solid gold, no border, crisp black text, no hover color shift */
+.primaryButton:disabled {
+	border: none;
+	background-color: #cca327;
+	cursor: not-allowed;
+	transform: none !important;
+	box-shadow: none;
+	outline: none;
+}
+
+.primaryButton:disabled:hover,
+.primaryButton:disabled:active,
+.primaryButton:disabled:focus {
+	background-color: #cca327;
+	cursor: not-allowed;
+	transform: none !important;
+	box-shadow: none;
+	outline: none;
+}
+
+.content {
+	position: relative;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
 	white-space: nowrap;
-	color: black;
+	color: #000000;
 }
 
-/* Mobile button improvements */
+/* Force text and all nested SVG elements/paths to black, overriding global.css (* { color: white }) */
+.content,
+.content * {
+	color: #000000;
+}
+
+.content svg {
+	color: #000000 !important;
+	stroke: #000000 !important;
+	stroke-width: 2.35px;
+	flex-shrink: 0;
+}
+
+.content svg,
+.content svg * {
+	color: #000000 !important;
+	stroke: #000000 !important;
+	stroke-width: 2.35px;
+}
+
+/* Hover ball: full 5rem circle under cursor with snappy 65ms fade */
+.hoverBall {
+	position: absolute;
+	top: var(--mouse-y, -100px);
+	left: var(--mouse-x, -100px);
+	width: 5rem;
+	height: 5rem;
+	background: #ffffff;
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 1;
+	opacity: 0;
+	transform: scale(1);
+	transform-origin: center;
+	will-change: opacity, transform;
+	transition: opacity 65ms ease-out, transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+	.primaryButton:not(:disabled):hover .hoverBall {
+		opacity: 1;
+	}
+}
+
+/* Active State: inner white circle compresses on click and springs back on release */
+.primaryButton:not(:disabled):active .hoverBall {
+	opacity: 1;
+	transform: scale(0.5);
+	transition: transform 60ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.primaryButton {
+		transition: none;
+	}
+	.hoverBall {
+		display: none;
+	}
+}
+
+/* Mobile button improvements (WCAG 44px touch target) */
 @media screen and (max-width: 768px) {
 	.primaryButton {
-		padding: 0.75rem 2rem;
+		padding: 0.65rem 1.75rem;
 		font-size: 0.95rem;
-		min-width: 8rem;
+		min-height: 2.75rem;
 	}
 }
