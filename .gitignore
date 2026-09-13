@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Private Japanese study data, licensed app material, media and recovery backups.
+/anki-genki-integration/
+/anki-genki-chapters/
+
+# Temporary, output, and tool directories
+tmp/
+output/
+outputs/
+.playwright-mcp/
+
