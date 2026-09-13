@@ -9,7 +9,7 @@ Each component is evaluated for preservation in Storybook, UX/UI improvements, a
 
 | Component | Category | Storybook Path | Status | Notes / Preservation Value |
 | :--- | :--- | :--- | :--- | :--- |
-| **PrimaryButton** | Helper / Atom | `UI/PrimaryButton` | **Finalized** | Signature warm golden-amber CTA button (`#f4bc14`). Locked-in 65ms ease-out snap-fade hover ball, zero-rerender mouse tracking, full WCAG keyboard navigation (`:focus-visible`), single accessible text node, flexbox layout, bold `#000000` Lucide icons with 2.35px stroke, and solid muted disabled state (`#cca327`). |
+| **PrimaryButton** | Helper / Atom | `UI/PrimaryButton` | **Finalized** | Signature warm golden-amber CTA button (`#f4bc14`). Locked-in 65ms ease-out snap-fade hover ball, dynamic 3D mechanical pivot tilt on click with synchronized inner circle compression (`scale(0.5)`) in 60ms and 150ms spring-back, zero-rerender mouse tracking, full WCAG keyboard navigation (`:focus-visible`), single accessible text node, flexbox layout, bold `#000000` Lucide icons with 2.35px stroke, and solid muted disabled state (`#cca327`). |
 | **LiquidGlassPanel** | Helper / Molecule | `UI/LiquidGlassPanel` | **Finalized** | Glassmorphism panel using dynamic SVG displacement filter with chromatic aberration and blur. Highly distinctive visual asset. |
 | **SectionTitle** | Helper / Atom | `UI/SectionTitle` | **Finalized** | Infinite-scroll marquee title header with text gradient clipping and configurable speed/direction. |
 | **Experience** | Feature Section | `Sections/Experience` | **Finalized** | Modern timeline layout with company badge, role, date, bullet descriptions, and skill tags (Ukudala & Tokyo Coding Club). |

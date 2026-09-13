@@ -14,11 +14,15 @@
 	border-radius: 0.75rem;
 	background-color: #f4bc14;
 	color: #000000;
-	transition: background-color 200ms ease-in-out;
+	transform: perspective(500px) rotateX(0deg) rotateY(0deg) translateZ(0);
+	transition: background-color 200ms ease-in-out, transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+	transform-style: preserve-3d;
+	will-change: transform;
 	overflow: hidden;
 	text-decoration: none;
 	user-select: none;
 	-webkit-tap-highlight-color: transparent;
+	touch-action: manipulation;
 }
 
 /* Remove default browser focus ring on mouse click */
@@ -44,9 +48,12 @@
 	cursor: pointer;
 }
 
+/* Active State: 3D mechanical tilt towards click position, matched to 60ms ease-out */
 .primaryButton:not(:disabled):active {
 	background-color: #f90;
 	cursor: pointer;
+	transform: perspective(500px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(-2.5px);
+	transition: transform 60ms ease-out;
 }
 
 /* Disabled State: muted solid gold, no border, crisp black text, no hover color shift */
@@ -78,6 +85,7 @@
 	gap: 0.5rem;
 	white-space: nowrap;
 	color: #000000;
+	pointer-events: none;
 }
 
 /* Force text and all nested SVG elements/paths to black, overriding global.css (* { color: white }) */
@@ -134,6 +142,10 @@
 @media (prefers-reduced-motion: reduce) {
 	.primaryButton {
 		transition: none;
+		transform: none !important;
+	}
+	.primaryButton:not(:disabled):active {
+		transform: none !important;
 	}
 	.hoverBall {
 		display: none;
