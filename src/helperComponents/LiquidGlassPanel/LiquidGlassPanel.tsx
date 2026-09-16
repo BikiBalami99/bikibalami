@@ -64,7 +64,7 @@ function getLiquidGlassMap({
 		</g>
 	</svg>`;
 
-	return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+	return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
 function getLiquidGlassFilter({
@@ -99,23 +99,39 @@ function getLiquidGlassFilter({
 		</defs>
 	</svg>`;
 
-	return `url("data:image/svg+xml;utf8,${encodeURIComponent(svg)}#displace")`;
+	return `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}#displace")`;
 }
 
-function supportsLiquidGlassFilter() {
+let cachedSupportsLiquidGlass: boolean | null = null;
+
+function supportsLiquidGlassFilter(): boolean {
+	if (cachedSupportsLiquidGlass !== null) {
+		return cachedSupportsLiquidGlass;
+	}
+
 	if (typeof navigator === "undefined" || typeof CSS === "undefined") {
 		return false;
 	}
 
 	const userAgent = navigator.userAgent.toLowerCase();
+
+	// Exclude all iOS devices (iPhone, iPad, iPod) because iOS mandates WebKit,
+	// which does not render SVG displacement maps on backdrop-filter.
+	const isIOS = /iphone|ipad|ipod/.test(userAgent);
+	if (isIOS) {
+		cachedSupportsLiquidGlass = false;
+		return false;
+	}
+
 	const isChromium =
-		/(chrome|chromium|crios|edg)/.test(userAgent) && !/firefox|fxios/.test(userAgent);
+		/(chrome|chromium|edg)/.test(userAgent) && !/firefox|fxios/.test(userAgent);
 
 	const supportsBackdrop =
 		CSS.supports("backdrop-filter", 'url("#displace")') ||
 		CSS.supports("-webkit-backdrop-filter", 'url("#displace")');
 
-	return isChromium && supportsBackdrop;
+	cachedSupportsLiquidGlass = Boolean(isChromium && supportsBackdrop);
+	return cachedSupportsLiquidGlass;
 }
 
 const LiquidGlassPanel = forwardRef<HTMLDivElement, LiquidGlassPanelProps>(
@@ -139,6 +155,16 @@ const LiquidGlassPanel = forwardRef<HTMLDivElement, LiquidGlassPanelProps>(
 	) => {
 		const [liquidGlassStyle, setLiquidGlassStyle] = useState<LiquidGlassStyle>({});
 		const internalRef = useRef<HTMLDivElement>(null);
+		const lastDimensionsRef = useRef<{
+			w: number;
+			h: number;
+			r: number;
+			s: number;
+			d: number;
+			c: number;
+			t?: string;
+		} | null>(null);
+
 		useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
 
 		const isDisplacementSupported = supportsLiquidGlassFilter();
@@ -161,6 +187,30 @@ const LiquidGlassPanel = forwardRef<HTMLDivElement, LiquidGlassPanelProps>(
 					radius !== undefined
 						? radius
 						: parseFloat(window.getComputedStyle(panel).borderRadius) || 16;
+
+				const prev = lastDimensionsRef.current;
+				if (
+					prev &&
+					prev.w === width &&
+					prev.h === height &&
+					prev.r === computedRadius &&
+					prev.s === strength &&
+					prev.d === depth &&
+					prev.c === chromaticAberration &&
+					prev.t === tint
+				) {
+					return;
+				}
+
+				lastDimensionsRef.current = {
+					w: width,
+					h: height,
+					r: computedRadius,
+					s: strength,
+					d: depth,
+					c: chromaticAberration,
+					t: tint,
+				};
 
 				setLiquidGlassStyle({
 					"--liquid-glass-filter": getLiquidGlassFilter({
@@ -186,7 +236,6 @@ const LiquidGlassPanel = forwardRef<HTMLDivElement, LiquidGlassPanelProps>(
 			scheduleUpdate();
 			const resizeObserver = new ResizeObserver(scheduleUpdate);
 			resizeObserver.observe(panel);
-			window.addEventListener("resize", scheduleUpdate);
 
 			return () => {
 				if (frame !== 0) {
@@ -194,7 +243,6 @@ const LiquidGlassPanel = forwardRef<HTMLDivElement, LiquidGlassPanelProps>(
 				}
 
 				resizeObserver.disconnect();
-				window.removeEventListener("resize", scheduleUpdate);
 			};
 		}, [chromaticAberration, depth, isDisplacementSupported, radius, strength, tint]);
 
