@@ -13,6 +13,7 @@ Each component is evaluated for preservation in Storybook, UX/UI improvements, a
 | **LiquidGlassPanel** | Helper / Molecule | `UI/LiquidGlassPanel` | **Finalized** | Universal glassmorphism background container. Uses dynamic SVG `feDisplacementMap` with chromatic aberration in Chromium, and Apple-grade frosted glass (`blur(24px) saturate(1.8)`) with multi-step optical bevel simulation in Safari/Firefox via `data-glass-engine` detection. Tuned defaults (`strength: 230`, `depth: 18`, `chromaticAberration: 5`, `tint: rgba(0,2,7,0.35)`), auto-computed border-radius decoupling, and 5 interactive Storybook stories. |
 | **SectionTitle** | Helper / Atom | `UI/SectionTitle` | **Finalized** | Infinite-scroll marquee title header with text gradient clipping and configurable speed/direction. |
 | **Experience** | Feature Section | `Sections/Experience` | **Finalized** | Modern timeline layout with company badge, role, date, bullet descriptions, and skill tags (Ukudala & Tokyo Coding Club). |
+| **Hamburger** | Helper / Atom | `UI/Hamburger` | **Finalized** | Single-path SVG `stroke-dasharray` morphing hamburger-to-X menu button. Features controlled/uncontrolled state, customizable size, colors (`activeColor="#f4bc14"`), accessible focus ring, full keyboard interaction, and liquid glass integration. |
 
 ---
 
@@ -23,7 +24,6 @@ Each component is evaluated for preservation in Storybook, UX/UI improvements, a
 * [ ] **LoadingScreen** (`src/helperComponents/LoadingScreen/`) - Animated splash screen with progress percentage.
 * [ ] **ProjectModal** (`src/helperComponents/ProjectModal/`) - Modal popup for detailed case-study inspection.
 * [ ] **Carousel** (`src/helperComponents/Carousel/`) - Horizontal scrolling carousels for projects, skills, and art.
-* [ ] **Hamburger** (`src/helperComponents/Hamburger/`) - Mobile navigation toggle with icon morphing.
 * [ ] **LetsTalk** (`src/helperComponents/LetsTalk/`) - Contact form dialog with interactive inputs and validation.
 * [ ] **AnimatedSection** (`src/helperComponents/AnimatedSection/`) - Scroll-triggered opacity and translate wrapper.
 * [ ] **ButtonLoadingAnimation** (`src/helperComponents/ButtonLoadingAnimation/`) - Micro-spinner for button actions.

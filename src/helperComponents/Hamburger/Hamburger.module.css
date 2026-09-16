@@ -1,34 +1,68 @@
 .hambutton {
-  --button-color: white;
-  --animation-duration: 600ms;
+	--button-color: #ffffff;
+	--button-active-color: #ffffff;
+	--animation-duration: 380ms;
 
-  display: flex;
-  background: transparent;
-  border: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	border: none;
+	padding: 0.25rem;
+	cursor: pointer;
+	border-radius: 8px;
+	outline: none;
+	transition: background-color 150ms ease, opacity 150ms ease;
+	-webkit-tap-highlight-color: transparent;
+}
 
-  cursor: pointer;
+.hambutton:hover {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.hambutton:focus-visible {
+	outline: 2px solid #ffffff;
+	outline-offset: 2px;
+}
+
+.hambutton:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+.hamburger {
+	display: block;
+	overflow: visible;
 }
 
 .line {
-  /* This is what turns the whole svg into something that looks like an "=" */
-  stroke-dasharray: 40 31.5 40 1000;
-  transform-origin: center;
-
-  transition: stroke-dashoffset var(--animation-duration) ease-in-out,
-    stroke-dasharray var(--animation-duration) ease-in-out,
-    transform var(--animation-duration) ease-in-out;
+	stroke: var(--button-color);
+	/* Initial dasharray renders the 3 horizontal hamburger bars */
+	stroke-dasharray: 40 31.5 40 1000;
+	transform-origin: center;
+	transition:
+		stroke-dashoffset var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1),
+		stroke-dasharray var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1),
+		transform var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1),
+		stroke var(--animation-duration) ease;
 }
 
 .hambutton[aria-expanded="true"] .line {
-  /* These combined will make the svg look like an "x" in the center of the button*/
-  stroke-dasharray: 40 218 40 1000;
-  stroke-dashoffset: -71.5;
-  transform: rotate(45deg) translateY(-10%);
+	stroke: var(--button-active-color);
+	/* Morphs the dasharray into an 'X' icon */
+	stroke-dasharray: 40 218 40 1000;
+	stroke-dashoffset: -71.5;
+	transform: rotate(45deg) translateY(-10%);
+}
+
+/* Optional responsive utility class */
+.hideOnDesktop {
+	display: inline-flex;
 }
 
 @media screen and (min-width: 1024px) {
-  /* Match the min-width with media query of navBar */
-  .hambutton {
-    display: none;
-  }
+	.hideOnDesktop {
+		display: none !important;
+	}
 }

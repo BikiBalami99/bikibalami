@@ -70,7 +70,11 @@ const Navbar = () => {
 					</a>
 
 					<ul className={styles.navItems}>
-						<Hamburger toggleNavBarView={toggleNavBarView} />
+						<Hamburger
+							hideOnDesktop
+							isOpen={isExpanded}
+							toggleNavBarView={toggleNavBarView}
+						/>
 
 						<div className={styles.navLinks}>
 							<li>
