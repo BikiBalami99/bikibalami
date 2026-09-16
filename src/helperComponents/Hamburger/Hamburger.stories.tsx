@@ -8,8 +8,27 @@ const meta: Meta<typeof Hamburger> = {
 	component: Hamburger,
 	parameters: {
 		layout: "centered",
+		backgrounds: { default: "dark" },
 	},
 	tags: ["autodocs"],
+	decorators: [
+		(Story) => (
+			<div
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					padding: "2rem",
+					background: "#0e0f14",
+					borderRadius: "14px",
+					border: "1px solid rgba(255, 255, 255, 0.08)",
+					minWidth: "200px",
+				}}
+			>
+				<Story />
+			</div>
+		),
+	],
 	argTypes: {
 		size: {
 			control: { type: "range", min: 20, max: 64, step: 2 },
@@ -71,10 +90,6 @@ export const SizeVariants: Story = {
 					display: "flex",
 					alignItems: "center",
 					gap: "2.5rem",
-					padding: "2rem",
-					background: "#0e0f14",
-					borderRadius: "16px",
-					border: "1px solid rgba(255, 255, 255, 0.1)",
 				}}
 			>
 				{[
@@ -117,12 +132,12 @@ export const InsideGlassCapsule: Story = {
 		return (
 			<div
 				style={{
-					padding: "3rem",
+					padding: "2rem",
 					background: `
 						linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.8) 100%),
 						url("/assets/images/portfolio-background.jpg") center/cover no-repeat
 					`,
-					borderRadius: "20px",
+					borderRadius: "16px",
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
