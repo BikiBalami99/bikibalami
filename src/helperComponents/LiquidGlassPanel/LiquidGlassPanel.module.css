@@ -2,9 +2,19 @@
 	position: relative;
 	z-index: 1;
 	display: flex;
-	align-items: center;
 	border-radius: 16px;
+	border: var(--liquid-glass-border, 1px solid rgba(255, 255, 255, 0.12));
+	box-shadow: var(
+		--liquid-glass-shadow,
+		inset 0 1px 0 rgba(255, 255, 255, 0.18),
+		0 16px 42px rgba(0, 0, 0, 0.26)
+	);
 	overflow: hidden;
+}
+
+.panel.noBorder {
+	border: none;
+	box-shadow: none;
 }
 
 .panel::before {
@@ -13,7 +23,11 @@
 	inset: 0;
 	z-index: 0;
 	border-radius: inherit;
-	background: rgba(0, 2, 7, 0.3);
+	background: var(--liquid-glass-tint, rgba(0, 2, 7, 0.35));
+	pointer-events: none;
+	/* Base fallback blur */
+	backdrop-filter: blur(24px) saturate(1.8);
+	-webkit-backdrop-filter: blur(24px) saturate(1.8);
 }
 
 .panel > * {
@@ -21,16 +35,27 @@
 	z-index: 2;
 }
 
-@supports (backdrop-filter: url("#displace")) {
-	.panel::before {
-		backdrop-filter: blur(3px) var(--liquid-glass-filter, blur(0)) blur(2px) saturate(2.2)
-			brightness(1.22) contrast(1.2);
-	}
+/* Chromium SVG displacement map engine */
+.panel[data-glass-engine="displacement"]::before {
+	backdrop-filter: blur(3px) var(--liquid-glass-filter, blur(0)) blur(2px) saturate(2.2)
+		brightness(1.22) contrast(1.2);
+	-webkit-backdrop-filter: blur(3px) var(--liquid-glass-filter, blur(0)) blur(2px)
+		saturate(2.2) brightness(1.22) contrast(1.2);
 }
 
-@supports (-webkit-backdrop-filter: url("#displace")) {
-	.panel::before {
-		-webkit-backdrop-filter: blur(3px) var(--liquid-glass-filter, blur(0)) blur(2px)
-			saturate(2.2) brightness(1.22) contrast(1.2);
-	}
+/* Safari / WebKit / Firefox Apple-grade frosted glass with optical bevel simulation */
+.panel[data-glass-engine="frosted"]:not(.noBorder) {
+	box-shadow: var(
+		--liquid-glass-shadow,
+		inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+		inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+		inset 0 2px 12px 0 rgba(255, 255, 255, 0.04),
+		inset 0 -1px 2px 0 rgba(0, 0, 0, 0.4),
+		0 16px 42px rgba(0, 0, 0, 0.32)
+	);
+}
+
+.panel[data-glass-engine="frosted"]::before {
+	backdrop-filter: blur(24px) saturate(1.8) contrast(1.05);
+	-webkit-backdrop-filter: blur(24px) saturate(1.8) contrast(1.05);
 }

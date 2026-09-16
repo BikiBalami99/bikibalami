@@ -1,7 +1,9 @@
 import {
 	type CSSProperties,
 	type HTMLAttributes,
+	forwardRef,
 	useEffect,
+	useImperativeHandle,
 	useRef,
 	useState,
 } from "react";
@@ -9,6 +11,7 @@ import styles from "./LiquidGlassPanel.module.css";
 
 type LiquidGlassStyle = CSSProperties & {
 	"--liquid-glass-filter"?: string;
+	"--liquid-glass-tint"?: string;
 };
 
 export type LiquidGlassPanelProps = HTMLAttributes<HTMLDivElement> & {
@@ -16,6 +19,11 @@ export type LiquidGlassPanelProps = HTMLAttributes<HTMLDivElement> & {
 	depth?: number;
 	radius?: number;
 	strength?: number;
+	tint?: string;
+	glassBorder?: boolean;
+	flexDirection?: CSSProperties["flexDirection"];
+	alignItems?: CSSProperties["alignItems"];
+	justifyContent?: CSSProperties["justifyContent"];
 };
 
 function getLiquidGlassMap({
@@ -29,14 +37,20 @@ function getLiquidGlassMap({
 	radius: number;
 	width: number;
 }) {
+	// Defensively clamp depth and radius to prevent SVG filter collapse on small/irregular components
+	const safeDepth = Math.max(1, Math.min(depth, Math.floor(Math.min(width, height) / 2) - 1));
+	const safeRadius = Math.max(0, Math.min(radius, Math.floor(Math.min(width, height) / 2)));
+	const innerWidth = Math.max(1, width - 2 * safeDepth);
+	const innerHeight = Math.max(1, height - 2 * safeDepth);
+
 	const svg = `<svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
 		<style>.mix{mix-blend-mode:screen}</style>
 		<defs>
-			<linearGradient id="Y" x1="0" x2="0" y1="${Math.ceil((radius / height) * 15)}%" y2="${Math.floor(100 - (radius / height) * 15)}%">
+			<linearGradient id="Y" x1="0" x2="0" y1="${Math.ceil((safeRadius / height) * 15)}%" y2="${Math.floor(100 - (safeRadius / height) * 15)}%">
 				<stop offset="0%" stop-color="#0F0"/>
 				<stop offset="100%" stop-color="#000"/>
 			</linearGradient>
-			<linearGradient id="X" x1="${Math.ceil((radius / width) * 15)}%" x2="${Math.floor(100 - (radius / width) * 15)}%" y1="0" y2="0">
+			<linearGradient id="X" x1="${Math.ceil((safeRadius / width) * 15)}%" x2="${Math.floor(100 - (safeRadius / width) * 15)}%" y1="0" y2="0">
 				<stop offset="0%" stop-color="#F00"/>
 				<stop offset="100%" stop-color="#000"/>
 			</linearGradient>
@@ -46,7 +60,7 @@ function getLiquidGlassMap({
 			<rect x="0" y="0" height="${height}" width="${width}" fill="#000080"/>
 			<rect x="0" y="0" height="${height}" width="${width}" fill="url(#Y)" class="mix"/>
 			<rect x="0" y="0" height="${height}" width="${width}" fill="url(#X)" class="mix"/>
-			<rect x="${depth}" y="${depth}" height="${Math.max(1, height - 2 * depth)}" width="${Math.max(1, width - 2 * depth)}" fill="#808080" rx="${radius}" ry="${radius}" filter="blur(${depth}px)"/>
+			<rect x="${safeDepth}" y="${safeDepth}" height="${innerHeight}" width="${innerWidth}" fill="#808080" rx="${safeRadius}" ry="${safeRadius}" filter="blur(${safeDepth}px)"/>
 		</g>
 	</svg>`;
 
@@ -97,80 +111,117 @@ function supportsLiquidGlassFilter() {
 	const isChromium =
 		/(chrome|chromium|crios|edg)/.test(userAgent) && !/firefox|fxios/.test(userAgent);
 
-	return isChromium && CSS.supports("backdrop-filter", 'url("#displace")');
+	const supportsBackdrop =
+		CSS.supports("backdrop-filter", 'url("#displace")') ||
+		CSS.supports("-webkit-backdrop-filter", 'url("#displace")');
+
+	return isChromium && supportsBackdrop;
 }
 
-export default function LiquidGlassPanel({
-	children,
-	chromaticAberration = 0,
-	className,
-	depth = 18,
-	radius = 12,
-	strength = 220,
-	style,
-	...props
-}: LiquidGlassPanelProps) {
-	const [liquidGlassStyle, setLiquidGlassStyle] = useState<LiquidGlassStyle>({});
-	const panelRef = useRef<HTMLDivElement>(null);
+const LiquidGlassPanel = forwardRef<HTMLDivElement, LiquidGlassPanelProps>(
+	(
+		{
+			children,
+			chromaticAberration = 5,
+			className,
+			depth = 18,
+			radius,
+			strength = 230,
+			tint = "rgba(0, 2, 7, 0.35)",
+			glassBorder = true,
+			flexDirection,
+			alignItems,
+			justifyContent,
+			style,
+			...props
+		},
+		ref
+	) => {
+		const [liquidGlassStyle, setLiquidGlassStyle] = useState<LiquidGlassStyle>({});
+		const internalRef = useRef<HTMLDivElement>(null);
+		useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
 
-	useEffect(() => {
-		const panel = panelRef.current;
+		const isDisplacementSupported = supportsLiquidGlassFilter();
 
-		if (!panel || !supportsLiquidGlassFilter()) {
-			return;
-		}
+		useEffect(() => {
+			const panel = internalRef.current;
 
-		let frame = 0;
-
-		const updateLiquidGlassFilter = () => {
-			frame = 0;
-			const rect = panel.getBoundingClientRect();
-			const width = Math.max(50, Math.round(rect.width));
-			const height = Math.max(30, Math.round(rect.height));
-
-			setLiquidGlassStyle({
-				"--liquid-glass-filter": getLiquidGlassFilter({
-					chromaticAberration,
-					depth,
-					height,
-					radius,
-					strength,
-					width,
-				}),
-			});
-		};
-
-		const scheduleUpdate = () => {
-			if (frame !== 0) {
+			if (!panel || !isDisplacementSupported) {
 				return;
 			}
 
-			frame = window.requestAnimationFrame(updateLiquidGlassFilter);
+			let frame = 0;
+
+			const updateLiquidGlassFilter = () => {
+				frame = 0;
+				const rect = panel.getBoundingClientRect();
+				const width = Math.max(40, Math.round(rect.width));
+				const height = Math.max(20, Math.round(rect.height));
+				const computedRadius =
+					radius !== undefined
+						? radius
+						: parseFloat(window.getComputedStyle(panel).borderRadius) || 16;
+
+				setLiquidGlassStyle({
+					"--liquid-glass-filter": getLiquidGlassFilter({
+						chromaticAberration,
+						depth,
+						height,
+						radius: computedRadius,
+						strength,
+						width,
+					}),
+					...(tint ? { "--liquid-glass-tint": tint } : {}),
+				});
+			};
+
+			const scheduleUpdate = () => {
+				if (frame !== 0) {
+					return;
+				}
+
+				frame = window.requestAnimationFrame(updateLiquidGlassFilter);
+			};
+
+			scheduleUpdate();
+			const resizeObserver = new ResizeObserver(scheduleUpdate);
+			resizeObserver.observe(panel);
+			window.addEventListener("resize", scheduleUpdate);
+
+			return () => {
+				if (frame !== 0) {
+					window.cancelAnimationFrame(frame);
+				}
+
+				resizeObserver.disconnect();
+				window.removeEventListener("resize", scheduleUpdate);
+			};
+		}, [chromaticAberration, depth, isDisplacementSupported, radius, strength, tint]);
+
+		const inlineLayout: CSSProperties = {
+			...(flexDirection ? { flexDirection } : {}),
+			...(alignItems ? { alignItems } : {}),
+			...(justifyContent ? { justifyContent } : {}),
+			...(tint ? { "--liquid-glass-tint": tint } : {}),
+			...(radius !== undefined ? { borderRadius: `${radius}px` } : {}),
 		};
 
-		scheduleUpdate();
-		const resizeObserver = new ResizeObserver(scheduleUpdate);
-		resizeObserver.observe(panel);
-		window.addEventListener("resize", scheduleUpdate);
+		return (
+			<div
+				ref={internalRef}
+				data-glass-engine={isDisplacementSupported ? "displacement" : "frosted"}
+				className={[styles.panel, !glassBorder && styles.noBorder, className]
+					.filter(Boolean)
+					.join(" ")}
+				style={{ ...inlineLayout, ...style, ...liquidGlassStyle }}
+				{...props}
+			>
+				{children}
+			</div>
+		);
+	}
+);
 
-		return () => {
-			if (frame !== 0) {
-				window.cancelAnimationFrame(frame);
-			}
+LiquidGlassPanel.displayName = "LiquidGlassPanel";
 
-			resizeObserver.disconnect();
-			window.removeEventListener("resize", scheduleUpdate);
-		};
-	}, [chromaticAberration, depth, radius, strength]);
-
-	return (
-		<div
-			ref={panelRef}
-			className={[styles.panel, className].filter(Boolean).join(" ")}
-			style={{ ...style, ...liquidGlassStyle }}
-			{...props}
-		>
-			{children}
-		</div>
-	);
-}
+export default LiquidGlassPanel;
