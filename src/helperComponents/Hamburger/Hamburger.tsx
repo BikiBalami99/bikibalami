@@ -8,13 +8,18 @@ export type HamburgerProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>,
 	defaultOpen?: boolean;
 	/** Callback invoked when toggle state changes */
 	onToggle?: (isOpen: boolean) => void;
-	/** Legacy callback compatibility with Navbar */
+	/**
+	 * Legacy callback compatibility with Navbar
+	 * @deprecated Use onToggle instead
+	 */
 	toggleNavBarView?: () => void;
 	/** Icon width / height in pixels (default: 32) */
 	size?: number;
+	/** SVG stroke width in coordinate units (default: 5) */
+	strokeWidth?: number;
 	/** Inactive stroke color (default: "#ffffff") */
 	color?: string;
-	/** Active / expanded stroke color (default: matches color or "#f4bc14") */
+	/** Active / expanded stroke color (default: matches color) */
 	activeColor?: string;
 	/** Animation transition duration in milliseconds (default: 380) */
 	duration?: number;
@@ -34,6 +39,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
 			onToggle,
 			toggleNavBarView,
 			size = 32,
+			strokeWidth = 5,
 			color = "#ffffff",
 			activeColor,
 			duration = 380,
@@ -53,8 +59,8 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
 		const currentOpen = isControlled ? isOpen : internalOpen;
 
 		const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-			onClick?.(e);
 			if (disabled) return;
+			onClick?.(e);
 
 			const nextOpen = !currentOpen;
 			if (!isControlled) {
@@ -104,7 +110,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
 					<path
 						d="m 30 40 h 40 a 1 1 0 0 1 0 20 h -40 a 1 1 0 0 1 0 -40 h 40 a 1 1 0 0 1 0 60 h -20 v -40"
 						className={styles.line}
-						strokeWidth="5"
+						strokeWidth={strokeWidth}
 						strokeLinecap="round"
 						strokeLinejoin="round"
 					/>

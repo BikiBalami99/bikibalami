@@ -6,6 +6,8 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
 	background: transparent;
 	border: none;
 	padding: 0.25rem;
@@ -54,6 +56,13 @@
 	stroke-dasharray: 40 218 40 1000;
 	stroke-dashoffset: -71.5;
 	transform: rotate(45deg) translateY(-10%);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+	.line {
+		transition-duration: 0.01ms !important;
+	}
 }
 
 /* Optional responsive utility class */

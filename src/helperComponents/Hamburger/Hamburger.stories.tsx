@@ -34,6 +34,10 @@ const meta: Meta<typeof Hamburger> = {
 			control: { type: "range", min: 20, max: 64, step: 2 },
 			description: "Width and height of the SVG icon in pixels",
 		},
+		strokeWidth: {
+			control: { type: "range", min: 2, max: 10, step: 0.5 },
+			description: "SVG line thickness in coordinate units (default: 5)",
+		},
 		color: {
 			control: "color",
 			description: "Inactive stroke color",
@@ -64,6 +68,7 @@ type Story = StoryObj<typeof Hamburger>;
 export const Default: Story = {
 	args: {
 		size: 32,
+		strokeWidth: 5,
 		color: "#ffffff",
 		activeColor: "#ffffff",
 		duration: 380,
