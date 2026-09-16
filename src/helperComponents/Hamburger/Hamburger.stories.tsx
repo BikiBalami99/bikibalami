@@ -71,17 +71,6 @@ export const Default: Story = {
 	},
 };
 
-export const BrandAccent: Story = {
-	name: "Signature Golden Accent (#f4bc14)",
-	args: {
-		size: 36,
-		color: "#ffffff",
-		activeColor: "#f4bc14",
-		duration: 380,
-		disabled: false,
-	},
-};
-
 export const SizeVariants: Story = {
 	render: () => {
 		return (
@@ -107,7 +96,7 @@ export const SizeVariants: Story = {
 							gap: "0.75rem",
 						}}
 					>
-						<Hamburger size={item.size} activeColor="#f4bc14" />
+						<Hamburger size={item.size} color="#ffffff" activeColor="#ffffff" />
 						<span
 							style={{
 								fontSize: "0.75rem",
@@ -171,7 +160,7 @@ export const InsideGlassCapsule: Story = {
 						<span
 							style={{
 								fontSize: "0.8rem",
-								color: isOpen ? "#f4bc14" : "rgba(255,255,255,0.7)",
+								color: isOpen ? "#ffffff" : "rgba(255,255,255,0.7)",
 								fontWeight: 600,
 								textTransform: "uppercase",
 								letterSpacing: "1px",
@@ -183,7 +172,8 @@ export const InsideGlassCapsule: Story = {
 							isOpen={isOpen}
 							onToggle={setIsOpen}
 							size={30}
-							activeColor="#f4bc14"
+							color="#ffffff"
+							activeColor="#ffffff"
 						/>
 					</div>
 				</LiquidGlassPanel>

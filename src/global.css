@@ -12,12 +12,12 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	color: white;
 	line-height: 1;
 }
 
 html,
 body {
+	color: white;
 	font-family: "Poppins", sans-serif; /* Set a consistent font-family across the application */
 	background: #f1f1f1;
 	overflow-x: hidden;
