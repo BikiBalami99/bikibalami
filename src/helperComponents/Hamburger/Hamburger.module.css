@@ -22,6 +22,17 @@
 	background: rgba(255, 255, 255, 0.08);
 }
 
+/* Suppress outline on mouse click */
+.hambutton:focus {
+	outline: none;
+}
+
+.hambutton:focus:not(:focus-visible) {
+	outline: none;
+	box-shadow: none;
+}
+
+/* Keyboard Accessible Focus Ring (WCAG 2.4.7) - only displays when navigating via keyboard Tab */
 .hambutton:focus-visible {
 	outline: 2px solid #ffffff;
 	outline-offset: 2px;
