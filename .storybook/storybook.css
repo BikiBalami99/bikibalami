@@ -1,0 +1,20 @@
+/* Fix Storybook Docs table text contrast so prop names and labels are clearly visible */
+.sbdocs table,
+.sbdocs table td,
+.sbdocs table th,
+.docblock-argstable,
+.docblock-argstable th,
+.docblock-argstable td,
+.docblock-argstable td span,
+.docblock-argstable tr td:first-child span {
+	color: #1f2328 !important;
+}
+
+.docblock-argstable tr td:first-child span {
+	font-weight: 600 !important;
+}
+
+.sbdocs code,
+.docblock-argstable code {
+	color: #0969da !important;
+}
